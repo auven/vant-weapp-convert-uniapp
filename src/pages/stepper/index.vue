@@ -42,8 +42,8 @@
 
 <script>
 // import Toast from '@vant/weapp/dist/toast/toast'
-import VanCell from '@/packages/cell/cell'
-import VanStepper from '@/packages/stepper/stepper'
+import VanCell from '@/packages/van-cell/van-cell'
+import VanStepper from '@/packages/van-stepper/van-stepper'
 export default {
   components: {
     VanCell,

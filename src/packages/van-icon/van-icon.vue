@@ -21,7 +21,7 @@
 
 <script>
 import { VantComponent } from '../common/component'
-import VanInfo from '../info/index'
+import VanInfo from '../van-info/van-info'
 const utils = require('../wxs/utils')
 export default {
   ...VantComponent({}),

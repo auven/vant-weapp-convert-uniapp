@@ -78,7 +78,7 @@
 
 <script>
 import DemoBlock from '@/components/demo-block'
-import VanRate from '@/packages/rate/rate'
+import VanRate from '@/packages/van-rate/van-rate'
 export default {
   components: {
     DemoBlock,

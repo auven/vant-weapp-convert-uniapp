@@ -105,10 +105,10 @@
 
 <script>
 import DemoBlock from '@/components/demo-block'
-import VanRow from '@/packages/row/row'
-import VanCol from '@/packages/col/col'
-import VanImage from '@/packages/image/image'
-import VanLoading from '@/packages/loading/loading'
+import VanRow from '@/packages/van-row/van-row'
+import VanCol from '@/packages/van-col/van-col'
+import VanImage from '@/packages/van-image/van-image'
+import VanLoading from '@/packages/van-loading/van-loading'
 export default {
   components: {
     DemoBlock,

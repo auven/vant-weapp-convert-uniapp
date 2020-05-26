@@ -29,8 +29,8 @@
 
 <script>
 import DemoBlock from '@/components/demo-block'
-import VanRow from '@/packages/row/row'
-import VanCol from '@/packages/col/col'
+import VanRow from '@/packages/van-row/van-row'
+import VanCol from '@/packages/van-col/van-col'
 export default {
   components: {
     DemoBlock,

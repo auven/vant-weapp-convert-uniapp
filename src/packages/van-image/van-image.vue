@@ -27,7 +27,7 @@
 
 <script>
 import { VantComponent } from '../common/component'
-import VanIcon from '../icon/icon'
+import VanIcon from '../van-icon/van-icon'
 import { button } from '../mixins/button'
 import { openType } from '../mixins/open-type'
 import { addUnit, isDef } from '../common/utils'

@@ -50,7 +50,7 @@
 <script>
 import { VantComponent } from '../common/component'
 import { link } from '../mixins/link'
-import VanIcon from '../icon/icon'
+import VanIcon from '../van-icon/van-icon'
 const utils = require('../wxs/utils')
 export default {
   ...VantComponent({

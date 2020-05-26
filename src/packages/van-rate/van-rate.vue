@@ -32,7 +32,7 @@
 
 <script>
 import { VantComponent } from '../common/component'
-import VanIcon from '../icon/icon'
+import VanIcon from '../van-icon/van-icon'
 const utils = require('../wxs/utils')
 export default {
   ...VantComponent({

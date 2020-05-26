@@ -95,9 +95,9 @@
 <script>
 import icons from './config'
 import DemoBlock from '@/components/demo-block'
-import VanCol from '@/packages/col/col'
-import VanIcon from '@/packages/icon/icon'
-import VanButton from '@/packages/button/button'
+import VanCol from '@/packages/van-col/van-col'
+import VanIcon from '@/packages/van-icon/van-icon'
+import VanButton from '@/packages/van-button/van-button'
 export default {
   components: {
     DemoBlock,

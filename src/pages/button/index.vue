@@ -64,7 +64,7 @@
 
 <script>
 import DemoBlock from '@/components/demo-block'
-import VanButton from '@/packages/button/button'
+import VanButton from '@/packages/van-button/van-button'
 export default {
   components: {
     DemoBlock,

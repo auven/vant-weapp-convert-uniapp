@@ -54,8 +54,8 @@
 import { VantComponent } from '../common/component'
 import { button } from '../mixins/button'
 import { openType } from '../mixins/open-type'
-import VanIcon from '../icon/icon'
-import VanLoading from '../loading/loading'
+import VanIcon from '../van-icon/van-icon'
+import VanLoading from '../van-loading/van-loading'
 const utils = require('../wxs/utils')
 export default {
   ...VantComponent({

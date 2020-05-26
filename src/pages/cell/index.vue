@@ -96,9 +96,9 @@
 
 <script>
 import DemoBlock from '@/components/demo-block'
-import VanCellGroup from '@/packages/cell-group/cell-group'
-import VanCell from '@/packages/cell/cell'
-import VanTag from '@/packages/tag/tag'
+import VanCellGroup from '@/packages/van-cell-group/van-cell-group'
+import VanCell from '@/packages/van-cell/van-cell'
+import VanTag from '@/packages/van-tag/van-tag'
 export default {
   components: {
     DemoBlock,

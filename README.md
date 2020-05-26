@@ -19,8 +19,7 @@ plugins.push([
   {
     'libraryName': 'vant-weapp-convert-uniapp',
     'customName': (name) => {
-      name = name.replace('van-', '')
-      return `${libraryName}/lib/${name}/${name}`
+      return `vant-weapp-convert-uniapp/lib/${name}/${name}`
     }
   },
   'vant-weapp-convert-uniapp'

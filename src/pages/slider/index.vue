@@ -61,7 +61,7 @@
 
 <script>
 import DemoBlock from '@/components/demo-block'
-import VanSlider from '@/packages/slider/slider'
+import VanSlider from '@/packages/van-slider/van-slider'
 export default {
   components: {
     DemoBlock,

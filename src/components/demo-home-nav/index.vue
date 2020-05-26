@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import VanIcon from '@/packages/icon/icon'
+import VanIcon from '@/packages/van-icon/van-icon'
 export default {
   components: {
     VanIcon
