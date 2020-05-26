@@ -1,16 +1,69 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/dashboard/index",
+      "style": {
+        "navigationBarTitleText": "Vant Weapp",
+        "usingComponents": {
+          "demo-home": "/wxcomponents/demo-home/index"
+        }
+      }
+    },
+    {
+      "path": "pages/button/index",
+      "style": {
+        "navigationBarTitleText": "Button 按钮"
+      }
+    },
+    {
+      "path": "pages/cell/index",
+      "style": {
+        "navigationBarTitleText": "Cell 单元格"
+      }
+    },
+    {
+      "path": "pages/icon/index",
+      "style": {
+        "navigationBarTitleText": "Icon 图标"
+      }
+    },
+    {
+      "path": "pages/image/index",
+      "style": {
+        "navigationBarTitleText": "Image 图片"
+      }
+    },
+    {
+      "path": "pages/col/index",
+      "style": {
+        "navigationBarTitleText": "Layout 布局"
+      }
+    },
+    {
+      "path": "pages/rate/index",
+      "style": {
+        "navigationBarTitleText": "Rate 评分"
+      }
+    },
+    {
+      "path": "pages/slider/index",
+      "style": {
+        "navigationBarTitleText": "Slider 滑块"
+      }
+    },
+    {
+      "path": "pages/stepper/index",
+      "style": {
+        "navigationBarTitleText": "Stepper 步进器"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "vant-weapp-convert-uniapp",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  }
 }
