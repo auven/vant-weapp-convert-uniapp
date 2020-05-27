@@ -65,7 +65,7 @@ export default {
   - [ ] Search 搜索 `van-search`
   - [x] Slider 滑块 `van-slider`
   - [x] Stepper 步进器 `van-stepper`
-  - [ ] Switch 开关 `van-switch`
+  - [x] Switch 开关 `van-switch`
   - [ ] Uploader 文件上传 `van-uploader`
 - 反馈组件
   - [ ] ActionSheet 上拉菜单 `van-action-sheet`
@@ -77,9 +77,9 @@ export default {
   - [ ] SwipeCell 滑动单元格 `van-swipe-cell`
   - [ ] Toast 轻提示 `van-toast`
 - 展示组件
-  - [ ] Circle 环形进度条 `van-circle`
+  - [x] Circle 环形进度条 `van-circle`
   - [ ] Collapse 折叠面板 `van-collapse` `van-collapse-item`
-  - [ ] CountDown 倒计时 `van-count-down`
+  - [x] CountDown 倒计时 `van-count-down`
   - [ ] Divider 分割线 `van-divider`
   - [ ] NoticeBar 通告栏 `van-notice-bar`
   - [ ] Panel 面板 `van-panel`
@@ -90,7 +90,7 @@ export default {
   - [x] Tag 标签 `van-tag`
   - [ ] TreeSelect 分类选择 `van-tree-select`
 - 导航组件
-  - [ ] Grid 宫格 `van-grid` `van-grid-item`
+  - [x] Grid 宫格 `van-grid` `van-grid-item`
   - [ ] IndexBar 索引栏 `van-index-bar` `van-index-anchor`
   - [ ] Sidebar 侧边导航 `van-sidebar` `van-sidebar-item`
   - [ ] NavBar 导航栏 `van-nav-bar`

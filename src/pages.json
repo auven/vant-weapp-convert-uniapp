@@ -57,6 +57,30 @@
       "style": {
         "navigationBarTitleText": "Stepper 步进器"
       }
+    },
+    {
+      "path": "pages/switch/index",
+      "style": {
+        "navigationBarTitleText": "Switch 开关"
+      }
+    },
+    {
+      "path": "pages/circle/index",
+      "style": {
+        "navigationBarTitleText": "Circle 进度条"
+      }
+    },
+    {
+      "path": "pages/grid/index",
+      "style": {
+        "navigationBarTitleText": "Grid 宫格"
+      }
+    },
+    {
+      "path": "pages/count-down/index",
+      "style": {
+        "navigationBarTitleText": "CountDown 倒计时"
+      }
     }
   ],
   "globalStyle": {
