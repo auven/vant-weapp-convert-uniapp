@@ -4,14 +4,16 @@
     <!-- #ifdef MP-TOUTIAO -->
     <canvas
       class="van-circle__canvas"
-      :style="canvasStyle"
+      :style="{ width: size + 'px', height: size + 'px' }"
       :canvas-id="`van-circle-${uid}`"
     ></canvas>
     <!-- #endif -->
     <!-- #ifndef MP-TOUTIAO -->
     <canvas
       class="van-circle__canvas"
-      :style="canvasStyle"
+      :type="type"
+      :style="{ width: size + 'px', height: size + 'px' }"
+      id="van-circle"
       canvas-id="van-circle"
     ></canvas>
     <!-- #endif -->
@@ -26,7 +28,7 @@
 import { VantComponent } from '../common/component'
 import { isObj } from '../common/utils'
 import { BLUE, WHITE } from '../common/color'
-const utils = require('../wxs/utils')
+import { adaptor } from './canvas'
 function format(rate) {
   return Math.min(Math.max(rate, 0), 100)
 }
@@ -83,16 +85,12 @@ export default {
     }
   },
 
-  computed: {
-    canvasStyle() {
-      const { size } = this
-      return `width: ${utils.addUnit(size)};height:${utils.addUnit(size)}`
-    }
-  },
-
   watch: {
     value() {
       this.reRender()
+    },
+    size() {
+      this.drawCircle(this.currentValue)
     }
   },
 
@@ -110,40 +108,67 @@ export default {
   },
 
   destroyed() {
-    this.ctx = null
     this.clearInterval()
   },
 
   methods: {
     getContext() {
-      if (!this.ctx) {
+      const { type } = this
+      const defaultContext = () => {
+        let ctx
         // #ifdef MP-TOUTIAO
-        this.ctx = uni.createCanvasContext(`van-circle-${this.uid}`, this)
+        ctx = uni.createCanvasContext(`van-circle-${this.uid}`, this)
         // #endif
         // #ifndef MP-TOUTIAO
-        this.ctx = uni.createCanvasContext('van-circle', this)
+        ctx = uni.createCanvasContext('van-circle', this)
         // #endif
+        return Promise.resolve(ctx)
       }
-      return this.ctx
+      if (type !== '2d') {
+        return defaultContext()
+      }
+
+      // #ifdef MP-WEIXIN
+      // 微信下支持 2d 模式
+      return new Promise(resolve => {
+        uni
+          .createSelectorQuery()
+          .in(this)
+          .select('#van-circle')
+          .fields({ node: true, size: true })
+          .exec(res => {
+            const canvas = res[0].node
+            const ctx = canvas.getContext(type)
+            const dpr = uni.getSystemInfoSync().pixelRatio
+            canvas.width = res[0].width * dpr
+            canvas.height = res[0].height * dpr
+            ctx.scale(dpr, dpr)
+            resolve(adaptor(ctx))
+          })
+      })
+      // #endif
+      // #ifndef MP-WEIXIN
+      // eslint-disable-next-line no-unreachable
+      return defaultContext()
+      // #endif
     },
 
     setHoverColor() {
-      const { color, size, type } = this
-      const context = type ? this.getContext(type) : this.getContext()
-
+      const { color, size } = this
       let hoverColor = color
 
-      if (isObj(color)) {
-        const LinearColor = context.createLinearGradient(size, 0, 0, 0)
-        Object.keys(color)
-          .sort((a, b) => parseFloat(a) - parseFloat(b))
-          .map(key =>
-            LinearColor.addColorStop(parseFloat(key) / 100, color[key])
-          )
-        hoverColor = LinearColor
-      }
-
-      this.hoverColor = hoverColor
+      this.getContext().then(context => {
+        if (isObj(color)) {
+          const LinearColor = context.createLinearGradient(size, 0, 0, 0)
+          Object.keys(color)
+            .sort((a, b) => parseFloat(a) - parseFloat(b))
+            .map(key =>
+              LinearColor.addColorStop(parseFloat(key) / 100, color[key])
+            )
+          hoverColor = LinearColor
+        }
+        this.hoverColor = hoverColor
+      })
     },
     presetCanvas(context, strokeStyle, beginAngle, endAngle, fill) {
       const { strokeWidth, lineCap, clockwise, size } = this
@@ -180,17 +205,19 @@ export default {
     },
 
     drawCircle(currentValue) {
-      const { size, type } = this
-      const context = type ? this.getContext(type) : this.getContext()
-      context.clearRect(0, 0, size, size)
-      this.renderLayerCircle(context)
+      const { size } = this
 
-      const formatValue = format(currentValue)
-      if (formatValue !== 0) {
-        this.renderHoverCircle(context, formatValue)
-      }
+      this.getContext().then(context => {
+        context.clearRect(0, 0, size, size)
+        this.renderLayerCircle(context)
 
-      context.draw()
+        const formatValue = format(currentValue)
+        if (formatValue !== 0) {
+          this.renderHoverCircle(context, formatValue)
+        }
+
+        context.draw()
+      })
     },
 
     reRender() {

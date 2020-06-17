@@ -5,6 +5,7 @@
     :class="buttonClass"
     hover-class="van-button--active hover-class"
     :lang="lang"
+    :form-type="formType"
     :style="buttonStyle"
     :open-type="disabled ? '' : openType"
     :business-id="businessId"
@@ -60,13 +61,19 @@ const utils = require('../wxs/utils')
 export default {
   ...VantComponent({
     classes: ['hover-class', 'loading-class'],
-    mixins: [button, openType]
+    mixins: [
+      { ...button, props: {} },
+      { ...openType, props: {} }
+    ]
   }),
   components: {
     VanIcon,
     VanLoading
   },
   props: {
+    ...button.props,
+    ...openType.props,
+    formType: String,
     icon: String,
     classPrefix: {
       type: String,
@@ -133,12 +140,8 @@ export default {
     },
     buttonStyle() {
       const { baseStyle, customStyle } = this
-      return `${ baseStyle }} ${ customStyle }}`
+      return `${ baseStyle } ${ customStyle }`
     }
-  },
-
-  created() {
-    console.log(this.$options)
   },
 
   methods: {

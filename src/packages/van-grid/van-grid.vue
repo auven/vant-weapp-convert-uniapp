@@ -34,7 +34,9 @@ export default {
     border: {
       type: Boolean,
       default: true
-    }
+    },
+    direction: String,
+    iconSize: String
   },
 
   data() {
@@ -69,6 +71,12 @@ export default {
       this.updateChildren()
     },
     border() {
+      this.updateChildren()
+    },
+    direction() {
+      this.updateChildren()
+    },
+    iconSize() {
       this.updateChildren()
     }
   },

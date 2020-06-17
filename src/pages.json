@@ -4,10 +4,7 @@
     {
       "path": "pages/dashboard/index",
       "style": {
-        "navigationBarTitleText": "Vant Weapp",
-        "usingComponents": {
-          "demo-home": "/wxcomponents/demo-home/index"
-        }
+        "navigationBarTitleText": "Vant Weapp"
       }
     },
     {
@@ -80,6 +77,24 @@
       "path": "pages/count-down/index",
       "style": {
         "navigationBarTitleText": "CountDown 倒计时"
+      }
+    },
+    {
+      "path": "pages/divider/index",
+      "style": {
+        "navigationBarTitleText": "Divider 分割线"
+      }
+    },
+    {
+      "path": "pages/panel/index",
+      "style": {
+        "navigationBarTitleText": "Panel 面板"
+      }
+    },
+    {
+      "path": "pages/progress/index",
+      "style": {
+        "navigationBarTitleText": "Progress 进度条"
       }
     }
   ],

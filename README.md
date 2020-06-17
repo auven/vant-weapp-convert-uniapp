@@ -1,6 +1,6 @@
 # vant-weapp-convert-uniapp
 
-将 [`vant-weapp`](https://github.com/youzan/vant-weapp) 转化成 [`uniapp`](https://uniapp.dcloud.io/) 组件，目前基于 `vant-weapp@1.3.1` 版本进行转化。
+将 [`vant-weapp`](https://github.com/youzan/vant-weapp) 转化成 [`uniapp`](https://uniapp.dcloud.io/) 组件，目前基于 `vant-weapp@1.3.2` 版本进行转化。
 
 ## 使用
 
@@ -80,10 +80,10 @@ export default {
   - [x] Circle 环形进度条 `van-circle`
   - [ ] Collapse 折叠面板 `van-collapse` `van-collapse-item`
   - [x] CountDown 倒计时 `van-count-down`
-  - [ ] Divider 分割线 `van-divider`
+  - [x] Divider 分割线 `van-divider`
   - [ ] NoticeBar 通告栏 `van-notice-bar`
-  - [ ] Panel 面板 `van-panel`
-  - [ ] Progress 进度条 `van-progress`
+  - [x] Panel 面板 `van-panel`
+  - [x] Progress 进度条 `van-progress`
   - [ ] Skeleton 骨架屏 `van-skeleton`
   - [ ] Steps 步骤条 `van-steps`
   - [ ] Sticky 粘性布局 `van-sticky`
@@ -104,4 +104,9 @@ export default {
 
 ### 平台支持度
 
-目前 **微信小程序**、 **QQ小程序**、 **头条小程序** 都能够比较好的支持。 **支付宝小程序** 会出现各种奇怪的错误，基本跑不起来，后续看怎么优化。 **百度小程序** 会出现样式上的问题。
+目前 **微信小程序**、 **QQ小程序**、 **头条小程序** 都能够比较好的支持。 **支付宝小程序** 和 **百度小程序** 多多少少有点问题，后续做特殊处理。
+
+## 一些问题
+
+- 组件里 canvas 的 style 动态绑定不能太复杂，不然会导致 canvas 2d 的时候 width 和 height 设置失败，如：`:style="{ width: width, height: height }"` 就可以，而 `:style="mainStyle"` 或者是 `:style="{ width: fn(size), height: fn(size) }"` 都不行。
+- 支付宝小程序中 vue 不支持 mixins 带 props 的对象

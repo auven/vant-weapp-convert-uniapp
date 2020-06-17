@@ -28,9 +28,10 @@ import { touch } from '../mixins/touch'
 const utils = require('../wxs/utils')
 export default {
   ...VantComponent({
-    mixins: [touch]
+    mixins: [{ ...touch, props: {} }]
   }),
   props: {
+    ...touch.props,
     disabled: Boolean,
     useButtonSlot: Boolean,
     activeColor: String,

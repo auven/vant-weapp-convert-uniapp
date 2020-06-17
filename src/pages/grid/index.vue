@@ -32,6 +32,12 @@
       </van-grid>
     </demo-block>
 
+    <demo-block title="内容横排">
+      <van-grid direction="horizontal" column-num="3">
+        <van-grid-item icon="photo-o" text="文字" v-for="item in array3" :key="item" />
+      </van-grid>
+    </demo-block>
+
     <demo-block title="页面跳转">
       <van-grid clickable column-num="2">
         <van-grid-item icon="home-o" link-type="navigateTo" url="/pages/dashboard/index" text="Navigate 跳转" />
@@ -39,7 +45,7 @@
       </van-grid>
     </demo-block>
 
-    <demo-block title="提示信息">
+    <demo-block title="徽标提示">
       <van-grid column-num="2">
         <van-grid-item icon="home-o" text="文字" dot />
         <van-grid-item icon="search" text="文字" info="99+" />

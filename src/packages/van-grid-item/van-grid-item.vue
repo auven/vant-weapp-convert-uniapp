@@ -6,7 +6,7 @@
       </block>
       <block v-else>
         <view class="van-grid-item__icon icon-class">
-          <van-icon v-if="icon" :name="icon" :dot="dot" :info="info" />
+          <van-icon v-if="icon" :name="icon" :dot="dot" :info="badge || info" :size="iconSize" />
           <slot v-else name="icon"></slot>
         </view>
         <view class="van-grid-item__text text-class">
@@ -27,15 +27,17 @@ const utils = require('../wxs/utils')
 export default {
   ...VantComponent({
     classes: ['content-class', 'icon-class', 'text-class'],
-    mixins: [link]
+    mixins: [{ ...link, props: {} }]
   }),
   components: {
     VanIcon
   },
   props: {
+    ...link.props,
     icon: String,
     dot: Boolean,
     info: null,
+    badge: null,
     text: String,
     useSlot: Boolean
   },
@@ -48,7 +50,9 @@ export default {
       border: false,
       square: false,
       gutter: false,
-      clickable: false
+      clickable: false,
+      direction: '',
+      iconSize: ''
     }
   },
 
@@ -58,13 +62,13 @@ export default {
       return `custom-class ${utils.bem('grid-item', { square })}`
     },
     contentClass() {
-      const { center, square, clickable, border, gutter } = this
-      return `content-class ${utils.bem('grid-item__content', {
+      const { center, square, clickable, border, gutter, direction } = this
+      return `content-class ${utils.bem('grid-item__content', [direction, {
         center,
         square,
         clickable,
         surround: border && gutter
-      })} ${border ? 'van-hairline--surround' : ''}`
+      }])} ${border ? 'van-hairline--surround' : ''}`
     }
   },
 
@@ -81,7 +85,7 @@ export default {
         return
       }
 
-      const { columnNum, border, square, gutter, clickable, center, $children } = parent
+      const { columnNum, border, square, gutter, clickable, center, direction, iconSize, $children } = parent
       const width = `${100 / columnNum}%`
 
       const styleWrapper = []
@@ -96,7 +100,7 @@ export default {
         styleWrapper.push(`padding-right: ${gutterValue}`)
 
         const index = $children.indexOf(this)
-        if (index >= columnNum) {
+        if (index >= columnNum && !square) {
           styleWrapper.push(`margin-top: ${gutterValue}`)
         }
       }
@@ -120,6 +124,8 @@ export default {
       this.square = square
       this.gutter = gutter
       this.clickable = clickable
+      this.direction = direction
+      this.iconSize = iconSize
     },
 
     onClick() {

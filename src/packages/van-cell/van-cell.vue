@@ -62,12 +62,13 @@ export default {
       'hover-class',
     ],
 
-    mixins: [link],
+    mixins: [{ ...link, props: {} }],
   }),
   components: {
     VanIcon
   },
   props: {
+    ...link.props,
     title: null,
     value: null,
     icon: String,

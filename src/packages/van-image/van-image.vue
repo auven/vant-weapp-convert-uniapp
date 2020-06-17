@@ -44,13 +44,15 @@ const FIT_MODE_MAP = {
 
 export default {
   ...VantComponent({
-    mixins: [button, openType],
+    mixins: [{ ...button, props: {} }, { ...openType, props: {} }],
     classes: ['custom-class', 'loading-class', 'error-class', 'image-class'],
   }),
   components: {
     VanIcon
   },
   props: {
+    ...button.props,
+    ...openType.props,
     src: {
       type: String
     },

@@ -2,7 +2,7 @@
   <div>
     <demo-block title="按钮类型" padding>
       <view class="row">
-        <van-button class="demo-margin-right">默认按钮</van-button>
+        <van-button id="im-id" class="demo-margin-right">默认按钮</van-button>
         <van-button type="primary" class="demo-margin-right">主要按钮</van-button>
         <van-button type="info" class="demo-margin-right">信息按钮</van-button>
       </view>

@@ -13,7 +13,8 @@ export default {
   ...VantComponent(),
   props: {
     dot: Boolean,
-    info: null
+    info: null,
+    customStyle: String
   },
   computed: {
     wrapClass() {
