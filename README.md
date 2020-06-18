@@ -71,7 +71,7 @@ export default {
   - [ ] ActionSheet 上拉菜单 `van-action-sheet`
   - [ ] Dialog 弹出框 `van-dialog`
   - [ ] DropdownMenu 下拉菜单 `van-dropdown-menu` `van-dropdown-item`
-  - [ ] Loading 加载 `van-loading`
+  - [x] Loading 加载 `van-loading`
   - [ ] Notify 消息提示 `van-notify`
   - [ ] Overlay 遮罩层 `van-overlay`
   - [ ] SwipeCell 滑动单元格 `van-swipe-cell`
@@ -85,7 +85,7 @@ export default {
   - [x] Panel 面板 `van-panel`
   - [x] Progress 进度条 `van-progress`
   - [ ] Skeleton 骨架屏 `van-skeleton`
-  - [ ] Steps 步骤条 `van-steps`
+  - [x] Steps 步骤条 `van-steps`
   - [ ] Sticky 粘性布局 `van-sticky`
   - [x] Tag 标签 `van-tag`
   - [ ] TreeSelect 分类选择 `van-tree-select`
