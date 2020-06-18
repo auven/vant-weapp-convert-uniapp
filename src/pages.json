@@ -96,6 +96,18 @@
       "style": {
         "navigationBarTitleText": "Progress 进度条"
       }
+    },
+    {
+      "path": "pages/loading/index",
+      "style": {
+        "navigationBarTitleText": "Loading 加载"
+      }
+    },
+    {
+      "path": "pages/steps/index",
+      "style": {
+        "navigationBarTitleText": "Steps 步骤条"
+      }
     }
   ],
   "globalStyle": {

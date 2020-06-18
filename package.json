@@ -2,9 +2,9 @@
   "name": "vant-weapp-convert-uniapp",
   "version": "0.1.0-alpha.4",
   "repository": {
-		"type": "git",
-		"url": "https://github.com/auven/vant-weapp-convert-uniapp"
-	},
+    "type": "git",
+    "url": "https://github.com/auven/vant-weapp-convert-uniapp"
+  },
   "scripts": {
     "serve": "npm run dev:h5",
     "build": "npm run build:h5",
@@ -36,7 +36,7 @@
     "test:mp-baidu": "cross-env UNI_PLATFORM=mp-baidu jest -i",
     "test:mp-weixin": "cross-env UNI_PLATFORM=mp-weixin jest -i",
     "build:lib": "node build/build-lib.js lib",
-		"build:npm": "node build/build-lib.js npm"
+    "build:npm": "node build/build-lib.js npm"
   },
   "dependencies": {
     "@dcloudio/uni-app-plus": "^2.0.0-27520200518001",
@@ -58,6 +58,8 @@
     "vuex": "^3.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@dcloudio/types": "*",
     "@dcloudio/uni-automator": "^2.0.0-27520200518001",
     "@dcloudio/uni-cli-shared": "^2.0.0-27520200518001",
@@ -72,8 +74,10 @@
     "@vue/cli-service": "~4.3.0",
     "babel-plugin-import": "^1.11.0",
     "cross-env": "^7.0.2",
+    "cz-conventional-changelog": "^3.2.0",
     "eslint": "^7.1.0",
     "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.2.5",
     "jest": "^25.4.0",
     "less": "^3.11.1",
     "less-loader": "^6.1.0",
@@ -88,5 +92,15 @@
   ],
   "uni-app": {
     "scripts": {}
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
