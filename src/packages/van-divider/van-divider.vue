@@ -37,12 +37,13 @@ export default {
     customStyle: {
       type: String,
       value: ''
-    }
+    },
+    customClass: String
   },
   computed: {
     mainClass() {
-      const { dashed, hairline, contentPosition } = this
-      return `custom-class ${ utils.bem('divider', [{dashed, hairline}, contentPosition]) }`
+      const { customClass, dashed, hairline, contentPosition } = this
+      return `custom-class ${customClass} ${ utils.bem('divider', [{dashed, hairline}, contentPosition]) }`
     },
     mainStyle() {
       return `${ this.borderColor  ? 'border-color: ' + this.borderColor + ';' : '' }${ this.textColor ? 'color: ' + this.textColor + ';' : '' }${ this.fontSize ? 'font-size: ' + this.fontSize + 'px;' : '' }${ this.customStyle }`

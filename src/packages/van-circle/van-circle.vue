@@ -5,7 +5,7 @@
     <canvas
       class="van-circle__canvas"
       :style="{ width: size + 'px', height: size + 'px' }"
-      :canvas-id="`van-circle-${uid}`"
+      :canvas-id="circleId"
     ></canvas>
     <!-- #endif -->
     <!-- #ifndef MP-TOUTIAO -->
@@ -13,8 +13,8 @@
       class="van-circle__canvas"
       :type="type"
       :style="{ width: size + 'px', height: size + 'px' }"
-      id="van-circle"
-      canvas-id="van-circle"
+      :id="circleId"
+      :canvas-id="circleId"
     ></canvas>
     <!-- #endif -->
     <view v-if="!text" class="van-circle__text">
@@ -38,13 +38,17 @@ const STEP = 1
 export default {
   ...VantComponent(),
   props: {
+    circleId: {
+      type: String,
+      default: 'van-circle'
+    },
     text: String,
     lineCap: {
       type: String,
       default: 'round'
     },
     value: {
-      type: Number,
+      type: [String, Number],
       default: 0
     },
     speed: {
@@ -52,7 +56,7 @@ export default {
       default: 50
     },
     size: {
-      type: Number,
+      type: [String, Number],
       default: 100
     },
     fill: String,
@@ -98,6 +102,7 @@ export default {
     this.uid = this._uid
     const { value } = this
     this.currentValue = value
+    console.log(this.circleId)
   },
 
   mounted() {
@@ -115,13 +120,7 @@ export default {
     getContext() {
       const { type } = this
       const defaultContext = () => {
-        let ctx
-        // #ifdef MP-TOUTIAO
-        ctx = uni.createCanvasContext(`van-circle-${this.uid}`, this)
-        // #endif
-        // #ifndef MP-TOUTIAO
-        ctx = uni.createCanvasContext('van-circle', this)
-        // #endif
+        const ctx = uni.createCanvasContext(this.circleId, this)
         return Promise.resolve(ctx)
       }
       if (type !== '2d') {
@@ -134,7 +133,7 @@ export default {
         uni
           .createSelectorQuery()
           .in(this)
-          .select('#van-circle')
+          .select(`#${this.circleId}`)
           .fields({ node: true, size: true })
           .exec(res => {
             const canvas = res[0].node

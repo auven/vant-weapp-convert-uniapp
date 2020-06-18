@@ -9,7 +9,7 @@
         @tap="onClick(item)"
       >
         {{ item.title }}
-        <van-icon name="arrow" custom-class="demo-home-nav__icon" />
+        <van-icon name="arrow" :custom-style="demoHomeNavIcon" />
       </view>
     </view>
   </view>
@@ -23,6 +23,21 @@ export default {
   },
   props: {
     group: Object
+  },
+
+  data() {
+    return {
+      demoHomeNavIcon: `
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        width: 16px;
+        height: 16px;
+        margin-top: -8px;
+        color: rgb(182, 195, 210);
+        font-weight: 900;
+      `
+    }
   },
 
   methods: {

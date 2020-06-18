@@ -8,6 +8,7 @@
       <van-loading
         v-if="loading"
         :color="loadingColor"
+        class="van-switch__loading"
         custom-class="van-switch__loading"
       />
     </view>
@@ -46,6 +47,7 @@ export default {
       type: null,
       default: false
     },
+    customClass: String
     // asyncChange: Boolean
   },
 
@@ -57,8 +59,8 @@ export default {
 
   computed: {
     wrapClass() {
-      const { value, activeValue, disabled } = this
-      return `custom-class ${ utils.bem('switch', { on: value === activeValue, disabled }) }`
+      const { customClass, value, activeValue, disabled } = this
+      return `custom-class ${ customClass } ${ utils.bem('switch', { on: value === activeValue, disabled }) }`
     },
     wrapStyle() {
       const { size, value, activeColor, inactiveColor } = this

@@ -13,7 +13,10 @@ export default {
   ...VantComponent(),
   props: {
     dot: Boolean,
-    info: null,
+    info: {
+      type: [String, Number],
+      default: null
+    },
     customStyle: String
   },
   computed: {

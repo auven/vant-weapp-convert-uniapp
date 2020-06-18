@@ -18,12 +18,13 @@ export default {
     border: {
       type: Boolean,
       default: true
-    }
+    },
+    customClass: String
   },
   computed: {
     groupClass() {
-      const { border } = this
-      return `custom-class van-cell-group ${ border ? 'van-hairline--top-bottom' : '' }`
+      const { customClass, border } = this
+      return `custom-class ${customClass} van-cell-group ${ border ? 'van-hairline--top-bottom' : '' }`
     }
   }
 }

@@ -11,7 +11,7 @@
       v-if="icon"
       :name="icon"
       class="van-cell__left-icon-wrap"
-      custom-class="van-cell__left-icon"
+      custom-class="van-cell__left-icon-wrap van-cell__left-icon"
     />
     <slot v-else name="icon" />
 
@@ -30,7 +30,7 @@
       </view>
     </view>
 
-    <view class="van-cell__value value-class">
+    <view class="van-cell__value value-class" :class="valueClass">
       <block v-if="value || value === 0">{{ value }}</block>
       <slot v-else />
     </view>
@@ -39,7 +39,7 @@
       v-if="isLink"
       :name="arrowDirection ? 'arrow' + '-' + arrowDirection : 'arrow'"
       class="van-cell__right-icon-wrap right-icon-class"
-      custom-class="van-cell__right-icon"
+      custom-class="van-cell__right-icon-wrap right-icon-class van-cell__right-icon"
     />
     <slot v-else name="right-icon" />
 
@@ -85,11 +85,13 @@ export default {
     border: {
       type: Boolean,
       default: true
-    }
+    },
+    customClass: String,
+    valueClass: String
   },
   computed: {
     cellClass() {
-      const { size, center, border, isLink, clickable, required } = this
+      const { customClass, size, center, border, isLink, clickable, required } = this
       const cellClass = utils.bem('cell', [
         size,
         {
@@ -99,7 +101,7 @@ export default {
           clickable: isLink || clickable
         }
       ])
-      return cellClass
+      return `${customClass} ${cellClass}`
     }
   },
   methods: {

@@ -44,7 +44,7 @@ export default {
 </script>
 ```
 
-## 转化进度
+## 转化进度 (18/49)
 
 - 基础组件
   - [x] Button 按钮 `van-button`
@@ -102,11 +102,19 @@ export default {
   - [ ] SubmitBar 提交订单栏 `van-submit-bar`
   - [ ] GoodsAction 商品导航 `van-goods-action` `van-goods-action-icon` `van-goods-action-button`
 
-### 平台支持度
+### 平台支持
 
-目前 **微信小程序**、 **QQ小程序**、 **头条小程序** 都能够比较好的支持。 **支付宝小程序** 和 **百度小程序** 多多少少有点问题，后续做特殊处理。
+- 微信小程序
+- QQ小程序
+- 头条小程序
+- 支付宝小程序
+- 百度小程序
+- H5（未测试）
+- APP（未测试）
 
 ## 一些问题
 
 - 组件里 canvas 的 style 动态绑定不能太复杂，不然会导致 canvas 2d 的时候 width 和 height 设置失败，如：`:style="{ width: width, height: height }"` 就可以，而 `:style="mainStyle"` 或者是 `:style="{ width: fn(size), height: fn(size) }"` 都不行。
 - 支付宝小程序中 vue 不支持 mixins 带 props 的对象
+- `::before` 和 `::after` 仅微信小程序和App生效
+- 支付宝小程序不支持in(component)，使用无效果

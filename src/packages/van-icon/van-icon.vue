@@ -30,17 +30,16 @@ export default {
   },
   props: {
     dot: Boolean,
-    info: null,
-    size: null,
+    info: [String, Number],
+    size: [String, Number],
     color: String,
     customStyle: String,
     classPrefix: {
       type: String,
       default: 'van-icon'
     },
-    name: {
-      type: String
-    }
+    name: String,
+    customClass: String
   },
 
   computed: {
@@ -48,8 +47,8 @@ export default {
       return this.name.indexOf('/') !== -1
     },
     wrapClass() {
-      const { classPrefix, isImageName, name } = this
-      return `custom-class ${ classPrefix } ${ isImageName ? 'van-icon--image' : classPrefix + '-' + name }`
+      const { customClass, classPrefix, isImageName, name } = this
+      return `custom-class ${customClass} ${ classPrefix } ${ isImageName ? 'van-icon--image' : classPrefix + '-' + name }`
     },
     wrapStyle() {
       const { color, size, customStyle } = this

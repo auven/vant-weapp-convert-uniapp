@@ -37,25 +37,26 @@ export default {
     activeColor: String,
     inactiveColor: String,
     max: {
-      type: Number,
+      type: [String, Number],
       default: 100
     },
     min: {
-      type: Number,
+      type: [String, Number],
       default: 0
     },
     step: {
-      type: Number,
+      type: [String, Number],
       default: 1
     },
     value: {
-      type: Number,
+      type: [String, Number],
       default: 0
     },
     barHeight: {
-      type: null,
+      type: [String, Number],
       default: '2px'
-    }
+    },
+    customClass: String
   },
   data() {
     return {
@@ -64,8 +65,8 @@ export default {
   },
   computed: {
     wrapClass() {
-      const { disabled } = this
-      return `custom-class ${ utils.bem('slider', { disabled }) }`
+      const { customClass, disabled } = this
+      return `custom-class ${customClass} ${ utils.bem('slider', { disabled }) }`
     },
     wrapStyle() {
       const { inactiveColor } = this
@@ -132,8 +133,9 @@ export default {
       const { min } = this
 
       this.getRect('.van-slider').then(rect => {
+        // 支付宝下是 clientX
         const value =
-          ((event.detail.x - rect.left) / rect.width) * this.getRange() + min
+          ((event.detail.x || event.detail.clientX - rect.left) / rect.width) * this.getRange() + Number(min)
         this.updateValue(value, true)
       })
     },

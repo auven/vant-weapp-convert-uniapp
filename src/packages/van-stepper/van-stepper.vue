@@ -1,5 +1,5 @@
 <template>
-  <view class="van-stepper custom-class">
+  <view class="van-stepper custom-class" :class="customClass">
     <view
       v-if="showMinus"
       data-type="minus"
@@ -98,7 +98,8 @@ export default {
     longPress: {
       type: Boolean,
       default: true
-    }
+    },
+    customClass: String
   },
 
   data() {

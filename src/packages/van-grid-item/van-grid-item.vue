@@ -39,7 +39,8 @@ export default {
     info: null,
     badge: null,
     text: String,
-    useSlot: Boolean
+    useSlot: Boolean,
+    customClass: String
   },
 
   data() {
@@ -58,8 +59,8 @@ export default {
 
   computed: {
     wrapClass() {
-      const { square } = this
-      return `custom-class ${utils.bem('grid-item', { square })}`
+      const { square, customClass } = this
+      return `custom-class ${customClass} ${utils.bem('grid-item', { square })}`
     },
     contentClass() {
       const { center, square, clickable, border, gutter, direction } = this

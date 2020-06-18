@@ -15,7 +15,8 @@ export default {
   ...VantComponent({}),
   props: {
     span: [Number, String],
-    offset: Number
+    offset: [Number, String],
+    customClass: String
   },
 
   data() {
@@ -26,8 +27,8 @@ export default {
 
   computed: {
     wrapClass() {
-      const { span, offset } = this
-      return `custom-class ${ utils.bem('col', [span]) } ${ offset ? 'van-col--offset-' + offset : '' }`
+      const { customClass, span, offset } = this
+      return `custom-class ${customClass} ${ utils.bem('col', [span]) } ${ offset ? 'van-col--offset-' + offset : '' }`
     }
   },
 

@@ -108,6 +108,12 @@
       "style": {
         "navigationBarTitleText": "Steps 步骤条"
       }
+    },
+    {
+      "path": "pages/tag/index",
+      "style": {
+        "navigationBarTitleText": "Tag 标记"
+      }
     }
   ],
   "globalStyle": {

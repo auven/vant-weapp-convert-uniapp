@@ -79,7 +79,8 @@ export default {
     showLoading: {
       type: Boolean,
       default: true
-    }
+    },
+    customClass: String
   },
 
   data() {
@@ -93,8 +94,8 @@ export default {
 
   computed: {
     wrapClass() {
-      const { round } = this
-      return `custom-class ${ utils.bem('image', { round })}`
+      const { customClass, round } = this
+      return `custom-class ${customClass} ${ utils.bem('image', { round })}`
     }
   },
 

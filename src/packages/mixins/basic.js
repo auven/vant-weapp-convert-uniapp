@@ -3,19 +3,23 @@ export const basic = {
   methods: {
     getRect(selector, all) {
       return new Promise(resolve => {
-        uni
-          .createSelectorQuery()
-          .in(this)[all ? 'selectAll' : 'select'](selector)
-          .boundingClientRect(rect => {
-            if (all && Array.isArray(rect) && rect.length) {
-              resolve(rect)
-            }
-
-            if (!all && rect) {
-              resolve(rect)
-            }
-          })
-          .exec()
+        let selectorQuery
+        // #ifndef MP-ALIPAY
+        selectorQuery = uni.createSelectorQuery().in(this)
+        // #endif
+        // #ifdef MP-ALIPAY
+        selectorQuery = uni.createSelectorQuery()
+        // #endif
+        selectorQuery[all ? 'selectAll' : 'select'](selector)
+        .boundingClientRect(rect => {
+          if (all && Array.isArray(rect) && rect.length) {
+            resolve(rect)
+          }
+          if (!all && rect) {
+            resolve(rect)
+          }
+        })
+        .exec()
       })
     }
   }

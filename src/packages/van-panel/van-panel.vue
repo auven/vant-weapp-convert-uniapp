@@ -1,11 +1,11 @@
 <template>
-  <view class="van-panel van-hairline--top-bottom custom-class">
+  <view class="van-panel van-hairline--top-bottom custom-class" :class="customClass">
     <van-cell
       v-if="title || desc || status"
       :title="title"
       :label="desc"
       :value="status"
-      custom-class="header-class"
+      :custom-class="headerClass"
       value-class="van-panel__header-value"
     />
     <slot v-else name="header" />
@@ -17,6 +17,7 @@
     <view
       v-if="useFooterSlot"
       class="van-panel__footer van-hairline--top footer-class"
+      :class="footerClass"
     >
       <slot name="footer" />
     </view>
@@ -38,6 +39,9 @@ export default {
     title: String,
     status: String,
     useFooterSlot: Boolean,
+    customClass: String,
+    headerClass: String,
+    footerClass: String
   }
 }
 </script>

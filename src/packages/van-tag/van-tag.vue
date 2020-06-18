@@ -4,6 +4,7 @@
     <van-icon
       v-if="closeable"
       name="cross"
+      class="van-tag__close"
       custom-class="van-tag__close"
       @click="onClose"
     />
@@ -30,13 +31,14 @@ export default {
       type: String,
       default: 'default'
     },
-    closeable: Boolean
+    closeable: Boolean,
+    customClass: String
   },
 
   computed: {
     wrapClass() {
-      const { type, size, mark, plain, round } = this
-      return `custom-class ${utils.bem('tag', [
+      const { customClass, type, size, mark, plain, round } = this
+      return `custom-class ${customClass} ${utils.bem('tag', [
         type,
         size,
         { mark, plain, round }

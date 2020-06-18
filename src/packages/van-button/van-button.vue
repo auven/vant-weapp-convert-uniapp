@@ -41,6 +41,7 @@
         size="1.2em"
         :name="icon"
         :class-prefix="classPrefix"
+        custom-class="van-button__icon"
         class="van-button__icon"
         custom-style="line-height: inherit;"
       />

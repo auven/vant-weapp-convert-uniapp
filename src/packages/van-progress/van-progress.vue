@@ -1,6 +1,7 @@
 <template>
   <view
     class="van-progress custom-class"
+    :class="customClass"
     :style="wrapStyle"
   >
     <view
@@ -26,7 +27,7 @@ export default {
   ...VantComponent(),
   props: {
     inactive: Boolean,
-    percentage: Number,
+    percentage: [String, Number],
     pivotText: String,
     pivotColor: String,
     trackColor: String,
@@ -46,6 +47,7 @@ export default {
       type: null,
       default: 4,
     },
+    customClass: String
   },
   computed: {
     text() {

@@ -99,12 +99,14 @@ import DemoBlock from '@/components/demo-block'
 import VanCellGroup from '@/packages/van-cell-group/van-cell-group'
 import VanCell from '@/packages/van-cell/van-cell'
 import VanTag from '@/packages/van-tag/van-tag'
+import VanIcon from '@/packages/van-icon/van-icon'
 export default {
   components: {
     DemoBlock,
     VanCellGroup,
     VanCell,
-    VanTag
+    VanTag,
+    VanIcon
   }
 }
 </script>

@@ -64,17 +64,38 @@ export default {
     },
 
     start() {
-      const countDown = this.$refs.countDown
+      let countDown
+      // #ifndef MP-ALIPAY
+      countDown = this.$refs.countDown
+      // #endif
+      // #ifdef MP-ALIPAY
+      // 支付宝小程序中
+      countDown = this.$children[0].$refs.countDown
+      // #endif
       countDown.start()
     },
 
     pause() {
-      const countDown = this.$refs.countDown
+      let countDown
+      // #ifndef MP-ALIPAY
+      countDown = this.$refs.countDown
+      // #endif
+      // #ifdef MP-ALIPAY
+      // 支付宝小程序中
+      countDown = this.$children[0].$refs.countDown
+      // #endif
       countDown.pause()
     },
 
     reset() {
-      const countDown = this.$refs.countDown
+      let countDown
+      // #ifndef MP-ALIPAY
+      countDown = this.$refs.countDown
+      // #endif
+      // #ifdef MP-ALIPAY
+      // 支付宝小程序中
+      countDown = this.$children[0].$refs.countDown
+      // #endif
       countDown.reset()
     },
 

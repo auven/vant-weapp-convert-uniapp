@@ -19,6 +19,7 @@
               :color="iconColor"
               :name="inactiveIcon"
               custom-class="van-step__icon"
+              class="van-step__icon"
             />
             <view
               v-else
@@ -32,6 +33,7 @@
             :name="activeIcon"
             :color="activeColor"
             custom-class="van-step__icon"
+            class="van-step__icon"
           />
         </view>
         <view
@@ -76,7 +78,8 @@ export default {
       type: String,
       default: 'checked'
     },
-    inactiveIcon: String
+    inactiveIcon: String,
+    customClass: String
   },
   computed: {
     status() {
@@ -89,7 +92,7 @@ export default {
       return 'inactive'
     },
     wrapClass() {
-      return `custom-class ${ utils.bem('steps', [this.direction]) }`
+      return `custom-class ${this.customClass} ${ utils.bem('steps', [this.direction]) }`
     },
     stepClass() {
       const { direction, status } = this

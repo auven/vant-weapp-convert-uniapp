@@ -24,7 +24,7 @@ export default {
       type: Boolean
     },
     columnNum: {
-      type: Number,
+      type: [String, Number],
       default: 4
     },
     center: {

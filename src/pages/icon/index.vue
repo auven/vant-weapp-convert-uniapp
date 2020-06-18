@@ -135,7 +135,6 @@ page {
 }
 
 .icon {
-  display: block;
   margin: 16px 0;
   color: #323233;
 }

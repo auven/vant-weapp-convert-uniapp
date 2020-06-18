@@ -27,7 +27,8 @@ export default {
       default: 'circular'
     },
     size: String,
-    textSize: String
+    textSize: String,
+    customClass: String
   },
 
   data() {
@@ -37,10 +38,8 @@ export default {
   },
   computed: {
     wrapClass() {
-      const { vertical } = this
-      return `custom-class van-loading ${
-        vertical ? 'van-loading--vertical' : ''
-      }`
+      const { customClass, vertical } = this
+      return `custom-class ${ customClass } van-loading ${ vertical ? 'van-loading--vertical' : '' }`
     },
     textStyle() {
       const { textSize } = this

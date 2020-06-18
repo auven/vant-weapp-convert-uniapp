@@ -1,5 +1,5 @@
 <template>
-  <view class="van-rate custom-class" @touchmove="onTouchMove">
+  <view class="van-rate custom-class" :class="customClass" @touchmove="onTouchMove">
     <view
       class="van-rate__item"
       v-for="(item, index) in innerCountArray"
@@ -8,8 +8,9 @@
     >
       <van-icon
         :name="index + 1 <= innerValue ? icon : voidIcon"
-        class="van-rate__icon"
-        :style="{ 'font-size': iconSize }"
+        class="van-rate__icon icon-class"
+        :style="iconStyle"
+        :custom-style="iconStyle"
         custom-class="icon-class"
         :data-score="index"
         :color="disabled ? disabledColor : index + 1 <= innerValue ? color : voidColor"
@@ -20,8 +21,9 @@
         v-if="allowHalf"
         :name="index + 0.5 <= innerValue ? icon : voidIcon"
         :class="iconHalfClass"
-        :style="{ 'font-size': iconSize }"
-        custom-class="icon-class"
+        :style="iconStyle"
+        :custom-style="iconStyle"
+        :custom-class="iconHalfClass"
         :data-score="index - 0.5"
         :color="disabled ? disabledColor : index + 0.5 <= innerValue ? color : voidColor"
         @click="onSelect(index - 0.5)"
@@ -42,13 +44,17 @@ export default {
     VanIcon
   },
   props: {
+    customClass: String,
     value: {
       type: Number
     },
     readonly: Boolean,
     disabled: Boolean,
     allowHalf: Boolean,
-    size: null,
+    size: {
+      type: [String, Number],
+      default: null
+    },
     icon: {
       type: String,
       default: 'star'
@@ -92,12 +98,12 @@ export default {
       const { gutter } = this
       return utils.addUnit(gutter)
     },
-    iconSize() {
+    iconStyle() {
       const { size } = this
-      return utils.addUnit(size)
+      return `font-size: ${utils.addUnit(size)}`
     },
     iconHalfClass() {
-      return utils.bem('rate__icon', ['half'])
+      return `icon-class ${utils.bem('rate__icon', ['half'])}`
     }
   },
 
@@ -118,16 +124,17 @@ export default {
     },
 
     onTouchMove(event) {
-      if (!this.touchable) return
+      if (!this.touchable || this.allowHalf) return
 
       const { clientX } = event.touches[0]
 
       this.getRect('.van-rate__icon', true).then(list => {
-        const target = list
+        const _list = list.map((item, index) => ({ ...item, score: index }))
+        const target = _list
           .sort(item => item.right - item.left)
           .find(item => clientX >= item.left && clientX <= item.right)
         if (target != null) {
-          this.onSelect(target.dataset.score)
+          this.onSelect(target.score)
         }
       })
     }

@@ -1,5 +1,5 @@
 <template>
-  <view class="custom-class van-row" :style="viewStyle">
+  <view class="custom-class van-row" :class="customClass" :style="viewStyle">
     <slot />
   </view>
 </template>
@@ -9,9 +9,8 @@ import { VantComponent } from '../common/component'
 export default {
   ...VantComponent(),
   props: {
-    gutter: {
-      type: Number
-    }
+    gutter: [String, Number],
+    customClass: String
   },
 
   data() {
