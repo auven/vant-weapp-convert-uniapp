@@ -38,7 +38,14 @@ export default {
         col.setGutter(this.gutter)
       }) */
       this.$nextTick(() => {
-        this.$children.forEach(child => {
+        let $children
+        // #ifdef H5
+        $children = this.$children[0].$children
+        // #endif
+        // #ifndef H5
+        $children = this.$children
+        // #endif
+        $children.forEach(child => {
           if (child.$options.name === 'VanCol') {
             child.setGutter(this.gutter)
           } else {

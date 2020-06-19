@@ -25,6 +25,7 @@ import { addUnit } from '../common/utils'
 import VanIcon from '../van-icon/van-icon'
 const utils = require('../wxs/utils')
 export default {
+  name: 'VanGridItem',
   ...VantComponent({
     classes: ['content-class', 'icon-class', 'text-class'],
     mixins: [{ ...link, props: {} }]
@@ -40,7 +41,8 @@ export default {
     badge: null,
     text: String,
     useSlot: Boolean,
-    customClass: String
+    customClass: String,
+    itemIndex: Number
   },
 
   data() {
@@ -81,12 +83,18 @@ export default {
 
   methods: {
     updateStyle() {
-      const parent = this.$parent
+      let parent
+      // #ifdef H5
+      parent = this.$parent.$parent
+      // #endif
+      // #ifndef H5
+      parent = this.$parent
+      // #endif
       if (parent.$options.name !== 'VanGrid') {
         return
       }
 
-      const { columnNum, border, square, gutter, clickable, center, direction, iconSize, $children } = parent
+      const { columnNum, border, square, gutter, clickable, center, direction, iconSize } = parent
       const width = `${100 / columnNum}%`
 
       const styleWrapper = []
@@ -100,9 +108,18 @@ export default {
         const gutterValue = addUnit(gutter)
         styleWrapper.push(`padding-right: ${gutterValue}`)
 
-        const index = $children.indexOf(this)
+        /* let $children
+        // #ifdef H5
+        $children = parent.$children[0].$children
+        // #endif
+        // #ifndef H5
+        $children = parent.$children
+        // #endif
+        const index = $children.map(item => item._uid).indexOf(this._uid) */
+        const index = this.itemIndex
         if (index >= columnNum && !square) {
           styleWrapper.push(`margin-top: ${gutterValue}`)
+          console.log('进入到这里')
         }
       }
 

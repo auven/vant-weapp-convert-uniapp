@@ -109,8 +109,8 @@ export default {
 - 头条小程序
 - 支付宝小程序
 - 百度小程序
-- H5（未测试）
-- APP（未测试）
+- H5
+- APP（个别组件有问题后续处理）
 
 ## 一些问题
 
@@ -118,3 +118,4 @@ export default {
 - 支付宝小程序中 vue 不支持 mixins 带 props 的对象
 - `::before` 和 `::after` 仅微信小程序和App生效
 - 支付宝小程序不支持in(component)，使用无效果
+- `van-grid` 如果设置了 `gutter` ，则 `van-grid-item` 需要设置 `item-index`

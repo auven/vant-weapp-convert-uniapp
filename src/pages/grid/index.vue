@@ -28,7 +28,7 @@
 
     <demo-block title="格子间距">
       <van-grid :gutter="10">
-        <van-grid-item icon="photo-o" text="文字" v-for="item in array8" :key="item" />
+        <van-grid-item icon="photo-o" text="文字" v-for="(item, index) in array8" :key="item" :item-index="index" />
       </van-grid>
     </demo-block>
 

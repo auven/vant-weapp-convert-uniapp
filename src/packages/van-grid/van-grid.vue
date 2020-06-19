@@ -88,10 +88,27 @@ export default {
     }
   },
 
+  mounted() {
+    this.updateChildren()
+  },
+
   methods: {
     updateChildren() {
-      this.children.forEach(child => {
-        child.updateStyle()
+      this.$nextTick(() => {
+        let $children
+        // #ifdef H5
+        $children = this.$children[0].$children
+        // #endif
+        // #ifndef H5
+        $children = this.$children
+        // #endif
+        $children.forEach(child => {
+          if (child.$options.name === 'VanGridItem') {
+            child.updateStyle()
+          } else {
+            console.log('不是 VanGridItem 组件')
+          }
+        })
       })
     }
   }
