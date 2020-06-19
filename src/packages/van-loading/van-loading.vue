@@ -1,5 +1,5 @@
 <template>
-  <view :class="wrapClass">
+  <view :class="wrapClass" :style="customStyle">
     <view v-if="type === 'spinner'" :class="loadingClass" :style="loadingStyle">
       <view
         v-for="(item, index) in array12"
@@ -28,7 +28,8 @@ export default {
     },
     size: String,
     textSize: String,
-    customClass: String
+    customClass: String,
+    customStyle: String
   },
 
   data() {

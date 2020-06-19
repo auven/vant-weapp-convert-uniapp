@@ -8,8 +8,8 @@
       <van-loading
         v-if="loading"
         :color="loadingColor"
-        class="van-switch__loading"
         custom-class="van-switch__loading"
+        :custom-style="loadingCustomStyle"
       />
     </view>
   </view>
@@ -53,7 +53,14 @@ export default {
 
   data() {
     return {
-      loadingColor: ''
+      loadingColor: '',
+      loadingCustomStyle: `
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        width: 50%;
+        height: 50%;
+      `
     }
   },
 

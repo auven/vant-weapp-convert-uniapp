@@ -27,6 +27,7 @@
       <van-switch
         v-model="checked"
         size="24px"
+        loading
         @change="onChange"
       />
     </demo-block>
