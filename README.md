@@ -4,6 +4,8 @@
 
 ## 使用
 
+<img src="https://img.shields.io/npm/v/vant-weapp-convert-uniapp.svg?style=for-the-badge" alt="npm version" />
+
 ### 安装
 
 ```bash
@@ -45,7 +47,7 @@ export default {
 </script>
 ```
 
-## 转化进度 (19/49)
+## 转化进度 (22/49)
 
 - 基础组件
   - [x] Button 按钮 `van-button`
@@ -53,7 +55,7 @@ export default {
   - [x] Icon 图标 `van-icon`
   - [x] Image 图片 `van-image`
   - [x] Layout 布局 `van-row` `van-col`
-  - [ ] Popup 弹出层 `van-popup`
+  - [x] Popup 弹出层 `van-popup`
   - [x] Transition 动画 `van-transition`
 - 表单组件
   - [ ] Calendar 日历 `van-calendar`
@@ -69,7 +71,7 @@ export default {
   - [x] Switch 开关 `van-switch`
   - [ ] Uploader 文件上传 `van-uploader`
 - 反馈组件
-  - [ ] ActionSheet 上拉菜单 `van-action-sheet`
+  - [x] ActionSheet 上拉菜单 `van-action-sheet`
   - [ ] Dialog 弹出框 `van-dialog`
   - [ ] DropdownMenu 下拉菜单 `van-dropdown-menu` `van-dropdown-item`
   - [x] Loading 加载 `van-loading`
