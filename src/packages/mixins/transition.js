@@ -1,40 +1,47 @@
 import { isObj } from '../common/utils'
 
-const getClassNames = name => ({
-  enter: `van-${name}-enter van-${name}-enter-active enter-class enter-active-class`,
-  'enter-to': `van-${name}-enter-to van-${name}-enter-active enter-to-class enter-active-class`,
-  leave: `van-${name}-leave van-${name}-leave-active leave-class leave-active-class`,
-  'leave-to': `van-${name}-leave-to van-${name}-leave-active leave-to-class leave-active-class`
-})
-
 const nextTick = () => new Promise(resolve => setTimeout(resolve, 1000 / 30))
 
 export const transition = function(showDefaultValue) {
   return {
-    properties: {
+    props: {
       customStyle: String,
-      // @ts-ignore
       show: {
         type: Boolean,
-        value: showDefaultValue,
-        observer: 'observeShow'
+        default: showDefaultValue
       },
-      // @ts-ignore
       duration: {
-        type: null,
-        value: 300,
-        observer: 'observeDuration'
+        type: [String, Number, Object],
+        default: 300
       },
       name: {
         type: String,
-        value: 'fade'
+        default: 'fade'
+      },
+      enterClass: String,
+      enterActiveClass: String,
+      enterToClass: String,
+      leaveActiveClass: String,
+      leaveClass: String,
+      leaveToClass: String
+    },
+
+    data() {
+      return {
+        type: '',
+        inited: false,
+        display: false,
+        classes: ''
       }
     },
 
-    data: {
-      type: '',
-      inited: false,
-      display: false
+    watch: {
+      show(value, old) {
+        this.observeShow(value, old)
+      },
+      duration() {
+        // this.observeDuration(value, old)
+      }
     },
 
     methods: {
@@ -45,9 +52,18 @@ export const transition = function(showDefaultValue) {
         value ? this.enter() : this.leave()
       },
 
+      getClassNames(name) {
+        return ({
+          enter: `van-${name}-enter van-${name}-enter-active ${this.enterClass} ${this.enterActiveClass}`,
+          'enter-to': `van-${name}-enter-to van-${name}-enter-active ${this.enterToClass} ${this.enterActiveClass}`,
+          leave: `van-${name}-leave van-${name}-leave-active ${this.leaveClass} ${this.leaveActiveClass}`,
+          'leave-to': `van-${name}-leave-to van-${name}-leave-active ${this.leaveToClass} ${this.leaveActiveClass}`
+        })
+      },
+
       enter() {
-        const { duration, name } = this.data
-        const classNames = getClassNames(name)
+        const { duration, name } = this
+        const classNames = this.getClassNames(name)
         const currentDuration = isObj(duration) ? duration.enter : duration
 
         this.status = 'enter'
@@ -59,32 +75,28 @@ export const transition = function(showDefaultValue) {
             this.checkStatus('enter')
             this.$emit('enter')
 
-            this.setData({
-              inited: true,
-              display: true,
-              classes: classNames.enter,
-              currentDuration
-            })
+            this.inited = true
+            this.display = true
+            this.classes = classNames.enter
+            this.currentDuration = currentDuration
           })
           .then(nextTick)
           .then(() => {
             this.checkStatus('enter')
             this.transitionEnded = false
 
-            this.setData({
-              classes: classNames['enter-to']
-            })
+            this.classes = classNames['enter-to']
           })
           .catch(() => {})
       },
 
       leave() {
-        if (!this.data.display) {
+        if (!this.display) {
           return
         }
 
-        const { duration, name } = this.data
-        const classNames = getClassNames(name)
+        const { duration, name } = this
+        const classNames = this.getClassNames(name)
         const currentDuration = isObj(duration) ? duration.leave : duration
 
         this.status = 'leave'
@@ -96,10 +108,8 @@ export const transition = function(showDefaultValue) {
             this.checkStatus('leave')
             this.$emit('leave')
 
-            this.setData({
-              classes: classNames.leave,
-              currentDuration
-            })
+            this.classes = classNames.leave
+            this.currentDuration = currentDuration
           })
           .then(nextTick)
           .then(() => {
@@ -107,9 +117,7 @@ export const transition = function(showDefaultValue) {
             this.transitionEnded = false
             setTimeout(() => this.onTransitionEnd(), currentDuration)
 
-            this.setData({
-              classes: classNames['leave-to']
-            })
+            this.classes = classNames['leave-to']
           })
           .catch(() => {})
       },
@@ -128,9 +136,9 @@ export const transition = function(showDefaultValue) {
         this.transitionEnded = true
         this.$emit(`after-${this.status}`)
 
-        const { show, display } = this.data
+        const { show, display } = this
         if (!show && display) {
-          this.setData({ display: false })
+          this.display = false
         }
       }
     }

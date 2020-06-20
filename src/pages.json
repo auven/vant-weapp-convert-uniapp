@@ -114,6 +114,12 @@
       "style": {
         "navigationBarTitleText": "Tag 标记"
       }
+    },
+    {
+      "path": "pages/transition/index",
+      "style": {
+        "navigationBarTitleText": "Transition 动画"
+      }
     }
   ],
   "globalStyle": {

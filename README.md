@@ -44,7 +44,7 @@ export default {
 </script>
 ```
 
-## 转化进度 (18/49)
+## 转化进度 (19/49)
 
 - 基础组件
   - [x] Button 按钮 `van-button`
@@ -53,7 +53,7 @@ export default {
   - [x] Image 图片 `van-image`
   - [x] Layout 布局 `van-row` `van-col`
   - [ ] Popup 弹出层 `van-popup`
-  - [ ] Transition 动画 `van-transition`
+  - [x] Transition 动画 `van-transition`
 - 表单组件
   - [ ] Calendar 日历 `van-calendar`
   - [ ] Checkbox 复选框 `van-checkbox` `van-checkbox-group`
