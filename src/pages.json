@@ -126,6 +126,12 @@
       "style": {
         "navigationBarTitleText": "Overlay 遮罩层"
       }
+    },
+    {
+      "path": "pages/popup/index",
+      "style": {
+        "navigationBarTitleText": "Popup 弹出层"
+      }
     }
   ],
   "globalStyle": {

@@ -120,6 +120,6 @@ export default {
 - `::before` 和 `::after` 仅微信小程序和App生效
 - 支付宝小程序不支持in(component)，使用无效果
 - `van-grid` 如果设置了 `gutter` ，则 `van-grid-item` 需要设置 `item-index`
-- 组件样式放全局引入，不然可能会出现嵌套组件里的样式不生效
+- `van-overlay` 组件样式得在全局引入，不然会出现嵌套组件里的样式不生效
 - 支付宝小程序不支持在组件上加 `click` `touchmove` 等事件
 - 支付宝小程序不支持 `.stop.prevent` 事件修饰符
