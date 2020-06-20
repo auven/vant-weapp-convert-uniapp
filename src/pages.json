@@ -120,6 +120,12 @@
       "style": {
         "navigationBarTitleText": "Transition 动画"
       }
+    },
+    {
+      "path": "pages/overlay/index",
+      "style": {
+        "navigationBarTitleText": "Overlay 遮罩层"
+      }
     }
   ],
   "globalStyle": {

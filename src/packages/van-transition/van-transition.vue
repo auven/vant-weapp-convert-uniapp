@@ -1,13 +1,27 @@
 <template>
-  <view
-    v-if="inited"
-    class="van-transition custom-class"
-    :class="mainClass"
-    :style="mainStyle"
-    @transitionend="onTransitionEnd"
-  >
-    <slot />
-  </view>
+  <block v-if="inited">
+    <view
+      v-if="moveHandle"
+      class="van-transition custom-class"
+      :class="mainClass"
+      :style="mainStyle"
+      @transitionend="onTransitionEnd"
+      @click="onClick"
+      @touchmove.stop.prevent="noop"
+    >
+      <slot />
+    </view>
+    <view
+      v-else
+      class="van-transition custom-class"
+      :class="mainClass"
+      :style="mainStyle"
+      @transitionend="onTransitionEnd"
+      @click="onClick"
+    >
+      <slot />
+    </view>
+  </block>
 </template>
 
 <script>
@@ -28,7 +42,12 @@ export default {
   }),
   props: {
     ...transitionMixin.props,
-    customClass: String
+    customClass: String,
+    moveHandle: {
+      type: Boolean,
+      default: false,
+      description: '是否阻止事件穿透'
+    }
   },
   computed: {
     mainClass() {
@@ -37,6 +56,14 @@ export default {
     mainStyle() {
       return `-webkit-transition-duration:${ this.currentDuration }ms; transition-duration:${ this.currentDuration }ms; ${ this.display ? '' : 'display: none;' } ${ this.customStyle }`
     }
+  },
+  methods: {
+    onClick() {
+      this.$emit('el-click')
+    },
+
+    // for prevent touchmove
+    noop() {}
   }
 }
 </script>

@@ -37,3 +37,7 @@ page {
   margin-bottom: 15px;
 }
 </style>
+
+<style lang="less">
+@import './styles/vant-weapp.less';
+</style>

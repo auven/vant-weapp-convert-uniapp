@@ -8,6 +8,7 @@
 
 ```bash
 npm i vant-weapp-convert-uniapp -S
+npm i less less-loader -D
 ```
 
 ### 配置 babel.config.js
@@ -73,7 +74,7 @@ export default {
   - [ ] DropdownMenu 下拉菜单 `van-dropdown-menu` `van-dropdown-item`
   - [x] Loading 加载 `van-loading`
   - [ ] Notify 消息提示 `van-notify`
-  - [ ] Overlay 遮罩层 `van-overlay`
+  - [x] Overlay 遮罩层 `van-overlay`
   - [ ] SwipeCell 滑动单元格 `van-swipe-cell`
   - [ ] Toast 轻提示 `van-toast`
 - 展示组件
@@ -119,3 +120,6 @@ export default {
 - `::before` 和 `::after` 仅微信小程序和App生效
 - 支付宝小程序不支持in(component)，使用无效果
 - `van-grid` 如果设置了 `gutter` ，则 `van-grid-item` 需要设置 `item-index`
+- 组件样式放全局引入，不然可能会出现嵌套组件里的样式不生效
+- 支付宝小程序不支持在组件上加 `click` `touchmove` 等事件
+- 支付宝小程序不支持 `.stop.prevent` 事件修饰符
