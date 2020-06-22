@@ -29,6 +29,7 @@ export default {
   components: {
     VanIcon
   },
+  inject: ['vanGrid'],
   ...VantComponent({
     classes: ['content-class', 'icon-class', 'text-class'],
     mixins: [link],
@@ -68,28 +69,67 @@ export default {
           clickable,
           surround: border && gutter
         }])} ${border ? 'van-hairline--surround' : ''}`
+      },
+      gridGutter() {
+        return this.vanGrid ? this.vanGrid.gutter : null
+      },
+      gridSquare() {
+        return this.vanGrid ? this.vanGrid.square : null
+      },
+      gridClickable() {
+        return this.vanGrid ? this.vanGrid.clickable : null
+      },
+      gridColumnNum() {
+        return this.vanGrid ? this.vanGrid.columnNum : null
+      },
+      gridCenter() {
+        return this.vanGrid ? this.vanGrid.center : null
+      },
+      gridBorder() {
+        return this.vanGrid ? this.vanGrid.border : null
+      },
+      gridDirection() {
+        return this.vanGrid ? this.vanGrid.direction : null
+      },
+      gridIconSize() {
+        return this.vanGrid ? this.vanGrid.iconSize : null
       }
     },
 
-    mounted() {
-      this.$nextTick(() => {
+    watch: {
+      gridSquare() {
         this.updateStyle()
-      })
+      },
+      gridGutter() {
+        this.updateStyle()
+      },
+      gridClickable() {
+        this.updateStyle()
+      },
+      gridColumnNum() {
+        this.updateStyle()
+      },
+      gridCenter() {
+        this.updateStyle()
+      },
+      gridBorder() {
+        this.updateStyle()
+      },
+      gridDirection() {
+        this.updateStyle()
+      },
+      gridIconSize() {
+        this.updateStyle()
+      }
+    },
+
+    created() {
+      this.updateStyle()
     },
 
     methods: {
       updateStyle() {
-        let parent
-        // #ifdef H5
-        parent = this.$parent.$parent
-        // #endif
-        // #ifndef H5
-        parent = this.$parent
-        // #endif
-        if (parent.$options.name !== 'VanGrid') {
-          return
-        }
-
+        const parent = this.vanGrid
         const { columnNum, border, square, gutter, clickable, center, direction, iconSize } = parent
         const width = `${100 / columnNum}%`
 
@@ -104,18 +144,9 @@ export default {
           const gutterValue = addUnit(gutter)
           styleWrapper.push(`padding-right: ${gutterValue}`)
 
-          /* let $children
-          // #ifdef H5
-          $children = parent.$children[0].$children
-          // #endif
-          // #ifndef H5
-          $children = parent.$children
-          // #endif
-          const index = $children.map(item => item._uid).indexOf(this._uid) */
           const index = this.itemIndex
           if (index >= columnNum && !square) {
             styleWrapper.push(`margin-top: ${gutterValue}`)
-            console.log('进入到这里')
           }
         }
 

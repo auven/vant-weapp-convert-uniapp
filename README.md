@@ -125,3 +125,5 @@ export default {
 - `van-overlay` 组件样式得在全局引入，不然会出现嵌套组件里的样式不生效
 - 支付宝小程序不支持在组件上加 `click` `touchmove` 等事件
 - 支付宝小程序不支持 `.stop.prevent` 事件修饰符
+- [【列表渲染重大bug】列表内嵌自定义组件的话出现异常复用问题](https://github.com/dcloudio/uni-app/issues/1746) ，app 会出现这个问题，目前正式版尚未修复。。。
+- 头条小程序在 computed 中拿不到 inject 进来的父组件的相关数据

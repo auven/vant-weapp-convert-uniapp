@@ -7,6 +7,11 @@
 <script>
 import { VantComponent } from '../common/component'
 export default VantComponent({
+  provide() {
+    return {
+      vanRow: this
+    }
+  },
   props: {
     gutter: [String, Number]
   },
@@ -32,25 +37,6 @@ export default VantComponent({
         : ''
 
       this.viewStyle = viewStyle
-      /* this.getRelationNodes('../col/index').forEach(col => {
-        col.setGutter(this.gutter)
-      }) */
-      this.$nextTick(() => {
-        let $children
-        // #ifdef H5
-        $children = this.$children[0].$children
-        // #endif
-        // #ifndef H5
-        $children = this.$children
-        // #endif
-        $children.forEach(child => {
-          if (child.$options.name === 'VanCol') {
-            child.setGutter(this.gutter)
-          } else {
-            console.log('不是 VanCol 组件')
-          }
-        })
-      })
     }
   }
 })

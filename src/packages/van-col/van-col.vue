@@ -16,6 +16,7 @@ export default VantComponent({
     span: [Number, String],
     offset: [Number, String]
   },
+  inject: ['vanRow'],
 
   data() {
     return {
@@ -30,16 +31,21 @@ export default VantComponent({
     }
   },
 
-  methods: {
-    setGutter(gutter) {
-      console.log('我是 VanCol', gutter)
-      const padding = `${gutter / 2}px`
-      const viewStyle = gutter
-        ? `padding-left: ${padding}; padding-right: ${padding};`
-        : ''
+  created() {
+    this.setGutter()
+  },
 
-      if (viewStyle !== this.viewStyle) {
-        this.viewStyle = viewStyle
+  methods: {
+    setGutter() {
+      if (this.vanRow.gutter) {
+        const padding = `${this.vanRow.gutter / 2}px`
+        const viewStyle = this.vanRow.gutter
+          ? `padding-left: ${padding}; padding-right: ${padding};`
+          : ''
+
+        if (viewStyle !== this.viewStyle) {
+          this.viewStyle = viewStyle
+        }
       }
     }
   }

@@ -36,9 +36,16 @@ export default VantComponent({
     iconSize: String
   },
 
+  provide() {
+    return {
+      vanGrid: this
+    }
+  },
+
   data() {
     return {
-      viewStyle: ''
+      viewStyle: '',
+      childrenList: []
     }
   },
 
@@ -52,10 +59,14 @@ export default VantComponent({
   },
 
   watch: {
-    square() {
-      this.updateChildren()
-    },
     gutter() {
+      this.updateStyle()
+      // #ifdef MP-TOUTIAO
+      this.updateChildren()
+      // #endif
+    },
+    // #ifdef MP-TOUTIAO
+    square() {
       this.updateChildren()
     },
     clickable() {
@@ -76,29 +87,24 @@ export default VantComponent({
     iconSize() {
       this.updateChildren()
     }
+    // #endif
   },
 
   created() {
-    const { gutter } = this
-    if (gutter) {
-      this.viewStyle = `padding-left: ${addUnit(gutter)}`
-    }
-  },
-
-  mounted() {
-    this.updateChildren()
+    this.updateStyle()
   },
 
   methods: {
+    updateStyle() {
+      const { gutter } = this
+      if (gutter) {
+        this.viewStyle = `padding-left: ${addUnit(gutter)}`
+      }
+    },
+    // #ifdef MP-TOUTIAO
     updateChildren() {
       this.$nextTick(() => {
-        let $children
-        // #ifdef H5
-        $children = this.$children[0].$children
-        // #endif
-        // #ifndef H5
-        $children = this.$children
-        // #endif
+        const $children = this.$children
         $children.forEach(child => {
           if (child.$options.name === 'VanGridItem') {
             child.updateStyle()
@@ -108,6 +114,7 @@ export default VantComponent({
         })
       })
     }
+    // #endif
   }
 })
 </script>

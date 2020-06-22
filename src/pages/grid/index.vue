@@ -27,10 +27,15 @@
     </demo-block>
 
     <demo-block title="格子间距">
-      <van-grid :gutter="10">
+      <van-grid :gutter="gutter" :column-num="columnNum">
         <van-grid-item icon="photo-o" text="文字" v-for="(item, index) in array8" :key="item" :item-index="index" />
       </van-grid>
     </demo-block>
+
+    <div style="padding: 15px">
+      <van-button @click="gutter = 20" type="primary" custom-style="margin-right: 15px">修改格子间距</van-button>
+      <van-button @click="columnNum = 2" type="primary">修改列数</van-button>
+    </div>
 
     <demo-block title="内容横排">
       <van-grid direction="horizontal" column-num="3">
@@ -58,18 +63,22 @@
 import DemoBlock from '@/components/demo-block'
 import VanGrid from '@/packages/van-grid/van-grid'
 import VanGridItem from '@/packages/van-grid-item/van-grid-item'
+import VanButton from '@/packages/van-button/van-button'
 export default {
   components: {
     DemoBlock,
     VanGrid,
-    VanGridItem
+    VanGridItem,
+    VanButton
   },
   data() {
     return {
       array3: [0, 1, 2],
       array4: [0, 1, 2, 3],
       array6: [0, 1, 2, 3, 4, 5],
-      array8: [0, 1, 2, 3, 4, 5, 6, 7]
+      array8: [0, 1, 2, 3, 4, 5, 6, 7],
+      gutter: 10,
+      columnNum: 4
     }
   }
 }
