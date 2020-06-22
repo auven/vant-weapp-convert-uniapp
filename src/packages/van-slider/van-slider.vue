@@ -26,12 +26,9 @@
 import { VantComponent } from '../common/component'
 import { touch } from '../mixins/touch'
 const utils = require('../wxs/utils')
-export default {
-  ...VantComponent({
-    mixins: [{ ...touch, props: {} }]
-  }),
+export default VantComponent({
+  mixins: [touch],
   props: {
-    ...touch.props,
     disabled: Boolean,
     useButtonSlot: Boolean,
     activeColor: String,
@@ -55,8 +52,7 @@ export default {
     barHeight: {
       type: [String, Number],
       default: '2px'
-    },
-    customClass: String
+    }
   },
   data() {
     return {
@@ -167,7 +163,7 @@ export default {
       return Math.round(Math.max(min, Math.min(value, max)) / step) * step
     }
   }
-}
+})
 </script>
 
 <style lang="less">

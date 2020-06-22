@@ -24,43 +24,42 @@ import { VantComponent } from '../common/component'
 import VanInfo from '../van-info/van-info'
 const utils = require('../wxs/utils')
 export default {
-  ...VantComponent({}),
   components: {
     VanInfo
   },
-  props: {
-    dot: Boolean,
-    info: [String, Number],
-    size: [String, Number],
-    color: String,
-    customStyle: String,
-    classPrefix: {
-      type: String,
-      default: 'van-icon'
+  ...VantComponent({
+    props: {
+      dot: Boolean,
+      info: [String, Number],
+      size: [String, Number],
+      color: String,
+      classPrefix: {
+        type: String,
+        default: 'van-icon'
+      },
+      name: String
     },
-    name: String,
-    customClass: String
-  },
 
-  computed: {
-    isImageName() {
-      return this.name.indexOf('/') !== -1
+    computed: {
+      isImageName() {
+        return this.name.indexOf('/') !== -1
+      },
+      wrapClass() {
+        const { customClass, classPrefix, isImageName, name } = this
+        return `custom-class ${customClass} ${ classPrefix } ${ isImageName ? 'van-icon--image' : classPrefix + '-' + name }`
+      },
+      wrapStyle() {
+        const { color, size, customStyle } = this
+        return `color: ${ color };font-size: ${ utils.addUnit(size) };${ customStyle }`
+      }
     },
-    wrapClass() {
-      const { customClass, classPrefix, isImageName, name } = this
-      return `custom-class ${customClass} ${ classPrefix } ${ isImageName ? 'van-icon--image' : classPrefix + '-' + name }`
-    },
-    wrapStyle() {
-      const { color, size, customStyle } = this
-      return `color: ${ color };font-size: ${ utils.addUnit(size) };${ customStyle }`
-    }
-  },
 
-  methods: {
-    onClick() {
-      this.$emit('click')
+    methods: {
+      onClick() {
+        this.$emit('click')
+      }
     }
-  }
+  })
 }
 </script>
 

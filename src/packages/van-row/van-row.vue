@@ -6,11 +6,9 @@
 
 <script>
 import { VantComponent } from '../common/component'
-export default {
-  ...VantComponent(),
+export default VantComponent({
   props: {
-    gutter: [String, Number],
-    customClass: String
+    gutter: [String, Number]
   },
 
   data() {
@@ -55,7 +53,7 @@ export default {
       })
     }
   }
-}
+})
 </script>
 
 <style lang="less">

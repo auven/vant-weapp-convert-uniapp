@@ -13,8 +13,7 @@ function simpleTick(fn) {
   return setTimeout(fn, 30)
 }
 
-export default {
-  ...VantComponent(),
+export default VantComponent({
   props: {
     useSlot: Boolean,
     millisecond: Boolean,
@@ -133,7 +132,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style lang="less">

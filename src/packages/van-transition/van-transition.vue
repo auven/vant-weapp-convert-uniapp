@@ -28,21 +28,17 @@
 import { VantComponent } from '../common/component'
 import { transition } from '../mixins/transition'
 const transitionMixin = transition(true)
-export default {
-  ...VantComponent({
-    classes: [
-      'enter-class',
-      'enter-active-class',
-      'enter-to-class',
-      'leave-class',
-      'leave-active-class',
-      'leave-to-class'
-    ],
-    mixins: [{ ...transitionMixin, props: {} }]
-  }),
+export default VantComponent({
+  classes: [
+    'enter-class',
+    'enter-active-class',
+    'enter-to-class',
+    'leave-class',
+    'leave-active-class',
+    'leave-to-class'
+  ],
+  mixins: [transitionMixin],
   props: {
-    ...transitionMixin.props,
-    customClass: String,
     moveHandle: {
       type: Boolean,
       default: false,
@@ -65,7 +61,7 @@ export default {
     // for prevent touchmove
     noop() {}
   }
-}
+})
 </script>
 
 <style lang="less">

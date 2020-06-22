@@ -60,111 +60,106 @@ import VanIcon from '../van-icon/van-icon'
 import VanLoading from '../van-loading/van-loading'
 const utils = require('../wxs/utils')
 export default {
-  ...VantComponent({
-    classes: ['hover-class', 'loading-class'],
-    mixins: [
-      { ...button, props: {} },
-      { ...openType, props: {} }
-    ]
-  }),
+  // 组件必须这样子引入，不能放在 VantComponent 里面
   components: {
     VanIcon,
     VanLoading
   },
-  props: {
-    ...button.props,
-    ...openType.props,
-    formType: String,
-    icon: String,
-    classPrefix: {
-      type: String,
-      default: 'van-icon'
+  ...VantComponent({
+    classes: ['hover-class', 'loading-class'],
+    mixins: [button, openType],
+    props: {
+      formType: String,
+      icon: String,
+      classPrefix: {
+        type: String,
+        default: 'van-icon'
+      },
+      plain: Boolean,
+      block: Boolean,
+      round: Boolean,
+      square: Boolean,
+      loading: Boolean,
+      hairline: Boolean,
+      disabled: Boolean,
+      loadingText: String,
+      loadingType: {
+        type: String,
+        default: 'circular'
+      },
+      type: {
+        type: String,
+        default: 'default'
+      },
+      dataset: null,
+      size: {
+        type: String,
+        default: 'normal'
+      },
+      loadingSize: {
+        type: String,
+        default: '20px'
+      },
+      color: {
+        type: String
+      }
     },
-    plain: Boolean,
-    block: Boolean,
-    round: Boolean,
-    square: Boolean,
-    loading: Boolean,
-    hairline: Boolean,
-    disabled: Boolean,
-    loadingText: String,
-    customStyle: String,
-    loadingType: {
-      type: String,
-      default: 'circular'
-    },
-    type: {
-      type: String,
-      default: 'default'
-    },
-    dataset: null,
-    size: {
-      type: String,
-      default: 'normal'
-    },
-    loadingSize: {
-      type: String,
-      default: '20px'
-    },
-    color: {
-      type: String
-    }
-  },
-  computed: {
-    baseStyle() {
-      let style = ''
+    computed: {
+      baseStyle() {
+        let style = ''
 
-      const { color, plain } = this
+        const { color, plain } = this
 
-      if (color) {
-        style += `color: ${plain ? color : 'white'};`
+        if (color) {
+          style += `color: ${plain ? color : 'white'};`
 
-        if (!plain) {
-          // Use background instead of backgroundColor to make linear-gradient work
-          style += `background: ${color};`
+          if (!plain) {
+            // Use background instead of backgroundColor to make linear-gradient work
+            style += `background: ${color};`
+          }
+
+          // hide border when color is linear-gradient
+          if (color.indexOf('gradient') !== -1) {
+            style += 'border: 0;'
+          } else {
+            style += `border-color: ${color};`
+          }
         }
 
-        // hide border when color is linear-gradient
-        if (color.indexOf('gradient') !== -1) {
-          style += 'border: 0;'
-        } else {
-          style += `border-color: ${color};`
+        return style
+      },
+      buttonClass() {
+        const { customClass, type, size, block, round, plain, square, loading, disabled, hairline } = this
+        const bemClass = utils.bem('button', [type, size, { block, round, plain, square, loading, disabled, hairline, unclickable: disabled || loading }])
+        return `custom-class ${ customClass } ${ bemClass } ${ hairline ? 'van-hairline--surround' : '' }`
+      },
+      buttonStyle() {
+        const { baseStyle, customStyle } = this
+        return `${ baseStyle } ${ customStyle }`
+      }
+    },
+
+    methods: {
+      loadingColor(type, color, plain) {
+        if (plain) {
+          return color ? color : '#c9c9c9'
+        }
+
+        if (type === 'default') {
+          return '#c9c9c9'
+        }
+        return 'white'
+      },
+      onClick() {
+        if (this.disabled) {
+          return
+        }
+        if (!this.loading) {
+          this.$emit('click')
         }
       }
-
-      return style
-    },
-    buttonClass() {
-      const { type, size, block, round, plain, square, loading, disabled, hairline } = this
-      const bemClass = utils.bem('button', [type, size, { block, round, plain, square, loading, disabled, hairline, unclickable: disabled || loading }])
-      return `custom-class ${ bemClass } ${ hairline ? 'van-hairline--surround' : '' }`
-    },
-    buttonStyle() {
-      const { baseStyle, customStyle } = this
-      return `${ baseStyle } ${ customStyle }`
     }
-  },
-
-  methods: {
-    loadingColor(type, color, plain) {
-      if (plain) {
-        return color ? color : '#c9c9c9'
-      }
-
-      if (type === 'default') {
-        return '#c9c9c9'
-      }
-      return 'white'
-    },
-    onClick() {
-      if (this.disabled) {
-        return
-      }
-      if (!this.loading) {
-        this.$emit('click')
-      }
-    }
-  }
+  })
 }
 </script>
 

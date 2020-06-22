@@ -53,6 +53,9 @@ import { link } from '../mixins/link'
 import VanIcon from '../van-icon/van-icon'
 const utils = require('../wxs/utils')
 export default {
+  components: {
+    VanIcon
+  },
   ...VantComponent({
     classes: [
       'title-class',
@@ -62,54 +65,50 @@ export default {
       'hover-class',
     ],
 
-    mixins: [{ ...link, props: {} }],
-  }),
-  components: {
-    VanIcon
-  },
-  props: {
-    ...link.props,
-    title: null,
-    value: null,
-    icon: String,
-    size: String,
-    label: String,
-    center: Boolean,
-    isLink: Boolean,
-    required: Boolean,
-    clickable: Boolean,
-    titleWidth: String,
-    customStyle: String,
-    arrowDirection: String,
-    useLabelSlot: Boolean,
-    border: {
-      type: Boolean,
-      default: true
+    mixins: [link],
+
+    props: {
+      title: null,
+      value: null,
+      icon: String,
+      size: String,
+      label: String,
+      center: Boolean,
+      isLink: Boolean,
+      required: Boolean,
+      clickable: Boolean,
+      titleWidth: String,
+      arrowDirection: String,
+      useLabelSlot: Boolean,
+      border: {
+        type: Boolean,
+        default: true
+      },
+      customClass: String,
+      valueClass: String
     },
-    customClass: String,
-    valueClass: String
-  },
-  computed: {
-    cellClass() {
-      const { customClass, size, center, border, isLink, clickable, required } = this
-      const cellClass = utils.bem('cell', [
-        size,
-        {
-          center,
-          required,
-          borderless: !border,
-          clickable: isLink || clickable
-        }
-      ])
-      return `${customClass} ${cellClass}`
+    computed: {
+      cellClass() {
+        const { customClass, size, center, border, isLink, clickable, required } = this
+        const cellClass = utils.bem('cell', [
+          size,
+          {
+            center,
+            required,
+            borderless: !border,
+            clickable: isLink || clickable
+          }
+        ])
+        return `${customClass} ${cellClass}`
+      }
+    },
+    methods: {
+      onClick(event) {
+        this.$emit('click', event.detail)
+        this.jumpLink()
+      }
     }
-  },
-  methods: {
-    onClick(event) {
-      this.$emit('click', event.detail)
-      this.jumpLink()
-    }
-  }
+  })
 }
 </script>
 

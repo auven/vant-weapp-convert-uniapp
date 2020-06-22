@@ -44,6 +44,10 @@ import { VantComponent } from '../common/component';
 import { transition } from '../mixins/transition';
 const transitionMixin = transition(false)
 export default {
+  components: {
+    VanIcon,
+    VanOverlay
+  },
   ...VantComponent({
     classes: [
       'enter-class',
@@ -54,104 +58,97 @@ export default {
       'leave-to-class',
       'close-icon-class',
     ],
-    mixins: [{ ...transitionMixin, props: {} }],
-  }),
-  components: {
-    VanIcon,
-    VanOverlay
-  },
-  props: {
-    ...transitionMixin.props,
-    round: Boolean,
-    closeable: Boolean,
-    customStyle: String,
-    overlayStyle: String,
-    transition: {
-      type: String,
-    },
-    zIndex: {
-      type: Number,
-      default: 100,
-    },
-    overlay: {
-      type: Boolean,
-      default: true,
-    },
-    closeIcon: {
-      type: String,
-      default: 'cross',
-    },
-    closeIconPosition: {
-      type: String,
-      default: 'top-right',
-    },
-    closeOnClickOverlay: {
-      type: Boolean,
-      default: true,
-    },
-    position: {
-      type: String,
-      default: 'center',
-    },
-    safeAreaInsetBottom: {
-      type: Boolean,
-      default: true,
-    },
-    safeAreaInsetTop: {
-      type: Boolean,
-      default: false,
-    },
-    closeIconClass: String,
-    customClass: String,
-  },
-
-  computed: {
-    popupBodyClass() {
-      const { customClass, classes, position, round, safeAreaInsetBottom, safeAreaInsetTop } = this
-      return `custom-class ${ customClass } ${ classes } ${ utils.bem('popup', [position, { round, safe: safeAreaInsetBottom, safeTop: safeAreaInsetTop }]) }`
-    },
-    popupBodyStyle() {
-      const { zIndex, currentDuration, display, customStyle } = this
-      return `z-index: ${ zIndex }; -webkit-transition-duration:${ currentDuration }ms; transition-duration:${ currentDuration }ms; ${ display ? '' : 'display: none;' };${ customStyle }`
-    },
-    currentCloseIconClass() {
-      return `close-icon-class ${ this.closeIconClass } van-popup__close-icon van-popup__close-icon--${ this.closeIconPosition }`
-    }
-  },
-
-  watch: {
-    transition() {
-      this.observeClass()
-    }
-  },
-
-  created() {
-    this.observeClass();
-  },
-
-  methods: {
-    onClickCloseIcon() {
-      this.$emit('close');
+    mixins: [transitionMixin],
+    props: {
+      round: Boolean,
+      closeable: Boolean,
+      overlayStyle: String,
+      transition: {
+        type: String,
+      },
+      zIndex: {
+        type: Number,
+        default: 100,
+      },
+      overlay: {
+        type: Boolean,
+        default: true,
+      },
+      closeIcon: {
+        type: String,
+        default: 'cross',
+      },
+      closeIconPosition: {
+        type: String,
+        default: 'top-right',
+      },
+      closeOnClickOverlay: {
+        type: Boolean,
+        default: true,
+      },
+      position: {
+        type: String,
+        default: 'center',
+      },
+      safeAreaInsetBottom: {
+        type: Boolean,
+        default: true,
+      },
+      safeAreaInsetTop: {
+        type: Boolean,
+        default: false,
+      },
+      closeIconClass: String
     },
 
-    onClickOverlay() {
-      this.$emit('click-overlay');
+    computed: {
+      popupBodyClass() {
+        const { customClass, classes, position, round, safeAreaInsetBottom, safeAreaInsetTop } = this
+        return `custom-class ${ customClass } ${ classes } ${ utils.bem('popup', [position, { round, safe: safeAreaInsetBottom, safeTop: safeAreaInsetTop }]) }`
+      },
+      popupBodyStyle() {
+        const { zIndex, currentDuration, display, customStyle } = this
+        return `z-index: ${ zIndex }; -webkit-transition-duration:${ currentDuration }ms; transition-duration:${ currentDuration }ms; ${ display ? '' : 'display: none;' };${ customStyle }`
+      },
+      currentCloseIconClass() {
+        return `close-icon-class ${ this.closeIconClass } van-popup__close-icon van-popup__close-icon--${ this.closeIconPosition }`
+      }
+    },
 
-      if (this.closeOnClickOverlay) {
+    watch: {
+      transition() {
+        this.observeClass()
+      }
+    },
+
+    created() {
+      this.observeClass();
+    },
+
+    methods: {
+      onClickCloseIcon() {
         this.$emit('close');
-      }
+      },
+
+      onClickOverlay() {
+        this.$emit('click-overlay');
+
+        if (this.closeOnClickOverlay) {
+          this.$emit('close');
+        }
+      },
+
+      observeClass() {
+        const { transition, position } = this;
+
+        this.name = transition || position
+
+        if (transition === 'none') {
+          this.duration = 0
+        }
+      },
     },
-
-    observeClass() {
-      const { transition, position } = this;
-
-      this.name = transition || position
-
-      if (transition === 'none') {
-        this.duration = 0
-      }
-    },
-  },
+  })
 }
 </script>
 

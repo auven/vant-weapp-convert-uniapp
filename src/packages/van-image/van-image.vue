@@ -43,111 +43,108 @@ const FIT_MODE_MAP = {
 }
 
 export default {
-  ...VantComponent({
-    mixins: [{ ...button, props: {} }, { ...openType, props: {} }],
-    classes: ['custom-class', 'loading-class', 'error-class', 'image-class'],
-  }),
   components: {
     VanIcon
   },
-  props: {
-    ...button.props,
-    ...openType.props,
-    src: {
-      type: String
-    },
-    round: Boolean,
-    width: {
-      type: null
-    },
-    height: {
-      type: null
-    },
-    radius: null,
-    lazyLoad: Boolean,
-    useErrorSlot: Boolean,
-    useLoadingSlot: Boolean,
-    showMenuByLongpress: Boolean,
-    fit: {
-      type: String,
-      default: 'fill'
-    },
-    showError: {
-      type: Boolean,
-      default: true
-    },
-    showLoading: {
-      type: Boolean,
-      default: true
-    },
-    customClass: String
-  },
-
-  data() {
-    return {
-      mode: '',
-      error: false,
-      loading: true,
-      viewStyle: ''
-    }
-  },
-
-  computed: {
-    wrapClass() {
-      const { customClass, round } = this
-      return `custom-class ${customClass} ${ utils.bem('image', { round })}`
-    }
-  },
-
-  mounted() {
-    this.setMode()
-    this.setStyle()
-  },
-
-  methods: {
-    setMode() {
-      this.mode = FIT_MODE_MAP[this.fit]
-    },
-
-    setStyle() {
-      const { width, height, radius } = this
-      let style = ''
-
-      if (isDef(width)) {
-        style += `width: ${addUnit(width)};`
+  ...VantComponent({
+    classes: ['custom-class', 'loading-class', 'error-class', 'image-class'],
+    mixins: [button, openType],
+    props: {
+      src: {
+        type: String
+      },
+      round: Boolean,
+      width: {
+        type: null
+      },
+      height: {
+        type: null
+      },
+      radius: null,
+      lazyLoad: Boolean,
+      useErrorSlot: Boolean,
+      useLoadingSlot: Boolean,
+      showMenuByLongpress: Boolean,
+      fit: {
+        type: String,
+        default: 'fill'
+      },
+      showError: {
+        type: Boolean,
+        default: true
+      },
+      showLoading: {
+        type: Boolean,
+        default: true
       }
+    },
 
-      if (isDef(height)) {
-        style += `height: ${addUnit(height)};`
+    data() {
+      return {
+        mode: '',
+        error: false,
+        loading: true,
+        viewStyle: ''
       }
+    },
 
-      if (isDef(radius)) {
-        style += 'overflow: hidden;'
-        style += `border-radius: ${addUnit(radius)};`
+    computed: {
+      wrapClass() {
+        const { customClass, round } = this
+        return `custom-class ${customClass} ${ utils.bem('image', { round })}`
       }
-
-      this.viewStyle = style
     },
 
-    // 这里不能命名为 onLoad ，会导致找不到这个方法
-    onImageLoad(event) {
-      this.loading = false
-
-      this.$emit('load', event.detail)
+    mounted() {
+      this.setMode()
+      this.setStyle()
     },
 
-    // 这里不能命名为 onError ，会导致找不到这个方法
-    onImageError(event) {
-      this.loading = false
-      this.error = true
+    methods: {
+      setMode() {
+        this.mode = FIT_MODE_MAP[this.fit]
+      },
 
-      this.$emit('error', event.detail)
-    },
+      setStyle() {
+        const { width, height, radius } = this
+        let style = ''
 
-    onClick(event) {
-      this.$emit('click', event.detail)
+        if (isDef(width)) {
+          style += `width: ${addUnit(width)};`
+        }
+
+        if (isDef(height)) {
+          style += `height: ${addUnit(height)};`
+        }
+
+        if (isDef(radius)) {
+          style += 'overflow: hidden;'
+          style += `border-radius: ${addUnit(radius)};`
+        }
+
+        this.viewStyle = style
+      },
+
+      // 这里不能命名为 onLoad ，会导致找不到这个方法
+      onImageLoad(event) {
+        this.loading = false
+
+        this.$emit('load', event.detail)
+      },
+
+      // 这里不能命名为 onError ，会导致找不到这个方法
+      onImageError(event) {
+        this.loading = false
+        this.error = true
+
+        this.$emit('error', event.detail)
+      },
+
+      onClick(event) {
+        this.$emit('click', event.detail)
+      }
     }
-  }
+  })
 }
 </script>
 

@@ -9,15 +9,13 @@
 <script>
 import { VantComponent } from '../common/component'
 const utils = require('../wxs/utils')
-export default {
-  ...VantComponent(),
+export default VantComponent({
   props: {
     dot: Boolean,
     info: {
       type: [String, Number],
       default: null
-    },
-    customStyle: String
+    }
   },
   computed: {
     wrapClass() {
@@ -25,7 +23,7 @@ export default {
       return `custom-class van-info ${ utils.bem('info', { dot }) }`
     }
   }
-}
+})
 </script>
 
 <style lang="less">

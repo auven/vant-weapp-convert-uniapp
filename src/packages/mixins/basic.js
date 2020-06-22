@@ -1,5 +1,9 @@
 // eslint-disable-next-line no-undef
 export const basic = {
+  props: {
+    customClass: String,
+    customStyle: String
+  },
   methods: {
     getRect(selector, all) {
       return new Promise(resolve => {

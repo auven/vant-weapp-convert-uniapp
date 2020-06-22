@@ -23,8 +23,7 @@
 import { VantComponent } from '../common/component'
 import { BLUE } from '../common/color'
 import utils from '../wxs/utils'
-export default {
-  ...VantComponent(),
+export default VantComponent({
   props: {
     inactive: Boolean,
     percentage: [String, Number],
@@ -46,8 +45,7 @@ export default {
     strokeWidth: {
       type: null,
       default: 4,
-    },
-    customClass: String
+    }
   },
   computed: {
     text() {
@@ -66,7 +64,7 @@ export default {
       return `color: ${ textColor }; background: ${ pivotColor ? pivotColor : inactive ? '#cacaca' : color }`
     }
   }
-}
+})
 </script>
 
 <style lang="less">

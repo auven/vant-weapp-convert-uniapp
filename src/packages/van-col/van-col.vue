@@ -10,13 +10,11 @@
 <script>
 import { VantComponent } from '../common/component'
 const utils = require('../wxs/utils')
-export default {
+export default VantComponent({
   name: 'VanCol',
-  ...VantComponent({}),
   props: {
     span: [Number, String],
-    offset: [Number, String],
-    customClass: String
+    offset: [Number, String]
   },
 
   data() {
@@ -45,7 +43,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style lang="less">

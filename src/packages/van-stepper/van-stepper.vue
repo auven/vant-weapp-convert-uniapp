@@ -52,11 +52,8 @@ function add(num1, num2) {
 function equal(value1, value2) {
   return String(value1) === String(value2)
 }
-export default {
-  ...VantComponent({
-    classes: ['input-class', 'plus-class', 'minus-class'],
-  }),
-
+export default VantComponent({
+  classes: ['input-class', 'plus-class', 'minus-class'],
   props: {
     value: {
       type: null
@@ -98,8 +95,7 @@ export default {
     longPress: {
       type: Boolean,
       default: true
-    },
-    customClass: String
+    }
   },
 
   data() {
@@ -287,7 +283,7 @@ export default {
       clearTimeout(this.longPressTimer)
     }
   }
-}
+})
 </script>
 
 <style lang="less">

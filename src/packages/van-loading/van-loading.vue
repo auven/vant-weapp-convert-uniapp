@@ -17,8 +17,7 @@
 <script>
 import { VantComponent } from '../common/component'
 const utils = require('../wxs/utils')
-export default {
-  ...VantComponent(),
+export default VantComponent({
   props: {
     color: String,
     vertical: Boolean,
@@ -27,9 +26,7 @@ export default {
       default: 'circular'
     },
     size: String,
-    textSize: String,
-    customClass: String,
-    customStyle: String
+    textSize: String
   },
 
   data() {
@@ -57,7 +54,7 @@ export default {
       )}; height: ${utils.addUnit(size)}`
     }
   }
-}
+})
 </script>
 
 <style lang="less">

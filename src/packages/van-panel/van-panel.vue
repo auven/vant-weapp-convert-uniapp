@@ -28,21 +28,20 @@
 import VanCell from '../van-cell/van-cell'
 import { VantComponent } from '../common/component'
 export default {
-  ...VantComponent({
-    classes: ['header-class', 'footer-class']
-  }),
   components: {
     VanCell
   },
-  props: {
-    desc: String,
-    title: String,
-    status: String,
-    useFooterSlot: Boolean,
-    customClass: String,
-    headerClass: String,
-    footerClass: String
-  }
+  ...VantComponent({
+    classes: ['header-class', 'footer-class'],
+    props: {
+      desc: String,
+      title: String,
+      status: String,
+      useFooterSlot: Boolean,
+      headerClass: String,
+      footerClass: String
+    }
+  })
 }
 </script>
 

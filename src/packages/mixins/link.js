@@ -3,7 +3,7 @@ export const link = {
     url: String,
     linkType: {
       type: String,
-      value: 'navigateTo'
+      default: 'navigateTo'
     }
   },
 

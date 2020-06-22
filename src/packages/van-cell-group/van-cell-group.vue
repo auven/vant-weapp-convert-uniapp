@@ -11,15 +11,13 @@
 
 <script>
 import { VantComponent } from '../common/component'
-export default {
-  ...VantComponent({}),
+export default VantComponent({
   props: {
     title: String,
     border: {
       type: Boolean,
       default: true
-    },
-    customClass: String
+    }
   },
   computed: {
     groupClass() {
@@ -27,7 +25,7 @@ export default {
       return `custom-class ${customClass} van-cell-group ${ border ? 'van-hairline--top-bottom' : '' }`
     }
   }
-}
+})
 </script>
 
 <style lang="less">

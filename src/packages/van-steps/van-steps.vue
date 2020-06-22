@@ -52,66 +52,65 @@ import utils from '../wxs/utils'
 import { VantComponent } from '../common/component'
 import { GREEN, GRAY_DARK } from '../common/color'
 export default {
-  ...VantComponent({
-    classes: ['desc-class']
-  }),
   components: {
     VanIcon
   },
-  props: {
-    icon: String,
-    steps: Array,
-    active: Number,
-    direction: {
-      type: String,
-      default: 'horizontal'
+  ...VantComponent({
+    classes: ['desc-class'],
+    props: {
+      icon: String,
+      steps: Array,
+      active: Number,
+      direction: {
+        type: String,
+        default: 'horizontal'
+      },
+      activeColor: {
+        type: String,
+        default: GREEN
+      },
+      inactiveColor: {
+        type: String,
+        default: GRAY_DARK
+      },
+      activeIcon: {
+        type: String,
+        default: 'checked'
+      },
+      inactiveIcon: String
     },
-    activeColor: {
-      type: String,
-      default: GREEN
-    },
-    inactiveColor: {
-      type: String,
-      default: GRAY_DARK
-    },
-    activeIcon: {
-      type: String,
-      default: 'checked'
-    },
-    inactiveIcon: String,
-    customClass: String
-  },
-  computed: {
-    status() {
-      const { index, active } = this
-      if (index < active) {
-        return 'finish'
-      } else if (index === active) {
-        return 'process'
+    computed: {
+      status() {
+        const { index, active } = this
+        if (index < active) {
+          return 'finish'
+        } else if (index === active) {
+          return 'process'
+        }
+        return 'inactive'
+      },
+      wrapClass() {
+        return `custom-class ${this.customClass} ${ utils.bem('steps', [this.direction]) }`
+      },
+      stepClass() {
+        const { direction, status } = this
+        return `${ utils.bem('step', [direction, status]) } van-hairline`
+      },
+      stepStyle() {
+        const { status, inactiveColor } = this
+        return `${ status === 'inactive' ? 'color: ' + inactiveColor: '' }`
+      },
+      iconColor() {
+        const { status, inactiveColor, activeColor } = this
+        return `${ status === 'inactive' ? inactiveColor : activeColor }`
       }
-      return 'inactive'
     },
-    wrapClass() {
-      return `custom-class ${this.customClass} ${ utils.bem('steps', [this.direction]) }`
-    },
-    stepClass() {
-      const { direction, status } = this
-      return `${ utils.bem('step', [direction, status]) } van-hairline`
-    },
-    stepStyle() {
-      const { status, inactiveColor } = this
-      return `${ status === 'inactive' ? 'color: ' + inactiveColor: '' }`
-    },
-    iconColor() {
-      const { status, inactiveColor, activeColor } = this
-      return `${ status === 'inactive' ? inactiveColor : activeColor }`
+    methods: {
+      onClick(index) {
+        this.$emit('click-step', index)
+      }
     }
-  },
-  methods: {
-    onClick(index) {
-      this.$emit('click-step', index)
-    }
-  }
+  })
 }
 </script>
 

@@ -7,38 +7,32 @@
 <script>
 import utils from '../wxs/utils'
 import { VantComponent } from '../common/component'
-export default {
-  ...VantComponent(),
+export default VantComponent({
   props: {
     dashed: {
       type: Boolean,
-      value: false
+      default: false
     },
     hairline: {
       type: Boolean,
-      value: false
+      default: false
     },
     contentPosition: {
       type: String,
-      value: ''
+      default: ''
     },
     fontSize: {
-      type: Number,
-      value: ''
+      type: [Number, String],
+      default: ''
     },
     borderColor: {
       type: String,
-      value: ''
+      default: ''
     },
     textColor: {
       type: String,
-      value: ''
-    },
-    customStyle: {
-      type: String,
-      value: ''
-    },
-    customClass: String
+      default: ''
+    }
   },
   computed: {
     mainClass() {
@@ -49,7 +43,7 @@ export default {
       return `${ this.borderColor  ? 'border-color: ' + this.borderColor + ';' : '' }${ this.textColor ? 'color: ' + this.textColor + ';' : '' }${ this.fontSize ? 'font-size: ' + this.fontSize + 'px;' : '' }${ this.customStyle }`
     }
   }
-}
+})
 </script>
 
 <style lang="less">

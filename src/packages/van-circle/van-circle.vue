@@ -35,8 +35,7 @@ function format(rate) {
 const PERIMETER = 2 * Math.PI
 const BEGIN_ANGLE = -Math.PI / 2
 const STEP = 1
-export default {
-  ...VantComponent(),
+export default VantComponent({
   props: {
     circleId: {
       type: String,
@@ -251,7 +250,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style lang="less">

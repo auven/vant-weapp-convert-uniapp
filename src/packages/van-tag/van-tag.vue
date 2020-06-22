@@ -16,47 +16,47 @@ import { VantComponent } from '../common/component'
 import VanIcon from '../van-icon/van-icon'
 const utils = require('../wxs/utils')
 export default {
-  ...VantComponent(),
   components: {
     VanIcon
   },
-  props: {
-    size: String,
-    mark: Boolean,
-    color: String,
-    plain: Boolean,
-    round: Boolean,
-    textColor: String,
-    type: {
-      type: String,
-      default: 'default'
+  ...VantComponent({
+    props: {
+      size: String,
+      mark: Boolean,
+      color: String,
+      plain: Boolean,
+      round: Boolean,
+      textColor: String,
+      type: {
+        type: String,
+        default: 'default'
+      },
+      closeable: Boolean
     },
-    closeable: Boolean,
-    customClass: String
-  },
 
-  computed: {
-    wrapClass() {
-      const { customClass, type, size, mark, plain, round } = this
-      return `custom-class ${customClass} ${utils.bem('tag', [
-        type,
-        size,
-        { mark, plain, round }
-      ])} ${plain ? 'van-hairline--surround' : ''}`
+    computed: {
+      wrapClass() {
+        const { customClass, type, size, mark, plain, round } = this
+        return `custom-class ${customClass} ${utils.bem('tag', [
+          type,
+          size,
+          { mark, plain, round }
+        ])} ${plain ? 'van-hairline--surround' : ''}`
+      },
+      wrapStyle() {
+        const { color, plain, textColor } = this
+        return `${color && !plain ? 'background-color: ' + color + ';' : ''}${
+          textColor || (color && plain) ? 'color: ' + (textColor || color) : ''
+        }`
+      }
     },
-    wrapStyle() {
-      const { color, plain, textColor } = this
-      return `${color && !plain ? 'background-color: ' + color + ';' : ''}${
-        textColor || (color && plain) ? 'color: ' + (textColor || color) : ''
-      }`
-    }
-  },
 
-  methods: {
-    onClose() {
-      this.$emit('close')
+    methods: {
+      onClose() {
+        this.$emit('close')
+      }
     }
-  }
+  })
 }
 </script>
 

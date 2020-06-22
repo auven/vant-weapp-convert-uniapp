@@ -7,11 +7,8 @@
 <script>
 import { VantComponent } from '../common/component'
 import { addUnit } from '../common/utils'
-export default {
-  ...VantComponent(),
-
+export default VantComponent({
   name: 'VanGrid',
-
   props: {
     square: {
       type: Boolean
@@ -112,7 +109,7 @@ export default {
       })
     }
   }
-}
+})
 </script>
 
 <style lang="less">

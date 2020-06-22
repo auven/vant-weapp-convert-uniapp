@@ -75,83 +75,78 @@ import { VantComponent } from '../common/component'
 import { button } from '../mixins/button'
 import { openType } from '../mixins/open-type'
 export default {
-  ...VantComponent({
-    mixins: [
-      { ...button, props: {} },
-      { ...openType, props: {} }
-    ]
-  }),
   components: {
     VanIcon,
     VanPopup,
     VanLoading
   },
-  props: {
-    ...button.props,
-    ...openType.props,
-    show: Boolean,
-    title: String,
-    cancelText: String,
-    description: String,
-    round: {
-      type: Boolean,
-      default: true,
+  ...VantComponent({
+    mixins: [button, openType],
+    props: {
+      show: Boolean,
+      title: String,
+      cancelText: String,
+      description: String,
+      round: {
+        type: Boolean,
+        default: true,
+      },
+      zIndex: {
+        type: Number,
+        default: 100,
+      },
+      actions: {
+        type: Array,
+        default: () => [],
+      },
+      overlay: {
+        type: Boolean,
+        default: true,
+      },
+      closeOnClickOverlay: {
+        type: Boolean,
+        default: true,
+      },
+      closeOnClickAction: {
+        type: Boolean,
+        default: true,
+      },
+      safeAreaInsetBottom: {
+        type: Boolean,
+        default: true,
+      },
     },
-    zIndex: {
-      type: Number,
-      default: 100,
-    },
-    actions: {
-      type: Array,
-      default: () => [],
-    },
-    overlay: {
-      type: Boolean,
-      default: true,
-    },
-    closeOnClickOverlay: {
-      type: Boolean,
-      default: true,
-    },
-    closeOnClickAction: {
-      type: Boolean,
-      default: true,
-    },
-    safeAreaInsetBottom: {
-      type: Boolean,
-      default: true,
-    },
-  },
-  computed: {
-    currentActions() {
-      return this.actions.map(item => ({ ...item, buttonClass: `${ utils.bem('action-sheet__item', { disabled: item.disabled || item.loading }) } van-hairline--top ${ item.className || '' }` }))
-    }
-  },
-  methods: {
-    onSelect(index) {
-      const item = this.actions[index]
-      if (item && !item.disabled && !item.loading) {
-        this.$emit('select', item)
-
-        if (this.closeOnClickAction) {
-          this.onClose()
-        }
+    computed: {
+      currentActions() {
+        return this.actions.map(item => ({ ...item, buttonClass: `${ utils.bem('action-sheet__item', { disabled: item.disabled || item.loading }) } van-hairline--top ${ item.className || '' }` }))
       }
     },
+    methods: {
+      onSelect(index) {
+        const item = this.actions[index]
+        if (item && !item.disabled && !item.loading) {
+          this.$emit('select', item)
 
-    onCancel() {
-      this.$emit('cancel')
-    },
+          if (this.closeOnClickAction) {
+            this.onClose()
+          }
+        }
+      },
 
-    onClose() {
-      this.$emit('close')
-    },
+      onCancel() {
+        this.$emit('cancel')
+      },
 
-    onClickOverlay() {
-      this.$emit('click-overlay')
-      this.onClose()
-    },
-  }
+      onClose() {
+        this.$emit('close')
+      },
+
+      onClickOverlay() {
+        this.$emit('click-overlay')
+        this.onClose()
+      },
+    }
+  })
 }
 </script>
 
