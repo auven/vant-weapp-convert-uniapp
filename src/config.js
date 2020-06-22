@@ -5,31 +5,38 @@ export default [
     list: [
       {
         path: '/button',
-        title: 'Button 按钮'
+        title: 'Button 按钮',
+        status: 'finish'
       },
       {
         path: '/cell',
-        title: 'Cell 单元格'
+        title: 'Cell 单元格',
+        status: 'finish'
       },
       {
         path: '/icon',
-        title: 'Icon 图标'
+        title: 'Icon 图标',
+        status: 'finish'
       },
       {
         path: '/image',
-        title: 'Image 图片'
+        title: 'Image 图片',
+        status: 'finish'
       },
       {
         path: '/col',
-        title: 'Layout 布局'
+        title: 'Layout 布局',
+        status: 'finish'
       },
       {
         path: '/popup',
-        title: 'Popup 弹出层'
+        title: 'Popup 弹出层',
+        status: 'finish'
       },
       {
         path: '/transition',
-        title: 'Transition 动画'
+        title: 'Transition 动画',
+        status: 'finish'
       }
     ]
   },
@@ -63,7 +70,8 @@ export default [
       },
       {
         path: '/rate',
-        title: 'Rate 评分'
+        title: 'Rate 评分',
+        status: 'finish'
       },
       {
         path: '/search',
@@ -71,15 +79,18 @@ export default [
       },
       {
         path: '/slider',
-        title: 'Slider 滑块'
+        title: 'Slider 滑块',
+        status: 'finish'
       },
       {
         path: '/stepper',
-        title: 'Stepper 步进器'
+        title: 'Stepper 步进器',
+        status: 'finish'
       },
       {
         path: '/switch',
-        title: 'Switch 开关'
+        title: 'Switch 开关',
+        status: 'finish'
       },
       {
         path: '/uploader',
@@ -93,7 +104,8 @@ export default [
     list: [
       {
         path: '/action-sheet',
-        title: 'ActionSheet 上拉菜单'
+        title: 'ActionSheet 上拉菜单',
+        status: 'finish'
       },
       {
         path: '/dialog',
@@ -105,7 +117,8 @@ export default [
       },
       {
         path: '/loading',
-        title: 'Loading 加载'
+        title: 'Loading 加载',
+        status: 'finish'
       },
       {
         path: '/notify',
@@ -113,7 +126,8 @@ export default [
       },
       {
         path: '/overlay',
-        title: 'Overlay 遮罩层'
+        title: 'Overlay 遮罩层',
+        status: 'finish'
       },
       {
         path: '/swipe-cell',
@@ -131,7 +145,8 @@ export default [
     list: [
       {
         path: '/circle',
-        title: 'Circle 进度条'
+        title: 'Circle 进度条',
+        status: 'finish'
       },
       {
         path: '/collapse',
@@ -139,11 +154,13 @@ export default [
       },
       {
         path: '/count-down',
-        title: 'CountDown 倒计时'
+        title: 'CountDown 倒计时',
+        status: 'finish'
       },
       {
         path: '/divider',
-        title: 'Divider 分割线'
+        title: 'Divider 分割线',
+        status: 'finish'
       },
       {
         path: '/notice-bar',
@@ -151,11 +168,13 @@ export default [
       },
       {
         path: '/panel',
-        title: 'Panel 面板'
+        title: 'Panel 面板',
+        status: 'finish'
       },
       {
         path: '/progress',
-        title: 'Progress 进度条'
+        title: 'Progress 进度条',
+        status: 'finish'
       },
       {
         path: '/skeleton',
@@ -163,7 +182,8 @@ export default [
       },
       {
         path: '/steps',
-        title: 'Steps 步骤条'
+        title: 'Steps 步骤条',
+        status: 'finish'
       },
       {
         path: '/sticky',
@@ -171,7 +191,8 @@ export default [
       },
       {
         path: '/tag',
-        title: 'Tag 标记'
+        title: 'Tag 标记',
+        status: 'finish'
       },
       {
         path: '/tree-select',
@@ -185,7 +206,8 @@ export default [
     list: [
       {
         path: '/grid',
-        title: 'Grid 宫格'
+        title: 'Grid 宫格',
+        status: 'finish'
       },
       {
         path: '/index-bar',

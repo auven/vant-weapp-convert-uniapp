@@ -9,6 +9,7 @@
         @tap="onClick(item)"
       >
         {{ item.title }}
+        <span v-if="item.status === 'finish'" style="margin-left: 10px; line-height: inherit"><van-tag type="success">完成</van-tag></span>
         <van-icon name="arrow" :custom-style="demoHomeNavIcon" />
       </view>
     </view>
@@ -17,9 +18,11 @@
 
 <script>
 import VanIcon from '@/packages/van-icon/van-icon'
+import VanTag from '@/packages/van-tag/van-tag'
 export default {
   components: {
-    VanIcon
+    VanIcon,
+    VanTag
   },
   props: {
     group: Object
