@@ -71,6 +71,7 @@ export default {
         }])} ${border ? 'van-hairline--surround' : ''}`
       },
       gridGutter() {
+        console.log('computed this.vanGrid', this.vanGrid)
         return this.vanGrid ? this.vanGrid.gutter : null
       },
       gridSquare() {

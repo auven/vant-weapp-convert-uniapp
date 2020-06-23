@@ -8,6 +8,8 @@
 
 ### 安装
 
+> 注意：如果开发 app 的，请使用 alpha 版的 uni-app 依赖库。因为正式版会出现这个问题[App v-for 渲染组件报错（alpha 版已修复）](https://github.com/dcloudio/uni-app/issues/1820)
+
 ```bash
 npm i vant-weapp-convert-uniapp -S
 npm i less less-loader -D
@@ -125,5 +127,5 @@ export default {
 - `van-overlay` 组件样式得在全局引入，不然会出现嵌套组件里的样式不生效
 - 支付宝小程序不支持在组件上加 `click` `touchmove` 等事件
 - 支付宝小程序不支持 `.stop.prevent` 事件修饰符
-- [【列表渲染重大bug】列表内嵌自定义组件的话出现异常复用问题](https://github.com/dcloudio/uni-app/issues/1746) ，app 会出现这个问题，目前正式版尚未修复。。。
+- [App v-for 渲染组件报错（alpha 版已修复）](https://github.com/dcloudio/uni-app/issues/1820) ，app 会出现这个问题，目前正式版尚未修复。。。所以请使用 alpha 版吧。。。
 - 头条小程序在 computed 中拿不到 inject 进来的父组件的相关数据
