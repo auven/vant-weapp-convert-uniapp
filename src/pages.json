@@ -138,6 +138,12 @@
       "style": {
         "navigationBarTitleText": "ActionSheet 上拉菜单"
       }
+    },
+    {
+      "path": "pages/dialog/index",
+      "style": {
+        "navigationBarTitleText": "Dialog 弹出框"
+      }
     }
   ],
   "globalStyle": {

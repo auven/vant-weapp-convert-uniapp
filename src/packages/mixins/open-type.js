@@ -5,7 +5,7 @@ export const openType = {
 
   methods: {
     bindGetUserInfo(event) {
-      this.$emit('getuserinfo', event.detail)
+      this.$emit('getuserinfo', event)
     },
 
     bindContact(event) {

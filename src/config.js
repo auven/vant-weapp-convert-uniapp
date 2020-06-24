@@ -109,7 +109,8 @@ export default [
       },
       {
         path: '/dialog',
-        title: 'Dialog 弹出框'
+        title: 'Dialog 弹出框',
+        status: 'finish'
       },
       {
         path: '/dropdown-menu',
