@@ -144,6 +144,12 @@
       "style": {
         "navigationBarTitleText": "Dialog 弹出框"
       }
+    },
+    {
+      "path": "pages/toast/index",
+      "style": {
+        "navigationBarTitleText": "Toast 轻提示"
+      }
     }
   ],
   "globalStyle": {

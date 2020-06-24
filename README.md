@@ -74,13 +74,13 @@ export default {
   - [ ] Uploader 文件上传 `van-uploader`
 - 反馈组件
   - [x] ActionSheet 上拉菜单 `van-action-sheet`
-  - [ ] Dialog 弹出框 `van-dialog`
+  - [x] Dialog 弹出框 `van-dialog`
   - [ ] DropdownMenu 下拉菜单 `van-dropdown-menu` `van-dropdown-item`
   - [x] Loading 加载 `van-loading`
   - [ ] Notify 消息提示 `van-notify`
   - [x] Overlay 遮罩层 `van-overlay`
   - [ ] SwipeCell 滑动单元格 `van-swipe-cell`
-  - [ ] Toast 轻提示 `van-toast`
+  - [x] Toast 轻提示 `van-toast`
 - 展示组件
   - [x] Circle 环形进度条 `van-circle`
   - [ ] Collapse 折叠面板 `van-collapse` `van-collapse-item`

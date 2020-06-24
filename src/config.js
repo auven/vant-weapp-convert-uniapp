@@ -136,7 +136,8 @@ export default [
       },
       {
         path: '/toast',
-        title: 'Toast 轻提示'
+        title: 'Toast 轻提示',
+        status: 'finish'
       }
     ]
   },

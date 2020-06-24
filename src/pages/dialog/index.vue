@@ -1,7 +1,7 @@
 <template>
   <div>
     <demo-block title="提示弹窗" padding>
-      <van-button type="primary" class="demo-margin-right" @click="onClickAlert">
+      <van-button type="primary" custom-class="demo-margin-right" @click="onClickAlert">
         提示弹窗
       </van-button>
       <van-button type="primary" @click="onClickAlert2">

@@ -323,7 +323,6 @@ export default {
       },
 
       onClose(action) {
-        console.log('哈哈哈', action)
         if (!this.optionsAsyncClose) {
           this.close()
         }
