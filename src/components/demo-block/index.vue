@@ -23,8 +23,6 @@ export default {
 </script>
 
 <style lang="less">
-@import '~@/packages/common/index.less';
-
 .demo-block__title {
   margin: 0;
   font-weight: 400;

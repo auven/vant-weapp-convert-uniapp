@@ -39,5 +39,5 @@ page {
 </style>
 
 <style lang="less">
-@import './styles/vant-weapp.less';
+@import '~@/packages/common/index.less';
 </style>

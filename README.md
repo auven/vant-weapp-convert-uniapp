@@ -34,6 +34,16 @@ plugins.push([
 
 ### 导入组件
 
+第一步，`App.vue` 中导入必要的全局样式
+
+```vue
+<style lang="less">
+@import 'vant-weapp-convert-uniapp/common/index.less';
+</style>
+```
+
+第二步，页面中引入需要的组件
+
 ```vue
 <template>
   <van-button>按钮</van-button>
