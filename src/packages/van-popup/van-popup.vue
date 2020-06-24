@@ -101,6 +101,12 @@ export default {
       closeIconClass: String
     },
 
+    data() {
+      return {
+        currentName: ''
+      }
+    },
+
     computed: {
       popupBodyClass() {
         const { customClass, classes, position, round, safeAreaInsetBottom, safeAreaInsetTop } = this
@@ -141,7 +147,7 @@ export default {
       observeClass() {
         const { transition, position } = this;
 
-        this.name = transition || position
+        this.currentName = transition || position
 
         if (transition === 'none') {
           this.duration = 0

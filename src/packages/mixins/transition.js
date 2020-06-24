@@ -31,7 +31,8 @@ export const transition = function(showDefaultValue) {
         type: '',
         inited: false,
         display: false,
-        classes: ''
+        classes: '',
+        currentName: ''
       }
     },
 
@@ -62,8 +63,8 @@ export const transition = function(showDefaultValue) {
       },
 
       enter() {
-        const { duration, name } = this
-        const classNames = this.getClassNames(name)
+        const { duration, name, currentName } = this
+        const classNames = this.getClassNames(currentName || name)
         const currentDuration = isObj(duration) ? duration.enter : duration
 
         this.status = 'enter'
@@ -95,8 +96,8 @@ export const transition = function(showDefaultValue) {
           return
         }
 
-        const { duration, name } = this
-        const classNames = this.getClassNames(name)
+        const { duration, name, currentName } = this
+        const classNames = this.getClassNames(currentName || name)
         const currentDuration = isObj(duration) ? duration.leave : duration
 
         this.status = 'leave'
