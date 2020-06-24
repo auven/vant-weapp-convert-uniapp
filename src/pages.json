@@ -150,6 +150,12 @@
       "style": {
         "navigationBarTitleText": "Toast 轻提示"
       }
+    },
+    {
+      "path": "pages/checkbox/index",
+      "style": {
+        "navigationBarTitleText": "Checkbox 复选框"
+      }
     }
   ],
   "globalStyle": {

@@ -61,7 +61,7 @@ export default {
   - [x] Transition 动画 `van-transition`
 - 表单组件
   - [ ] Calendar 日历 `van-calendar`
-  - [ ] Checkbox 复选框 `van-checkbox` `van-checkbox-group`
+  - [x] Checkbox 复选框 `van-checkbox` `van-checkbox-group`
   - [ ] DatetimePicker 时间选择 `van-datetime-picker`
   - [ ] Field 输入框 `van-field`
   - [ ] Picker 选择器 `van-picker`
@@ -129,3 +129,4 @@ export default {
 - 支付宝小程序不支持 `.stop.prevent` 事件修饰符
 - [App v-for 渲染组件报错（alpha 版已修复）](https://github.com/dcloudio/uni-app/issues/1820) ，app 会出现这个问题，目前正式版尚未修复。。。所以请使用 alpha 版吧。。。
 - 头条小程序在 computed 中拿不到 inject 进来的父组件的相关数据
+- 支付宝小程序中，嵌套组件里面设置 ref 不生效，参考[pages/checkbox/index.vue](./src/pages/checkbox/index.vue)

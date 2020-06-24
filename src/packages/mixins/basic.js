@@ -2,7 +2,11 @@
 export const basic = {
   props: {
     customClass: String,
-    customStyle: String
+    customStyle: String,
+    componentId: {
+      type: String,
+      default: 'vant-component'
+    }
   },
   methods: {
     getRect(selector, all) {
