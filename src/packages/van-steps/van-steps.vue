@@ -15,11 +15,12 @@
         <view class="van-step__circle-container">
           <block v-if="index !== active">
             <van-icon
-              v-if="inactiveIcon"
+              v-if="item.inactiveIcon || inactiveIcon"
               :color="iconColor"
-              :name="inactiveIcon"
+              :name="item.inactiveIcon || inactiveIcon"
               custom-class="van-step__icon"
               class="van-step__icon"
+              :custom-style="fixIconStyle"
             />
             <view
               v-else
@@ -30,10 +31,11 @@
 
           <van-icon
             v-else
-            :name="activeIcon"
+            :name="item.activeIcon || activeIcon"
             :color="activeColor"
             custom-class="van-step__icon"
             class="van-step__icon"
+            :custom-style="fixIconStyle"
           />
         </view>
         <view
@@ -103,6 +105,13 @@ export default {
       iconColor() {
         const { status, inactiveColor, activeColor } = this
         return `${ status === 'inactive' ? inactiveColor : activeColor }`
+      },
+      fixIconStyle() {
+        let style = ''
+        // #ifdef MP-TOUTIAO
+        style = 'left: 0; top: 0'
+        // #endif
+        return style
       }
     },
     methods: {

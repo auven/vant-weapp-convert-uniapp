@@ -4,6 +4,7 @@
       <van-steps
         :steps="steps"
         :active="active"
+        @click-step="onClick"
         custom-class="demo-margin-bottom"
       />
 
@@ -20,6 +21,13 @@
       />
     </demo-block>
 
+    <demo-block title="自定义图标">
+      <van-steps
+        :steps="customIconSteps"
+        :active="active"
+      />
+    </demo-block>
+
     <demo-block title="竖向步骤条">
       <van-steps
         :steps="steps"
@@ -28,17 +36,6 @@
         active-color="#ee0a24"
       />
     </demo-block>
-
-    <demo-block title="click事件">
-      <van-steps
-        :steps="steps"
-        @click-step="onClick"
-        :active="active"
-        custom-class="demo-margin-bottom"
-      />
-
-      <van-button custom-class="demo-margin-left" @click="nextStep">下一步</van-button>
-    </demo-block>
   </div>
 </template>
 
@@ -46,6 +43,25 @@
 import DemoBlock from '@/components/demo-block/index'
 import VanButton from '@/packages/van-button/van-button'
 import VanSteps from '@/packages/van-steps/van-steps'
+import icons from '../icon/config'
+const steps = [
+  {
+    text: '步骤一',
+    desc: '描述信息',
+  },
+  {
+    text: '步骤二',
+    desc: '描述信息',
+  },
+  {
+    text: '步骤三',
+    desc: '描述信息',
+  },
+  {
+    text: '步骤四',
+    desc: '描述信息',
+  },
+]
 export default {
   components: {
     DemoBlock,
@@ -55,24 +71,12 @@ export default {
   data() {
     return {
       active: 1,
-      steps: [
-        {
-          text: '步骤一',
-          desc: '描述信息'
-        },
-        {
-          text: '步骤二',
-          desc: '描述信息'
-        },
-        {
-          text: '步骤三',
-          desc: '描述信息'
-        },
-        {
-          text: '步骤四',
-          desc: '描述信息'
-        }
-      ]
+      steps,
+      customIconSteps: steps.map((item, index) => ({
+        ...item,
+        inactiveIcon: icons.outline[index],
+        activeIcon: icons.basic[index],
+      }))
     }
   },
   methods: {

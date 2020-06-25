@@ -83,7 +83,6 @@ export default VantComponent({
 
   data() {
     return {
-      hoverColor: BLUE,
       uid: 0
     }
   },
@@ -94,6 +93,11 @@ export default VantComponent({
     },
     size() {
       this.drawCircle(this.currentValue)
+    },
+    color() {
+      this.setHoverColor().then(() => {
+        this.drawCircle(this.currentValue)
+      })
     }
   },
 
@@ -101,12 +105,10 @@ export default VantComponent({
     this.uid = this._uid
     const { value } = this
     this.currentValue = value
-    console.log(this.circleId)
   },
 
   mounted() {
-    this.$nextTick(() => {
-      this.setHoverColor()
+    this.setHoverColor().then(() => {
       this.drawCircle(this.currentValue)
     })
   },
@@ -117,7 +119,7 @@ export default VantComponent({
 
   methods: {
     getContext() {
-      const { type } = this
+      const { type, size } = this
       const defaultContext = () => {
         const ctx = uni.createCanvasContext(this.circleId, this)
         return Promise.resolve(ctx)
@@ -133,14 +135,19 @@ export default VantComponent({
           .createSelectorQuery()
           .in(this)
           .select(`#${this.circleId}`)
-          .fields({ node: true, size: true })
+          .node()
           .exec(res => {
             const canvas = res[0].node
             const ctx = canvas.getContext(type)
-            const dpr = uni.getSystemInfoSync().pixelRatio
-            canvas.width = res[0].width * dpr
-            canvas.height = res[0].height * dpr
-            ctx.scale(dpr, dpr)
+
+            if (!this.inited) {
+              const dpr = uni.getSystemInfoSync().pixelRatio
+              this.inited = true
+              canvas.width = size * dpr
+              canvas.height = size * dpr
+              ctx.scale(dpr, dpr)
+            }
+
             resolve(adaptor(ctx))
           })
       })
@@ -153,20 +160,21 @@ export default VantComponent({
 
     setHoverColor() {
       const { color, size } = this
-      let hoverColor = color
 
-      this.getContext().then(context => {
-        if (isObj(color)) {
+      if (isObj(color)) {
+        return this.getContext().then((context) => {
           const LinearColor = context.createLinearGradient(size, 0, 0, 0)
           Object.keys(color)
             .sort((a, b) => parseFloat(a) - parseFloat(b))
-            .map(key =>
+            .map((key) =>
               LinearColor.addColorStop(parseFloat(key) / 100, color[key])
             )
-          hoverColor = LinearColor
-        }
-        this.hoverColor = hoverColor
-      })
+          this.hoverColor = LinearColor
+        })
+      }
+
+      this.hoverColor = color
+      return Promise.resolve()
     },
     presetCanvas(context, strokeStyle, beginAngle, endAngle, fill) {
       const { strokeWidth, lineCap, clockwise, size } = this

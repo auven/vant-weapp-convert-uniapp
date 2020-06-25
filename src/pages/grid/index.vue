@@ -27,14 +27,15 @@
     </demo-block>
 
     <demo-block title="格子间距">
-      <van-grid :gutter="gutter" :column-num="columnNum">
+      <van-grid :gutter="gutter" :column-num="columnNum" :direction="direction">
         <van-grid-item icon="photo-o" text="文字" v-for="(item, index) in array8" :key="item" :item-index="index" />
       </van-grid>
     </demo-block>
 
     <div style="padding: 15px">
-      <van-button @click="gutter = 20" type="primary" custom-style="margin-right: 15px">修改格子间距</van-button>
-      <van-button @click="columnNum = 2" type="primary">修改列数</van-button>
+      <van-button @click="toggleGutter" type="primary" custom-style="margin-right: 15px">修改格子间距</van-button>
+      <van-button @click="toggleColumnNum" type="primary" custom-style="margin-right: 15px">修改列数</van-button>
+      <van-button @click="toggleDirection" type="primary">修改横向竖向</van-button>
     </div>
 
     <demo-block title="内容横排">
@@ -78,7 +79,19 @@ export default {
       array6: [0, 1, 2, 3, 4, 5],
       array8: [0, 1, 2, 3, 4, 5, 6, 7],
       gutter: 10,
-      columnNum: 4
+      columnNum: 4,
+      direction: 'vertical'
+    }
+  },
+  methods: {
+    toggleDirection() {
+      this.direction = this.direction === 'vertical' ? 'horizontal' : 'vertical'
+    },
+    toggleColumnNum() {
+      this.columnNum = this.columnNum === 4 ? 2 : 4
+    },
+    toggleGutter() {
+      this.gutter = this.gutter === 10 ? 20 : 10
     }
   }
 }

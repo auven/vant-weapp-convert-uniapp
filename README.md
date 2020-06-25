@@ -1,6 +1,6 @@
 # vant-weapp-convert-uniapp
 
-将 [`vant-weapp`](https://github.com/youzan/vant-weapp) 转化成 [`uniapp`](https://uniapp.dcloud.io/) 组件，目前基于 `vant-weapp@1.3.2` 版本进行转化。
+将 [`vant-weapp`](https://github.com/youzan/vant-weapp) 转化成 [`uniapp`](https://uniapp.dcloud.io/) 组件，目前基于 `vant-weapp@1.3.3` 版本进行转化。
 
 ## 使用
 
@@ -144,3 +144,4 @@ export default {
 - 支付宝里会出现这个问题，[父子组件使用props传值，支付宝小程序中出现错误](https://github.com/dcloudio/uni-app/issues/1378)，出现问题的代码文件参考[pages/sticky/index.vue](./src/pages/sticky/index.vue)
 - 小程序中不能将 vue 实例给赋值到 data 变量中
 - 头条小程序 van-tabs 的 animated 设置为 true 后样式有点问题
+- van-tab 必须设置 index 。
