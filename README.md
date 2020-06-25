@@ -59,7 +59,7 @@ export default {
 </script>
 ```
 
-## 转化进度 (22/49)
+## 转化进度 (26/49)
 
 - 基础组件
   - [x] Button 按钮 `van-button`
@@ -101,7 +101,7 @@ export default {
   - [x] Progress 进度条 `van-progress`
   - [ ] Skeleton 骨架屏 `van-skeleton`
   - [x] Steps 步骤条 `van-steps`
-  - [ ] Sticky 粘性布局 `van-sticky`
+  - [x] Sticky 粘性布局 `van-sticky`
   - [x] Tag 标签 `van-tag`
   - [ ] TreeSelect 分类选择 `van-tree-select`
 - 导航组件
@@ -140,3 +140,5 @@ export default {
 - [App v-for 渲染组件报错（alpha 版已修复）](https://github.com/dcloudio/uni-app/issues/1820) ，app 会出现这个问题，目前正式版尚未修复。。。所以请使用 alpha 版吧。。。
 - 头条小程序在 computed 中拿不到 inject 进来的父组件的相关数据
 - 支付宝小程序中，嵌套组件里面设置 ref 不生效，参考[pages/checkbox/index.vue](./src/pages/checkbox/index.vue)
+- 小程序 props 没办法传递 function
+- 支付宝里会出现这个问题，[父子组件使用props传值，支付宝小程序中出现错误](https://github.com/dcloudio/uni-app/issues/1378)，出现问题的代码文件参考[pages/sticky/index.vue](./src/pages/sticky/index.vue)

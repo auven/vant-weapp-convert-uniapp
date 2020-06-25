@@ -50,7 +50,8 @@ export default [
       },
       {
         path: '/checkbox',
-        title: 'Checkbox 复选框'
+        title: 'Checkbox 复选框',
+        status: 'finish'
       },
       {
         path: '/datetime-picker',
@@ -189,7 +190,8 @@ export default [
       },
       {
         path: '/sticky',
-        title: 'Sticky 粘性布局'
+        title: 'Sticky 粘性布局',
+        status: 'finish'
       },
       {
         path: '/tag',

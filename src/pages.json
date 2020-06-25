@@ -156,6 +156,12 @@
       "style": {
         "navigationBarTitleText": "Checkbox 复选框"
       }
+    },
+    {
+      "path": "pages/sticky/index",
+      "style": {
+        "navigationBarTitleText": "Sticky 粘性布局"
+      }
     }
   ],
   "globalStyle": {

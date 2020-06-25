@@ -4,6 +4,7 @@ function getCurrentPage() {
 }
 
 function onPageScroll(event) {
+  console.log('页面滚动执行', event)
   const { vanPageScroller = [] } = getCurrentPage()
 
   vanPageScroller.forEach(scroller => {
@@ -14,7 +15,7 @@ function onPageScroll(event) {
 }
 
 export const pageScrollMixin = scroller => ({
-  attached() {
+  created() {
     const page = getCurrentPage()
 
     if (Array.isArray(page.vanPageScroller)) {
@@ -26,10 +27,10 @@ export const pageScrollMixin = scroller => ({
           : [scroller.bind(this)]
     }
 
-    page.onPageScroll = onPageScroll
+    // page.onPageScroll = onPageScroll
   },
 
-  detached() {
+  destroyed() {
     const page = getCurrentPage()
     page.vanPageScroller = (page.vanPageScroller || []).filter(
       item => item !== scroller
