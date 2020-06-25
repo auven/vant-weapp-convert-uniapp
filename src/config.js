@@ -227,7 +227,8 @@ export default [
       },
       {
         path: '/tab',
-        title: 'Tab 标签页'
+        title: 'Tab 标签页',
+        status: 'finish'
       },
       {
         path: '/tabbar',

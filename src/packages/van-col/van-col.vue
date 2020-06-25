@@ -37,7 +37,7 @@ export default VantComponent({
 
   methods: {
     setGutter() {
-      if (this.vanRow.gutter) {
+      if (this.vanRow && this.vanRow.gutter) {
         const padding = `${this.vanRow.gutter / 2}px`
         const viewStyle = this.vanRow.gutter
           ? `padding-left: ${padding}; padding-right: ${padding};`

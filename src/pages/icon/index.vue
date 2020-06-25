@@ -1,26 +1,59 @@
 <template>
-  <div>
-    <van-button @click="active = 0">用法示例</van-button>
-    <van-button @click="active = 1">基础图标</van-button>
-    <van-button @click="active = 2">线框风格</van-button>
-    <van-button @click="active = 3">实底风格</van-button>
-    <div v-if="active === 0" title="用法示例" class="demo-tab-pane">
+  <van-tabs
+    :active="active"
+    color="#1989fa"
+    @change="onSwitch"
+  >
+    <van-tab :index="0" title="用法示例" custom-class="demo-tab-pane">
       <demo-block title="基础用法">
-        <van-col custom-class="col" span="6">
-          <van-icon :name="demoIcon" size="32px" custom-class="icon" />
+        <van-col
+          custom-class="col"
+          span="6"
+        >
+          <van-icon
+            :name="demoIcon"
+            size="32px"
+            custom-class="icon"
+          />
         </van-col>
-        <van-col custom-class="col" span="6">
-          <van-icon :name="demoImage" size="32px" custom-class="icon" />
+        <van-col
+          custom-class="col"
+          span="6"
+        >
+          <van-icon
+            :name="demoImage"
+            size="32px"
+            custom-class="icon"
+          />
         </van-col>
       </demo-block>
       <demo-block title="提示信息">
-        <van-col custom-class="col" span="6">
-          <van-icon :name="demoIcon" size="32px" custom-class="icon" dot />
+        <van-col
+          custom-class="col"
+          span="6"
+        >
+          <van-icon
+            :name="demoIcon"
+            size="32px"
+            custom-class="icon"
+            dot
+          />
         </van-col>
-        <van-col custom-class="col" span="6">
-          <van-icon :name="demoIcon" size="32px" custom-class="icon" info="9" />
+        <van-col
+          custom-class="col"
+          span="6"
+        >
+          <van-icon
+            :name="demoIcon"
+            size="32px"
+            custom-class="icon"
+            info="9"
+          />
         </van-col>
-        <van-col custom-class="col" span="6">
+        <van-col
+          custom-class="col"
+          span="6"
+        >
           <van-icon
             :name="demoIcon"
             size="32px"
@@ -30,7 +63,10 @@
         </van-col>
       </demo-block>
       <demo-block title="图标颜色">
-        <van-col custom-class="col" span="6">
+        <van-col
+          custom-class="col"
+          span="6"
+        >
           <van-icon
             :name="demoIcon"
             size="32px"
@@ -38,7 +74,10 @@
             color="#1989fa"
           />
         </van-col>
-        <van-col custom-class="col" span="6">
+        <van-col
+          custom-class="col"
+          span="6"
+        >
           <van-icon
             :name="demoIcon"
             size="32px"
@@ -48,48 +87,74 @@
         </van-col>
       </demo-block>
       <demo-block title="图标大小">
-        <van-col custom-class="col" span="6">
-          <van-icon :name="demoIcon" size="40" custom-class="icon" />
+        <van-col
+          custom-class="col"
+          span="6"
+        >
+          <van-icon
+            :name="demoIcon"
+            size="40"
+            custom-class="icon"
+          />
         </van-col>
-        <van-col custom-class="col" span="6">
-          <van-icon :name="demoIcon" size="3rem" custom-class="icon" />
+        <van-col
+          custom-class="col"
+          span="6"
+        >
+          <van-icon
+            :name="demoIcon"
+            size="3rem"
+            custom-class="icon"
+          />
         </van-col>
       </demo-block>
-    </div>
-    <div v-if="active === 1" title="基础图标" class="demo-tab-pane">
+    </van-tab>
+    <van-tab :index="1" title="基础图标" custom-class="demo-tab-pane">
       <van-col
         v-for="(item, index) in icons.basic"
         :key="index"
         custom-class="col"
         span="6"
       >
-        <van-icon :name="item" size="32px" class="icon" />
+        <van-icon
+          :name="item"
+          size="32px"
+          custom-class="icon"
+        />
         <view class="text">{{ item }}</view>
       </van-col>
-    </div>
-    <div v-if="active === 2" title="线框风格" class="demo-tab-pane">
+    </van-tab>
+    <van-tab :index="2" title="线框风格" custom-class="demo-tab-pane">
       <van-col
         v-for="(item, index) in icons.outline"
         :key="index"
         custom-class="col"
         span="6"
       >
-        <van-icon :name="item" size="32px" class="icon" />
+        <van-icon
+          :name="item"
+          size="32px"
+          custom-class="icon"
+        />
         <view class="text">{{ item }}</view>
       </van-col>
-    </div>
-    <div v-if="active === 3" title="实底风格" class="demo-tab-pane">
+    </van-tab>
+    <van-tab :index="3" title="实底风格" custom-class="demo-tab-pane">
       <van-col
         v-for="(item, index) in icons.filled"
         :key="index"
         custom-class="col"
         span="6"
       >
-        <van-icon :name="item" size="32px" custom-class="icon" />
+        <van-icon
+          :name="item"
+          size="32px"
+          custom-class="icon"
+        />
         <view class="text">{{ item }}</view>
       </van-col>
-    </div>
-  </div>
+    </van-tab>
+  </van-tabs>
 </template>
 
 <script>
@@ -97,13 +162,15 @@ import icons from './config'
 import DemoBlock from '@/components/demo-block'
 import VanCol from '@/packages/van-col/van-col'
 import VanIcon from '@/packages/van-icon/van-icon'
-import VanButton from '@/packages/van-button/van-button'
+import VanTabs from '@/packages/van-tabs/van-tabs'
+import VanTab from '@/packages/van-tab/van-tab'
 export default {
   components: {
     DemoBlock,
     VanCol,
     VanIcon,
-    VanButton
+    VanTabs,
+    VanTab
   },
   data() {
     return {
@@ -114,8 +181,8 @@ export default {
     }
   },
   methods: {
-    onSwitch(event) {
-      this.active = event.detail.index
+    onSwitch(detail) {
+      this.active = detail.index
     }
   }
 }
@@ -124,7 +191,6 @@ export default {
 <style>
 page {
   padding-bottom: 0;
-  background: #fff;
 }
 
 .col {
@@ -152,5 +218,6 @@ page {
 .demo-tab-pane {
   margin: 20px;
   background-color: #fff;
+  width: auto !important;
 }
 </style>

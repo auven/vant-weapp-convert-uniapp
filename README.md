@@ -59,7 +59,7 @@ export default {
 </script>
 ```
 
-## 转化进度 (26/49)
+## 转化进度 (27/49)
 
 - 基础组件
   - [x] Button 按钮 `van-button`
@@ -109,7 +109,7 @@ export default {
   - [ ] IndexBar 索引栏 `van-index-bar` `van-index-anchor`
   - [ ] Sidebar 侧边导航 `van-sidebar` `van-sidebar-item`
   - [ ] NavBar 导航栏 `van-nav-bar`
-  - [ ] Tab 标签页 `van-tab` `van-tabs`
+  - [x] Tab 标签页 `van-tab` `van-tabs` （转化得我要吐血，难搞）
   - [ ] Tabbar 标签栏 `van-tabbar` `van-tabbar-item`
 - 业务组件
   - [ ] Area 省市区选择 `van-area`
@@ -125,7 +125,7 @@ export default {
 - 支付宝小程序
 - 百度小程序
 - H5
-- APP（个别组件有问题后续处理）
+- APP
 
 ## 一些问题
 
@@ -142,3 +142,5 @@ export default {
 - 支付宝小程序中，嵌套组件里面设置 ref 不生效，参考[pages/checkbox/index.vue](./src/pages/checkbox/index.vue)
 - 小程序 props 没办法传递 function
 - 支付宝里会出现这个问题，[父子组件使用props传值，支付宝小程序中出现错误](https://github.com/dcloudio/uni-app/issues/1378)，出现问题的代码文件参考[pages/sticky/index.vue](./src/pages/sticky/index.vue)
+- 小程序中不能将 vue 实例给赋值到 data 变量中
+- 头条小程序 van-tabs 的 animated 设置为 true 后样式有点问题

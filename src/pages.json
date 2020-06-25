@@ -162,6 +162,12 @@
       "style": {
         "navigationBarTitleText": "Sticky 粘性布局"
       }
+    },
+    {
+      "path": "pages/tab/index",
+      "style": {
+        "navigationBarTitleText": "Tab 标签页"
+      }
     }
   ],
   "globalStyle": {

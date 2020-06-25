@@ -20,7 +20,7 @@ export default VantComponent({
   computed: {
     wrapClass() {
       const { dot } = this
-      return `custom-class van-info ${ utils.bem('info', { dot }) }`
+      return `custom-class ${this.customClass} van-info ${ utils.bem('info', { dot }) }`
     }
   }
 })
