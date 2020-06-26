@@ -1,6 +1,18 @@
 # vant-weapp-convert-uniapp
 
-将 [`vant-weapp`](https://github.com/youzan/vant-weapp) 转化成 [`uniapp`](https://uniapp.dcloud.io/) 组件，目前基于 `vant-weapp@1.3.3` 版本进行转化。
+将 [`vant-weapp`](https://github.com/youzan/vant-weapp) 转化成 [`uniapp`](https://uniapp.dcloud.io/) 组件，目前基于 `vant-weapp@1.3.3` 版本进行转化。**我不生产代码，我只是代码的搬运工。给同样喜欢 vant-weapp 的你，带来便捷的跨端开发体验。**
+
+[在线文档](https://auven.github.io/vant-weapp-convert-uniapp)
+
+## 平台支持
+
+- 微信小程序
+- QQ小程序
+- 头条小程序
+- 支付宝小程序
+- 百度小程序
+- H5
+- APP
 
 ## 使用
 
@@ -117,15 +129,63 @@ export default {
   - [ ] SubmitBar 提交订单栏 `van-submit-bar`
   - [ ] GoodsAction 商品导航 `van-goods-action` `van-goods-action-icon` `van-goods-action-button`
 
-### 平台支持
+### 文档
 
-- 微信小程序
-- QQ小程序
-- 头条小程序
-- 支付宝小程序
-- 百度小程序
-- H5
-- APP
+- 基础组件
+  - [ ] Button 按钮 `van-button`
+  - [ ] Cell 单元格 `van-cell-group` `van-cell`
+  - [ ] Icon 图标 `van-icon`
+  - [ ] Image 图片 `van-image`
+  - [ ] Layout 布局 `van-row` `van-col`
+  - [ ] Popup 弹出层 `van-popup`
+  - [ ] Transition 动画 `van-transition`
+- 表单组件
+  - [ ] Calendar 日历 `van-calendar`
+  - [ ] Checkbox 复选框 `van-checkbox` `van-checkbox-group`
+  - [ ] DatetimePicker 时间选择 `van-datetime-picker`
+  - [ ] Field 输入框 `van-field`
+  - [ ] Picker 选择器 `van-picker`
+  - [ ] Radio 单选框 `van-radio` `van-radio-group`
+  - [ ] Rate 评分 `van-rate`
+  - [ ] Search 搜索 `van-search`
+  - [ ] Slider 滑块 `van-slider`
+  - [ ] Stepper 步进器 `van-stepper`
+  - [ ] Switch 开关 `van-switch`
+  - [ ] Uploader 文件上传 `van-uploader`
+- 反馈组件
+  - [ ] ActionSheet 上拉菜单 `van-action-sheet`
+  - [ ] Dialog 弹出框 `van-dialog`
+  - [ ] DropdownMenu 下拉菜单 `van-dropdown-menu` `van-dropdown-item`
+  - [ ] Loading 加载 `van-loading`
+  - [ ] Notify 消息提示 `van-notify`
+  - [ ] Overlay 遮罩层 `van-overlay`
+  - [ ] SwipeCell 滑动单元格 `van-swipe-cell`
+  - [ ] Toast 轻提示 `van-toast`
+- 展示组件
+  - [ ] Circle 环形进度条 `van-circle`
+  - [ ] Collapse 折叠面板 `van-collapse` `van-collapse-item`
+  - [ ] CountDown 倒计时 `van-count-down`
+  - [ ] Divider 分割线 `van-divider`
+  - [ ] NoticeBar 通告栏 `van-notice-bar`
+  - [ ] Panel 面板 `van-panel`
+  - [ ] Progress 进度条 `van-progress`
+  - [ ] Skeleton 骨架屏 `van-skeleton`
+  - [ ] Steps 步骤条 `van-steps`
+  - [ ] Sticky 粘性布局 `van-sticky`
+  - [ ] Tag 标签 `van-tag`
+  - [ ] TreeSelect 分类选择 `van-tree-select`
+- 导航组件
+  - [ ] Grid 宫格 `van-grid` `van-grid-item`
+  - [ ] IndexBar 索引栏 `van-index-bar` `van-index-anchor`
+  - [ ] Sidebar 侧边导航 `van-sidebar` `van-sidebar-item`
+  - [ ] NavBar 导航栏 `van-nav-bar`
+  - [ ] Tab 标签页 `van-tab` `van-tabs` （转化得我要吐血，难搞）
+  - [ ] Tabbar 标签栏 `van-tabbar` `van-tabbar-item`
+- 业务组件
+  - [ ] Area 省市区选择 `van-area`
+  - [ ] Card 商品卡片 `van-card`
+  - [ ] SubmitBar 提交订单栏 `van-submit-bar`
+  - [ ] GoodsAction 商品导航 `van-goods-action` `van-goods-action-icon` `van-goods-action-button`
 
 ## 一些问题
 
