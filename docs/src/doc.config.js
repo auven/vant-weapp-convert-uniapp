@@ -1,6 +1,7 @@
 /* eslint-disable */
 import packageJson from '../../package.json';
 import components from '../../src/config';
+import { isDef } from '../../src/packages/common/utils'
 const { version } = packageJson;
 
 export const github = 'https://github.com/auven/vant-weapp-convert-uniapp';
@@ -53,10 +54,6 @@ export default {
               md: true,
             },
             {
-              path: '/common',
-              title: '内置样式',
-            },
-            {
               path: '/custom-style',
               title: '样式覆盖',
               md: true,
@@ -72,7 +69,7 @@ export default {
     },
     {
       name: '组件',
-      groups: components.map(item => ({ ...item, list: item.list.map(it => ({ ...it, components: true })) })),
+      groups: components.map(item => ({ ...item, list: item.list.map(it => ({ ...it, component: isDef(it.component) ? it.component : true })) })),
     },
   ],
 };

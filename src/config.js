@@ -37,6 +37,12 @@ export default [
         path: '/transition',
         title: 'Transition 动画',
         status: 'finish'
+      },
+      {
+        path: '/common',
+        title: 'Style 内置样式',
+        status: 'finish',
+        component: false
       }
     ]
   },

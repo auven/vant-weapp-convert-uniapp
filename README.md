@@ -27,7 +27,39 @@ npm i vant-weapp-convert-uniapp -S
 npm i less less-loader -D
 ```
 
-### 配置 babel.config.js
+### 使用组件
+
+**第一步，`App.vue` 中导入必要的全局样式（重要）**
+
+```vue
+<style lang="less">
+@import 'vant-weapp-convert-uniapp/common/index.less';
+</style>
+```
+
+**第二步，页面中引入需要的组件，有以下两种方式**
+
+#### easycom 模式（推荐）
+
+配置 src/pages.json
+
+```json
+{
+  ...,
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "van-(.*)": "vant-weapp-convert-uniapp/components/van-$1/van-$1.vue"
+    }
+  }
+}
+```
+
+然后页面中就可以不用 import 组件直接使用了。
+
+#### babel-plugin-import 按需引入
+
+配置 babel.config.js
 
 ```js
 ...
@@ -36,7 +68,7 @@ plugins.push([
   {
     'libraryName': 'vant-weapp-convert-uniapp',
     'customName': (name) => {
-      return `vant-weapp-convert-uniapp/lib/${name}/${name}`
+      return `vant-weapp-convert-uniapp/components/${name}/${name}`
     }
   },
   'vant-weapp-convert-uniapp'
@@ -44,17 +76,7 @@ plugins.push([
 ...
 ```
 
-### 导入组件
-
-第一步，`App.vue` 中导入必要的全局样式
-
-```vue
-<style lang="less">
-@import 'vant-weapp-convert-uniapp/common/index.less';
-</style>
-```
-
-第二步，页面中引入需要的组件
+页面中引入组件
 
 ```vue
 <template>

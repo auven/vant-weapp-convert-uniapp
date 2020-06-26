@@ -3,6 +3,7 @@ node_modules/
 unpackage/
 dist/
 lib/
+/components/
 
 # local env files
 .env.local

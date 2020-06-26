@@ -1,6 +1,6 @@
 {
   "name": "vant-weapp-convert-uniapp",
-  "version": "0.1.0-alpha.7",
+  "version": "0.1.0-alpha.8",
   "repository": {
     "type": "git",
     "url": "https://github.com/auven/vant-weapp-convert-uniapp"
@@ -35,8 +35,8 @@
     "test:ios": "cross-env UNI_PLATFORM=app-plus UNI_OS_NAME=ios jest -i",
     "test:mp-baidu": "cross-env UNI_PLATFORM=mp-baidu jest -i",
     "test:mp-weixin": "cross-env UNI_PLATFORM=mp-weixin jest -i",
-    "build:lib": "node build/build-lib.js lib",
-    "build:npm": "node build/build-lib.js npm",
+    "build:component": "node build/build-component.js lib",
+    "build:npm": "node build/build-component.js npm",
     "release:site": "sh build/release-site.sh",
     "release:preview": "sh build/release-preview.sh"
   },

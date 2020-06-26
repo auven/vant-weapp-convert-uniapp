@@ -2,6 +2,7 @@ build/
 dist/
 node_modules/
 public/
+src/
 babel.config.js
 postcss.config.js
 vue.config.js
@@ -12,3 +13,4 @@ tsconfig.json
 .eslintignore
 .eslintrc.js
 .gitignore
+.commitlintrc.js

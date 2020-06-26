@@ -18,7 +18,7 @@ const registerRoute = () => {
       const component = () =>
         page.md
           ? import(`../markdown/${path}.md`)
-          : page.components
+          : page.component
             ? import(`../../src/packages/van-${path}/README.md`)
             : import(`../../src/packages/${path}/README.md`);
 
@@ -31,7 +31,7 @@ const registerRoute = () => {
         component,
         path: `/${path}`,
         meta: {
-          path: page.md ? path : `/pages/${path}/index`,
+          path: page.md ? path : page.component ? `/packages/van-${path}/demo` : `/packages/${path}/demo`,
           name: page.title,
         },
       });
