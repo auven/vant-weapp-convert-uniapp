@@ -1,0 +1,21 @@
+/**
+ * Entry of basic styles
+ */
+
+@import './style/var.less';
+@import './style/ellipsis.less';
+@import './style/clearfix.less';
+@import './style/hairline.less';
+
+// 不引入会导致异常的
+// #ifdef MP-WEIXIN || MP-QQ || MP-BAIDU
+@import '~@/packages/van-overlay/index.less';
+@import '~@/packages/van-toast/index.less';
+// #endif
+// #ifndef MP-ALIPAY || MP-TOUTIAO || APP-PLUS
+@import '~@/packages/van-dialog/index.less';
+// #endif
+
+// #ifdef MP-WEIXIN
+@import '~@/packages/van-tabs/index.less';
+// #endif
