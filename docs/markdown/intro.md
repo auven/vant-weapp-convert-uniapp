@@ -20,32 +20,8 @@ Vant Weapp 是移动端 Vue 组件库 [Vant](https://github.com/youzan/vant) 的
 
 请参考 [快速上手](#/quickstart)
 
-### 贡献代码
+### 转化原理
 
-使用过程中发现任何问题都可以提 [Issue](https://github.com/youzan/vant-weapp/issues) 给我们，当然，我们也非常欢迎你给我们发 [PR](https://github.com/youzan/vant-weapp/pulls)
+自动化转化不会搞，而且自动化可能会导致挺多没用的代码的，所以只能手动将小程序的写法改成 vue 的写法，并且处理不同平台下的兼容性问题。
 
-### 加入我们
-
-**有赞前端团队**是由一群年轻、皮实、对技术饱含热情的小伙伴组成的，目前共有 100 多名前端工程师，分布在业务中台、电商、零售、美业、资产、赋能等业务线。
-
-我们热爱分享和开源，崇尚用工程师的方式解决问题，因此造了很多工具来解决我们遇到的问题，目前我们维护的开源产品有：
-
-<img src="https://img.yzcdn.cn/public_files/2019/07/22/f4b70763c55c8710c52c667ecf192c05.jpeg" style="width: 320px; height: 303px; box-shadow: none;">
-
-我们正在寻找更多优秀的小伙伴，一起拓展前端技术的边界，期待你的加入！
-
-- <a target="_blank" href="https://app.mokahr.com/apply/youzan/6252#/job/96f5d2c7-e657-4d31-9244-195edc443a7f?_k=jf2141">职位详情</a>（Base: 杭州/深圳）
-- <a target="_blank" href="https://tech.youzan.com/tag/front-end/">团队博客</a>
-- <a target="_blank" href="https://github.com/youzan">开源项目</a>
-
-### 链接
-
-- [意见反馈](https://github.com/youzan/vant-weapp/issues)
-- [加入我们](https://job.youzan.com)
-- [更新日志](#/changelog)
-- [Vue 组件库](https://github.com/youzan/vant)
-- [React 组件库](https://www.youzanyun.com/zanui/zent)
-
-### 开源协议
-
-本项目基于 [MIT](https://zh.wikipedia.org/wiki/MIT%E8%A8%B1%E5%8F%AF%E8%AD%89) 协议，请自由地享受和参与开源
+本身 vant-weapp 就是 vant 的衍生品，里面的写法很多都是从 vant 转化过来的，保留了 vue 的相关写法。

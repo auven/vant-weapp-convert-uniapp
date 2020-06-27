@@ -2,7 +2,7 @@
 
 将 [`vant-weapp`](https://github.com/youzan/vant-weapp) 转化成 [`uniapp`](https://uniapp.dcloud.io/) 组件，目前基于 `vant-weapp@1.3.3` 版本进行转化。**我不生产代码，我只是代码的搬运工。给同样喜欢 vant-weapp 的你，带来便捷的跨端开发体验。**
 
-[在线文档](https://auven.github.io/vant-weapp-convert-uniapp)
+[在线文档](https://auven.github.io/vant-weapp-convert-uniapp)，正在逐渐完善
 
 ## 平台支持
 
