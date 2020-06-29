@@ -6,14 +6,7 @@ Layout 提供了`van-row`和`van-col`两个组件来进行行列布局
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
-
-```json
-"usingComponents": {
-  "van-row": "@vant/weapp/row/index",
-  "van-col": "@vant/weapp/col/index"
-}
-```
+推荐使用 `easycom` 的方式引入，详细介绍见[快速上手](#/quickstart#easycom-mo-shi-tui-jian)
 
 ## 代码演示
 

@@ -157,15 +157,15 @@ export default {
 - 支付宝小程序中 vue 不支持 mixins 带 props 的对象
 - `::before` 和 `::after` 仅微信小程序和App生效
 - 支付宝小程序不支持in(component)，使用无效果
-- `van-grid` 如果设置了 `gutter` ，则 `van-grid-item` 需要设置 `item-index`
 - `van-overlay` 组件样式得在全局引入，不然会出现嵌套组件里的样式不生效
 - 支付宝小程序不支持在组件上加 `click` `touchmove` 等事件
 - 支付宝小程序不支持 `.stop.prevent` 事件修饰符
 - [App v-for 渲染组件报错（alpha 版已修复）](https://github.com/dcloudio/uni-app/issues/1820) ，app 会出现这个问题，目前正式版尚未修复。。。所以请使用 alpha 版吧。。。
 - 头条小程序在 computed 中拿不到 inject 进来的父组件的相关数据
-- 支付宝小程序中，嵌套组件里面设置 ref 不生效，参考[pages/checkbox/index.vue](./src/pages/checkbox/index.vue)
+- 支付宝小程序中，嵌套组件里面设置 ref 不生效，参考[packages/van-checkbox/demo.vue](./src/packages/van-checkbox/demo.vue)
 - 小程序 props 没办法传递 function
-- 支付宝里会出现这个问题，[父子组件使用props传值，支付宝小程序中出现错误](https://github.com/dcloudio/uni-app/issues/1378)，出现问题的代码文件参考[pages/sticky/index.vue](./src/pages/sticky/index.vue)
+- 支付宝里会出现这个问题，[父子组件使用props传值，支付宝小程序中出现错误](https://github.com/dcloudio/uni-app/issues/1378)，出现问题的代码文件参考[packages/van-sticky/demo.vue](./src/packages/van-sticky/demo.vue)
 - 小程序中不能将 vue 实例给赋值到 data 变量中
 - 头条小程序 van-tabs 的 animated 设置为 true 后样式有点问题
 - van-tab 必须设置 index 。
+- `$vnode` 在小程序端获取不到

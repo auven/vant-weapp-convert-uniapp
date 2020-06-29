@@ -6,12 +6,9 @@
 
 <script>
 import { VantComponent } from '../common/component'
+import { ParentMixin } from '../mixins/relation'
 export default VantComponent({
-  provide() {
-    return {
-      vanRow: this
-    }
-  },
+  mixins: [ParentMixin('vanRow')],
   props: {
     gutter: [String, Number]
   },

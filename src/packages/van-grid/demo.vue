@@ -14,21 +14,21 @@
 
     <demo-block title="自定义内容">
       <van-grid column-num="3" :border="false">
-        <van-grid-item use-slot v-for="index in array3" :key="index">
-          <image style="width: 100%; height: 90px;" :src="`https://img.yzcdn.cn/vant/apple-${ index + 1 }.jpg`" />
+        <van-grid-item use-slot v-for="n in 3" :key="n">
+          <image style="width: 100%; height: 90px;" :src="`https://img.yzcdn.cn/vant/apple-${ n + 1 }.jpg`" />
         </van-grid-item>
       </van-grid>
     </demo-block>
 
     <demo-block title="正方形格子">
       <van-grid square>
-        <van-grid-item icon="photo-o" text="文字" v-for="item in array8" :key="item" />
+        <van-grid-item icon="photo-o" text="文字" v-for="n in 8" :key="n" />
       </van-grid>
     </demo-block>
 
     <demo-block title="格子间距">
       <van-grid :gutter="gutter" :column-num="columnNum" :direction="direction">
-        <van-grid-item icon="photo-o" text="文字" v-for="(item, index) in array8" :key="item" :item-index="index" />
+        <van-grid-item icon="photo-o" text="文字" v-for="n in 8" :key="n" />
       </van-grid>
     </demo-block>
 

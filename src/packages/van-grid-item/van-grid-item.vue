@@ -23,24 +23,23 @@ import { link } from '../mixins/link'
 import { VantComponent } from '../common/component'
 import { addUnit } from '../common/utils'
 import VanIcon from '../van-icon/van-icon'
+import { ChildrenMixin } from '../mixins/relation'
 const utils = require('../wxs/utils')
 export default {
   name: 'VanGridItem',
   components: {
     VanIcon
   },
-  inject: ['vanGrid'],
   ...VantComponent({
     classes: ['content-class', 'icon-class', 'text-class'],
-    mixins: [link],
+    mixins: [link, ChildrenMixin('vanGrid')],
     props: {
       icon: String,
       dot: Boolean,
       info: null,
       badge: null,
       text: String,
-      useSlot: Boolean,
-      itemIndex: Number
+      useSlot: Boolean
     },
     data() {
       return {
@@ -120,7 +119,14 @@ export default {
       },
       gridIconSize() {
         this.updateStyle()
+      },
+      // #ifdef MP-ALIPAY
+      parentChildren() {
+        if (this.gutter) {
+          this.updateStyle()
+        }
       }
+      // #endif
     },
 
     created() {
@@ -144,7 +150,13 @@ export default {
           const gutterValue = addUnit(gutter)
           styleWrapper.push(`padding-right: ${gutterValue}`)
 
-          const index = this.itemIndex
+          let index
+          // #ifndef MP-TOUTIAO
+          index = this.index
+          // #endif
+          // #ifdef MP-TOUTIAO
+          index = this._getIndex()
+          // #endif
           if (index >= columnNum && !square) {
             styleWrapper.push(`margin-top: ${gutterValue}`)
           }

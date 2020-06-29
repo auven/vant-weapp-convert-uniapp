@@ -9,6 +9,7 @@
 
 <script>
 import { VantComponent } from '../common/component'
+import { ChildrenMixin } from '../mixins/relation'
 const utils = require('../wxs/utils')
 export default VantComponent({
   name: 'VanCol',
@@ -16,7 +17,7 @@ export default VantComponent({
     span: [Number, String],
     offset: [Number, String]
   },
-  inject: ['vanRow'],
+  mixins: [ChildrenMixin('vanRow')],
 
   data() {
     return {

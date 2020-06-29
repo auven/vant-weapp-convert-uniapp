@@ -7,8 +7,10 @@
 <script>
 import { VantComponent } from '../common/component'
 import { addUnit } from '../common/utils'
+import { ParentMixin } from '../mixins/relation'
 export default VantComponent({
   name: 'VanGrid',
+  mixins: [ParentMixin('vanGrid')],
   props: {
     square: {
       type: Boolean
@@ -34,12 +36,6 @@ export default VantComponent({
     },
     direction: String,
     iconSize: String
-  },
-
-  provide() {
-    return {
-      vanGrid: this
-    }
   },
 
   data() {

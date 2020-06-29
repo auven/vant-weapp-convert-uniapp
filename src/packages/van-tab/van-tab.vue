@@ -7,9 +7,10 @@
 <script>
 import utils from '../wxs/utils'
 import { VantComponent } from '../common/component'
+import { ChildrenMixin } from '../mixins/relation'
 export default VantComponent({
   name: 'VanTab',
-  inject: ['vanTabs'],
+  mixins: [ChildrenMixin('vanTabs', { indexKey: 'indexKey' })],
   props: {
     dot: {
       type: Boolean

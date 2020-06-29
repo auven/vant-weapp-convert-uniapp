@@ -73,18 +73,14 @@ import { VantComponent } from '../common/component'
 import { touch } from '../mixins/touch'
 import { isDef, addUnit } from '../common/utils'
 import { getComponentByOptionsName } from '../wxs/get-component'
+import { ParentMixin } from '../mixins/relation'
 export default {
   components: {
     VanInfo,
     VanSticky
   },
   ...VantComponent({
-    provide() {
-      return {
-        vanTabs: this
-      }
-    },
-    mixins: [touch],
+    mixins: [touch, ParentMixin('vanTabs')],
 
     classes: ['nav-class', 'tab-class', 'tab-active-class', 'line-class'],
 
@@ -153,7 +149,6 @@ export default {
 
     data() {
       return {
-        children: [],
         tabs: [],
         lineStyle: '',
         scrollLeft: 0,
@@ -338,6 +333,8 @@ export default {
           )}`
         }))
         this.scrollable = children.length > this.swipeThreshold || !this.ellipsis
+
+        console.log('children', children)
 
         const currentName = this.getCurrentName()
         this.setCurrentIndexByName(isDef(currentName) ? currentName : this.active)

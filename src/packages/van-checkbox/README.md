@@ -2,37 +2,34 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
-
-```json
-"usingComponents": {
-  "van-checkbox": "@vant/weapp/checkbox/index",
-  "van-checkbox-group": "@vant/weapp/checkbox-group/index"
-}
-```
+推荐使用 `easycom` 的方式引入，详细介绍见[快速上手](#/quickstart#easycom-mo-shi-tui-jian)
 
 ## 代码演示
 
 ### 基础用法
 
-通过`value`绑定复选框的勾选状态
+通过`v-model/value`绑定复选框的勾选状态
 
 ```html
-<van-checkbox value="{{ checked }}" bind:change="onChange">复选框</van-checkbox>
-```
+<template>
+  <van-checkbox v-model="checked" @change="onChange">复选框</van-checkbox>
+</template>
 
-```js
-Page({
-  data: {
-    checked: true,
+<script>
+export default {
+  data() {
+    return {
+      checked: true
+    }
   },
 
-  onChange(event) {
-    this.setData({
-      checked: event.detail,
-    });
-  },
-});
+  methods: {
+    onChange() {
+      console.log(this.checked)
+    }
+  }
+}
+</script>
 ```
 
 ### 禁用状态
@@ -40,7 +37,7 @@ Page({
 通过设置`disabled`属性可以禁用复选框
 
 ```html
-<van-checkbox disabled value="{{ checked }}" bind:change="onChange">
+<van-checkbox disabled v-model="checked" @change="onChange">
   复选框
 </van-checkbox>
 ```
@@ -50,7 +47,7 @@ Page({
 将`shape`属性设置为`square`，复选框的形状会变成方形
 
 ```html
-<van-checkbox value="{{ checked }}" shape="square" bind:change="onChange">
+<van-checkbox v-model="checked" shape="square" @change="onChange">
   复选框
 </van-checkbox>
 ```
@@ -61,9 +58,9 @@ Page({
 
 ```html
 <van-checkbox
-  value="{{ checked }}"
+  v-model="checked"
   checked-color="#07c160"
-  bind:change="onChange"
+  @change="onChange"
 >
   复选框
 </van-checkbox>
@@ -74,7 +71,7 @@ Page({
 通过`icon-size`属性可以自定义图标的大小
 
 ```html
-<van-checkbox value="{{ checked }}" icon-size="25px">复选框</van-checkbox>
+<van-checkbox v-model="checked" icon-size="25px">复选框</van-checkbox>
 ```
 
 ### 自定义图标
@@ -82,26 +79,30 @@ Page({
 通过 icon 插槽自定义图标
 
 ```html
-<van-checkbox use-icon-slot value="{{ checked }}" bind:change="onChange">
-  自定义图标
-  <image slot="icon" src="{{ checked ? activeIcon : inactiveIcon }}" />
-</van-checkbox>
-```
+<template>
+  <van-checkbox use-icon-slot v-model="checked" @change="onChange">
+    自定义图标
+    <image slot="icon" :src="checked ? activeIcon : inactiveIcon" />
+  </van-checkbox>
+</template>
 
-```js
-Page({
-  data: {
-    checked: true,
-    activeIcon: '//img.yzcdn.cn/icon-active.png',
-    inactiveIcon: '//img.yzcdn.cn/icon-normal.png',
+<script>
+export default {
+  data() {
+    return {
+      checked: true,
+      activeIcon: '//img.yzcdn.cn/icon-active.png',
+      inactiveIcon: '//img.yzcdn.cn/icon-normal.png',
+    }
   },
 
-  onChange(event) {
-    this.setData({
-      checked: event.detail,
-    });
-  },
-});
+  methods: {
+    onChange() {
+      console.log(this.checked)
+    }
+  }
+}
+</script>
 ```
 
 ### 禁用文本点击
@@ -109,7 +110,7 @@ Page({
 通过设置`label-disabled`属性可以禁用复选框文本点击
 
 ```html
-<van-checkbox value="{{ checked }}" label-disabled>复选框</van-checkbox>
+<van-checkbox v-model="checked" label-disabled>复选框</van-checkbox>
 ```
 
 ### 复选框组
@@ -117,31 +118,35 @@ Page({
 需要与`van-checkbox-group`一起使用，选中值是一个数组，通过`value`绑定在`van-checkbox-group`上，数组中的项即为选中的`Checkbox`的`name`属性设置的值
 
 ```html
-<van-checkbox-group value="{{ result }}" bind:change="onChange">
-  <van-checkbox name="a">复选框 a</van-checkbox>
-  <van-checkbox name="b">复选框 b</van-checkbox>
-  <van-checkbox name="c">复选框 c</van-checkbox>
-</van-checkbox-group>
-```
+<template>
+  <van-checkbox-group v-model="result" @change="onChange">
+    <van-checkbox name="a">复选框 a</van-checkbox>
+    <van-checkbox name="b">复选框 b</van-checkbox>
+    <van-checkbox name="c">复选框 c</van-checkbox>
+  </van-checkbox-group>
+</template>
 
-```javascript
-Page({
-  data: {
-    result: ['a', 'b'],
+<script>
+export default {
+  data() {
+    return {
+      result: ['a', 'b']
+    }
   },
 
-  onChange(event) {
-    this.setData({
-      result: event.detail,
-    });
-  },
-});
+  methods: {
+    onChange() {
+      console.log(this.result)
+    }
+  }
+}
+</script>
 ```
 
 ### 限制最大可选数
 
 ```html
-<van-checkbox-group value="{{ result }}" bind:change="onChange" max="{{ 2 }}">
+<van-checkbox-group v-model="result" @change="onChange" max="2">
   <van-checkbox name="a">复选框 a</van-checkbox>
   <van-checkbox name="b">复选框 b</van-checkbox>
   <van-checkbox name="c">复选框 c</van-checkbox>
@@ -153,54 +158,56 @@ Page({
 此时你需要再引入`Cell`和`CellGroup`组件，并通过 checkbox 的 toggle 方法手动触发切换
 
 ```html
-<van-checkbox-group value="{{ result }}" bind:change="onChange">
-  <van-cell-group>
-    <van-cell
-      wx:for="{{ list }}"
-      wx:key="index"
-      title="复选框 {{ item }}"
-      value-class="value-class"
-      clickable
-      data-index="{{ index }}"
-      bind:click="toggle"
-    >
-      <van-checkbox
-        catch:tap="noop"
-        class="checkboxes-{{ index }}"
-        name="{{ item }}"
-      />
-    </van-cell>
-  </van-cell-group>
-</van-checkbox-group>
-```
+<template>
+  <van-checkbox-group v-model="result" @change="onChange">
+    <van-cell-group>
+      <van-cell
+        v-for="(item, index) in list"
+        :key="item"
+        :title="`复选框 ${ item }`"
+        value-class="value-class"
+        clickable
+        @click="toggle(index)"
+      >
+        <van-checkbox ref="checkboxes" :component-id="`checkboxes-${index}`" :clickable="false" :name="item" />
+      </van-cell>
+    </van-cell-group>
+  </van-checkbox-group>
+</template>
 
-```js
-Page({
-  data: {
-    list: ['a', 'b', 'c'],
-    result: ['a', 'b']
+<script>
+export default {
+  data() {
+    return {
+      list: ['a', 'b', 'c'],
+      result: ['a', 'b']
+    }
   },
 
-  onChange(event) {
-    this.setData({
-      result: event.detail
-    });
+  methods: {
+    onChange() {
+      console.log(this.result)
+    }
+
+    toggle(index) {
+      // #ifdef MP-ALIPAY
+      // 获取组件的辅助工具
+      const $checkboxes = getComponentById(this, `checkboxes-${index}`)[0]
+      $checkboxes.toggle()
+      // #endif
+      // #ifndef MP-ALIPAY
+      this.$refs.checkboxes[index].toggle()
+      // #endif
+    }
   }
+}
+</script>
 
-  toggle(event) {
-    const { index } = event.currentTarget.dataset;
-    const checkbox = this.selectComponent(`.checkboxes-${index}`);
-    checkbox.toggle();
-  },
-
-  noop() {}
-});
-```
-
-```css
+<style>
 .value-class {
   flex: none !important;
 }
+</style>
 ```
 
 ## API
@@ -218,6 +225,8 @@ Page({
 | use-icon-slot | 是否使用 icon slot | _boolean_ | `false` | - |
 | checked-color | 选中状态颜色 | _string_ | `#1989fa` | - |
 | icon-size | icon 大小 | _string \| number_ | `20px` |
+| clickable | 是否可点击 | _boolean_ | `true` | - |
+| component-id | 组件唯一id | _string_ | `vant-component` | - |
 
 ### CheckboxGroup Props
 
@@ -232,7 +241,7 @@ Page({
 
 | 事件名      | 说明                     | 回调参数     |
 | ----------- | ------------------------ | ------------ |
-| bind:change | 当绑定值变化时触发的事件 | 当前组件的值 |
+| @change | 当绑定值变化时触发的事件 | 当前组件的值 |
 
 ### Checkbox 外部样式类
 
@@ -246,7 +255,7 @@ Page({
 
 | 事件名      | 说明                     | 回调参数     |
 | ----------- | ------------------------ | ------------ |
-| bind:change | 当绑定值变化时触发的事件 | 当前组件的值 |
+| @change | 当绑定值变化时触发的事件 | 当前组件的值 |
 
 ### Checkbox Slot
 

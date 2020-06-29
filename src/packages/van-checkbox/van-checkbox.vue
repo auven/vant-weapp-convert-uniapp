@@ -22,6 +22,7 @@
 import utils from '../wxs/utils'
 import VanIcon from '../van-icon/van-icon'
 import { VantComponent } from '../common/component'
+import { ChildrenMixin } from '../mixins/relation'
 function emit(target, value) {
   target.$emit('input', value)
   target.$emit('change', value)
@@ -33,7 +34,7 @@ export default {
   },
 
   ...VantComponent({
-    inject: ['vanCheckboxGroup'],
+    mixins: [ChildrenMixin('vanCheckboxGroup')],
     classes: ['icon-class', 'label-class'],
 
     props: {

@@ -5,12 +5,9 @@
 <script>
 import { VantComponent } from '../common/component'
 import { getComponentByOptionsName } from '../wxs/get-component'
+import { ParentMixin } from '../mixins/relation'
 export default VantComponent({
-  provide() {
-    return {
-      vanCheckboxGroup: this
-    }
-  },
+  mixins: [ParentMixin('vanCheckboxGroup')],
   props: {
     max: [Number, String],
     value: {

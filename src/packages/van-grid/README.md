@@ -6,16 +6,7 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
-
-```json
-"usingComponents": {
-  "van-grid": "@vant/weapp/grid/index",
-  "van-grid-item": "@vant/weapp/grid-item/index"
-}
-```
-
-> Vant Weapp 1.0 版本开始支持此组件，升级方式参见[快速上手](#/quickstart)
+推荐使用 `easycom` 的方式引入，详细介绍见[快速上手](#/quickstart#easycom-mo-shi-tui-jian)
 
 ## 代码演示
 
@@ -38,7 +29,7 @@
 
 ```html
 <van-grid column-num="3">
-  <van-grid-item icon="photo-o" text="文字" wx:for="{{ 6 }}" />
+  <van-grid-item icon="photo-o" text="文字" v-for="n in 6" :key="n" />
 </van-grid>
 ```
 
@@ -47,12 +38,9 @@
 通过插槽可以自定义格子展示的内容
 
 ```html
-<van-grid column-num="3" border="{{ false }}">
-  <van-grid-item use-slot wx:for="{{ 3 }}" wx:for-item="index">
-    <image
-      style="width: 100%; height: 90px;"
-      src="https://img.yzcdn.cn/vant/apple-{{ index + 1 }}.jpg"
-    />
+<van-grid column-num="3" :border="false">
+  <van-grid-item use-slot v-for="n in 3" :key="n">
+    <image style="width: 100%; height: 90px;" :src="`https://img.yzcdn.cn/vant/apple-${ n + 1 }.jpg`" />
   </van-grid-item>
 </van-grid>
 ```
@@ -63,7 +51,7 @@
 
 ```html
 <van-grid square>
-  <van-grid-item icon="photo-o" text="文字" wx:for="{{ 8 }}" />
+  <van-grid-item icon="photo-o" text="文字" v-for="n in 8" :key="n" />
 </van-grid>
 ```
 
@@ -72,8 +60,8 @@
 通过`gutter`属性设置格子之间的距离
 
 ```html
-<van-grid gutter="{{ 10 }}">
-  <van-grid-item icon="photo-o" text="文字" wx:for="{{ 8 }}" />
+<van-grid gutter="10">
+  <van-grid-item icon="photo-o" text="文字" v-for="n in 8" :key="n" />
 </van-grid>
 ```
 
@@ -158,7 +146,7 @@
 
 | 事件名     | 说明           | 回调参数 |
 | ---------- | -------------- | -------- |
-| bind:click | 点击格子时触发 | -        |
+| @click | 点击格子时触发 | -        |
 
 ### GridItem Slots
 
