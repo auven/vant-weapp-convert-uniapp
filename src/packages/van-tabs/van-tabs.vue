@@ -140,11 +140,7 @@ export default {
       lazyRender: {
         type: Boolean,
         default: true
-      },
-      navClass: String,
-      tabClass: String,
-      tabActiveClass: String,
-      lineClass: String
+      }
     },
 
     data() {

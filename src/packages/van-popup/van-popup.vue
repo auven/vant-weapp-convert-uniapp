@@ -97,8 +97,7 @@ export default {
       safeAreaInsetTop: {
         type: Boolean,
         default: false,
-      },
-      closeIconClass: String
+      }
     },
 
     data() {

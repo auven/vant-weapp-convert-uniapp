@@ -11,7 +11,7 @@
         class="van-rate__icon icon-class"
         :style="iconStyle"
         :custom-style="iconStyle"
-        custom-class="icon-class"
+        :custom-class="iconClass"
         :data-score="index"
         :color="disabled ? disabledColor : index + 1 <= innerValue ? color : voidColor"
         @click="onSelect(index)"
@@ -101,7 +101,7 @@ export default {
         return `font-size: ${utils.addUnit(size)}`
       },
       iconHalfClass() {
-        return `icon-class ${utils.bem('rate__icon', ['half'])}`
+        return `icon-class ${this.iconClass} ${utils.bem('rate__icon', ['half'])}`
       }
     },
 

@@ -1,8 +1,6 @@
 // eslint-disable-next-line no-undef
 export const basic = {
   props: {
-    customClass: String,
-    customStyle: String,
     componentId: {
       type: String,
       default: 'vant-component'

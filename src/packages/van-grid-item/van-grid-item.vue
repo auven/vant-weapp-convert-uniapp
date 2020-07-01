@@ -1,15 +1,15 @@
 <template>
   <view :class="wrapClass" :style="viewStyle" @tap="onClick">
-    <view :class="contentClass" :style="contentStyle">
+    <view :class="selfContentClass" :style="contentStyle">
       <block v-if="useSlot">
         <slot />
       </block>
       <block v-else>
-        <view class="van-grid-item__icon icon-class">
+        <view :class="['van-grid-item__icon', 'icon-class', iconClass]">
           <van-icon v-if="icon" :name="icon" :dot="dot" :info="badge || info" :size="iconSize" />
           <slot v-else name="icon"></slot>
         </view>
-        <view class="van-grid-item__text text-class">
+        <view :class="['van-grid-item__text', 'text-class', textClass]">
           <text v-if="text">{{ text }}</text>
           <slot v-else name="text"></slot>
         </view>
@@ -60,9 +60,9 @@ export default {
         const { square, customClass } = this
         return `custom-class ${customClass} ${utils.bem('grid-item', { square })}`
       },
-      contentClass() {
-        const { center, square, clickable, border, gutter, direction } = this
-        return `content-class ${utils.bem('grid-item__content', [direction, {
+      selfContentClass() {
+        const { contentClass, center, square, clickable, border, gutter, direction } = this
+        return `content-class ${contentClass} ${utils.bem('grid-item__content', [direction, {
           center,
           square,
           clickable,

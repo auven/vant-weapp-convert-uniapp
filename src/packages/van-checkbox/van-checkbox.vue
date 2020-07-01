@@ -53,8 +53,6 @@ export default {
         type: null,
         default: 20
       },
-      iconClass: String,
-      labelClass: String,
       clickable: {
         type: Boolean,
         default: true

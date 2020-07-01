@@ -6,6 +6,7 @@
       :mode="mode"
       :lazy-load="lazyLoad"
       class="image-class van-image__img"
+      :class="imageClass"
       :show-menu-by-longpress="showMenuByLongpress"
       @load="onImageLoad"
       @error="onImageError"
@@ -14,11 +15,12 @@
     <view
       v-if="loading && showLoading"
       class="loading-class van-image__loading"
+      :class="loadingClass"
     >
       <slot v-if="useLoadingSlot" name="loading" />
       <van-icon v-else name="photo-o" size="22" />
     </view>
-    <view v-if="error && showError" class="error-class van-image__error">
+    <view v-if="error && showError" class="error-class van-image__error" :class="errorClass">
       <slot v-if="useErrorSlot" name="error" />
       <van-icon v-else name="warning-o" size="22" />
     </view>
@@ -47,7 +49,7 @@ export default {
     VanIcon
   },
   ...VantComponent({
-    classes: ['custom-class', 'loading-class', 'error-class', 'image-class'],
+    classes: ['loading-class', 'error-class', 'image-class'],
     mixins: [button, openType],
     props: {
       src: {

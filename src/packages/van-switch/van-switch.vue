@@ -4,7 +4,7 @@
     :style="wrapStyle"
     @tap="onClick"
   >
-    <view class="van-switch__node node-class">
+    <view class="van-switch__node node-class" :class="nodeClass">
       <van-loading
         v-if="loading"
         :color="loadingColor"

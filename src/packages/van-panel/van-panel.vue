@@ -37,9 +37,7 @@ export default {
       desc: String,
       title: String,
       status: String,
-      useFooterSlot: Boolean,
-      headerClass: String,
-      footerClass: String
+      useFooterSlot: Boolean
     }
   })
 }

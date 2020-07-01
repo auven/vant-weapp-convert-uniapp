@@ -2,7 +2,7 @@
   <view
     class="custom-class"
     :class="cellClass"
-    hover-class="van-cell--hover hover-class"
+    :hover-class="selfHoverClass"
     hover-stay-time="70"
     :style="customStyle"
     @tap="onClick"
@@ -20,11 +20,12 @@
         titleWidth ? 'max-width:' + titleWidth + ';min-width:' + titleWidth : ''
       "
       class="van-cell__title title-class"
+      :class="titleClass"
     >
       <block v-if="title">{{ title }}</block>
       <slot v-else name="title" />
 
-      <view v-if="label || useLabelSlot" class="van-cell__label label-class">
+      <view v-if="label || useLabelSlot" class="van-cell__label label-class" :class="labelClass">
         <slot v-if="useLabelSlot" name="label" />
         <block v-else-if="label">{{ label }}</block>
       </view>
@@ -38,8 +39,8 @@
     <van-icon
       v-if="isLink"
       :name="arrowDirection ? 'arrow' + '-' + arrowDirection : 'arrow'"
-      class="van-cell__right-icon-wrap right-icon-class"
-      custom-class="van-cell__right-icon-wrap right-icon-class van-cell__right-icon"
+      :class="selfRightIconClass"
+      :custom-class="selfRightIconClass"
     />
     <slot v-else name="right-icon" />
 
@@ -83,9 +84,7 @@ export default {
       border: {
         type: Boolean,
         default: true
-      },
-      customClass: String,
-      valueClass: String
+      }
     },
     computed: {
       cellClass() {
@@ -100,6 +99,12 @@ export default {
           }
         ])
         return `${customClass} ${cellClass}`
+      },
+      selfRightIconClass() {
+        return `van-cell__right-icon-wrap right-icon-class van-cell__right-icon ${this.rightIconClass}`
+      },
+      selfHoverClass() {
+        return `van-cell--hover hover-class ${this.hoverClass}`
       }
     },
     methods: {

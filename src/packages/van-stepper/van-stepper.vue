@@ -110,16 +110,16 @@ export default VantComponent({
       return `width: ${ utils.addUnit(buttonSize) }; height: ${ utils.addUnit(buttonSize) }`
     },
     stepperMinusClass() {
-      const { disabled, disableMinus, currentValue, min } = this
-      return `minus-class ${ utils.bem('stepper__minus', { disabled: disabled || disableMinus || currentValue <= min }) }`
+      const { minusClass, disabled, disableMinus, currentValue, min } = this
+      return `minus-class ${minusClass} ${ utils.bem('stepper__minus', { disabled: disabled || disableMinus || currentValue <= min }) }`
     },
     stepperPlusClass() {
-      const { disabled, disablePlus, currentValue, max } = this
-      return `plus-class ${ utils.bem('stepper__plus', { disabled: disabled || disablePlus || currentValue >= max }) }`
+      const { plusClass, disabled, disablePlus, currentValue, max } = this
+      return `plus-class ${plusClass} ${ utils.bem('stepper__plus', { disabled: disabled || disablePlus || currentValue >= max }) }`
     },
     stepperInputClass() {
-      const { disabled, disableInput } = this
-      return `input-class ${ utils.bem('stepper__input', { disabled: disabled || disableInput }) }`
+      const { inputClass, disabled, disableInput } = this
+      return `input-class ${inputClass} ${ utils.bem('stepper__input', { disabled: disabled || disableInput }) }`
     },
     stepperInputStyle() {
       const { inputWidth, buttonSize } = this

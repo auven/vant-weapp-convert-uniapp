@@ -3,7 +3,7 @@
     :id="id"
     :data-detail="dataset"
     :class="buttonClass"
-    hover-class="van-button--active hover-class"
+    :hover-class="btnHoverClass"
     :lang="lang"
     :form-type="formType"
     :style="buttonStyle"
@@ -26,7 +26,7 @@
   >
     <block v-if="loading">
       <van-loading
-        custom-class="loading-class"
+        :custom-class="loadingCustomClass"
         :size="loadingSize"
         :type="loadingType"
         :color="loadingColor(type, color, plain)"
@@ -136,6 +136,12 @@ export default {
       buttonStyle() {
         const { baseStyle, customStyle } = this
         return `${ baseStyle } ${ customStyle }`
+      },
+      btnHoverClass() {
+        return `van-button--active hover-class ${this.hoverClass}`
+      },
+      loadingCustomClass() {
+        return `loading-class ${this.loadingClass}`
       }
     },
 
