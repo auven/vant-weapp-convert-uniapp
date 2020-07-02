@@ -181,7 +181,10 @@
     "backgroundTextStyle": "dark",
     "navigationBarTitleText": "vant-weapp-convert-uniapp",
     "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#F8F8F8",
+    "mp-alipay": {
+      "titleBarColor": "#2ABB9C"
+    }
   },
   "easycom": {
     "autoscan": true,

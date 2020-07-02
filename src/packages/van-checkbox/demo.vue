@@ -159,13 +159,7 @@ export default {
     },
 
     toggle(index) {
-      // #ifdef MP-ALIPAY
-      const $checkboxes = getComponentById(this, `checkboxes-${index}`)[0]
-      $checkboxes.toggle()
-      // #endif
-      // #ifndef MP-ALIPAY
       this.$refs.checkboxes[index].toggle()
-      // #endif
     },
 
     noop() {}

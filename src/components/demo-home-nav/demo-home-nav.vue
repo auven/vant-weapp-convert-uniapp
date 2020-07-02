@@ -9,7 +9,6 @@
         @tap="onClick(item)"
       >
         {{ item.title }}
-        <span v-if="item.status === 'finish'" style="margin-left: 10px; line-height: inherit"><van-tag type="success">完成</van-tag></span>
         <van-icon name="arrow" :custom-style="demoHomeNavIcon" />
       </view>
     </view>
