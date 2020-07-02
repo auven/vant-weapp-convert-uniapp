@@ -87,7 +87,7 @@ export default {
     data() {
       return {
         innerValue: 0,
-        innerCountArray: Array.from({ length: 5 })
+        innerCountArray: new Array(6).fill('')
       }
     },
 
@@ -107,7 +107,7 @@ export default {
 
     created() {
       this.innerValue = this.value
-      this.innerCountArray = Array.from({ length: this.count })
+      this.innerCountArray = new Array(this.count).fill('')
     },
 
     methods: {
