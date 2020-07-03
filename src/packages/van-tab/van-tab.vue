@@ -10,7 +10,7 @@ import { VantComponent } from '../common/component'
 import { ChildrenMixin } from '../mixins/relation'
 export default VantComponent({
   name: 'VanTab',
-  mixins: [ChildrenMixin('vanTabs', { indexKey: 'indexKey' })],
+  mixins: [ChildrenMixin('vanTabs')],
   props: {
     dot: {
       type: Boolean
@@ -30,8 +30,7 @@ export default VantComponent({
     name: {
       type: [Number, String],
       default: ''
-    },
-    index: Number
+    }
   },
 
   data() {
@@ -79,7 +78,12 @@ export default VantComponent({
       if (this.name !== '') {
         return this.name
       }
+      // #ifdef MP-TOUTIAO
+      return this._getIndex()
+      // #endif
+      // #ifndef MP-TOUTIAO
       return this.index
+      // #endif
     },
 
     updateRender(active) {

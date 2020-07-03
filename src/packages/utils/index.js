@@ -13,3 +13,7 @@ export function getCamelCase(str) {
     return item.toUpperCase()
   })
 }
+
+export function sortChildren(children) {
+  children.sort((a, b) => a._uid - b._uid)
+}

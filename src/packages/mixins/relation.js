@@ -1,4 +1,4 @@
-import sortChildren from '../utils/sortChildren'
+import { sortChildren } from '../utils'
 
 export function ChildrenMixin(parent, options = {}) {
   const indexKey = options.indexKey || 'index'

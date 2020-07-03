@@ -6,7 +6,6 @@
           v-for="(item, index) in tabs4"
           :key="index"
           :title="'标签 ' + item"
-          :index="index"
         >
           <view class="content">
             {{ '内容' + item }}
@@ -21,7 +20,6 @@
           v-for="(item, index) in tabsWithName"
           :key="index"
           :name="item.name"
-          :index="index"
           :title="'标签 ' + item.index"
         >
           <view class="content">
@@ -36,7 +34,6 @@
         <van-tab
           v-for="(item, index) in tabs6"
           :key="index"
-          :index="index"
           :title="'标签 ' + item"
         >
           <view class="content">
@@ -52,7 +49,6 @@
           v-for="(item, index) in tabs3"
           :key="index"
           :disabled="index === 1"
-          :index="index"
           :title="'标签 ' + item"
         >
           <view class="content">
@@ -67,7 +63,6 @@
         <van-tab
           v-for="(item, index) in tabs3"
           :key="index"
-          :index="index"
           :title="'标签 ' + item"
         >
           <view class="content-2">
@@ -82,7 +77,6 @@
         <van-tab
           v-for="(item, index) in tabs2"
           :key="index"
-          :index="index"
           :title="'标签 ' + item"
         >
           <view class="content">
@@ -97,7 +91,6 @@
         <van-tab
           v-for="(item, index) in tabs4"
           :key="index"
-          :index="index"
           :title="'标签 ' + item"
         >
           <view class="content">
@@ -112,7 +105,6 @@
         <van-tab
           v-for="(item, index) in tabs4"
           :key="index"
-          :index="index"
           :title="'标签 ' + item"
         >
           <view class="content">
@@ -127,7 +119,6 @@
         <van-tab
           v-for="(item, index) in tabs4"
           :key="index"
-          :index="index"
           :title="'标签 ' + item"
         >
           <view class="content">
@@ -151,7 +142,6 @@
           :title="'标签 ' + item"
           :dot="index === 1"
           :info="index === 2 ? 99 : null"
-          :index="index"
         >
           <view class="content">
             {{ '内容' + item }}

@@ -119,14 +119,7 @@ export default {
       },
       gridIconSize() {
         this.updateStyle()
-      },
-      // #ifdef MP-ALIPAY
-      parentChildren() {
-        if (this.gutter) {
-          this.updateStyle()
-        }
       }
-      // #endif
     },
 
     created() {

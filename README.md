@@ -93,7 +93,7 @@ export default {
 
 ### 注意
 
-- 支付宝小程序需要”启用 component2 编译”，在 `mainfest.json` 的 `mp-alipay` 里设置 `component2` 为 `true`，不然会导致获取不到 `ref`
+- 支付宝小程序需要”启用 component2 编译”，在 `mainfest.json` 的 `mp-alipay` 里设置 `component2` 为 `true`，不然会导致获取不到 `$ref` ，并且组件的 `_uid` 是反序的。
 - 如果开发 app 的，请使用 alpha 版的 uni-app 依赖库。因为正式版会出现这个问题[App v-for 渲染组件报错（alpha 版已修复）](https://github.com/dcloudio/uni-app/issues/1820)
 
 ## 转化进度 (27/49)
@@ -169,5 +169,4 @@ export default {
 - 支付宝里会出现这个问题，[父子组件使用props传值，支付宝小程序中出现错误](https://github.com/dcloudio/uni-app/issues/1378)，出现问题的代码文件参考[packages/van-sticky/demo.vue](./src/packages/van-sticky/demo.vue)
 - 小程序中不能将 vue 实例给赋值到 data 变量中
 - 头条小程序 van-tabs 的 animated 设置为 true 后样式有点问题
-- van-tab 必须设置 index 。
 - `$vnode` 在小程序端获取不到

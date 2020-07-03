@@ -2,8 +2,8 @@
   <view :class="wrapClass" :style="customStyle">
     <view v-if="type === 'spinner'" :class="loadingClass" :style="loadingStyle">
       <view
-        v-for="n in 12"
-        :key="n"
+        v-for="item in array12"
+        :key="item"
         class="van-loading__dot"
       />
     </view>
@@ -27,6 +27,12 @@ export default VantComponent({
     },
     size: String,
     textSize: String
+  },
+
+  data() {
+    return {
+      array12: new Array(12).fill('')
+    }
   },
 
   computed: {

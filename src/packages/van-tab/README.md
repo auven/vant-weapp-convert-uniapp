@@ -6,10 +6,6 @@
 
 ## 代码演示
 
-### 注意
-
-> 由于 `van-tab` 内部逻辑需要，必须给 `van-tab` 指定 `index` 下标，按顺序从 0 开始
-
 ### 基础用法
 
 通过`active`设定当前激活标签对应的索引值，默认情况下启用第一个标签
@@ -17,10 +13,10 @@
 ```html
 <template>
   <van-tabs :active="active" @change="onChange">
-    <van-tab title="标签 1" :index="0">内容 1</van-tab>
-    <van-tab title="标签 2" :index="1">内容 2</van-tab>
-    <van-tab title="标签 3" :index="2">内容 3</van-tab>
-    <van-tab title="标签 4" :index="3">内容 4</van-tab>
+    <van-tab title="标签 1">内容 1</van-tab>
+    <van-tab title="标签 2">内容 2</van-tab>
+    <van-tab title="标签 3">内容 3</van-tab>
+    <van-tab title="标签 4">内容 4</van-tab>
   </van-tabs>
 </template>
 
@@ -50,9 +46,9 @@ export default {
 
 ```html
 <van-tabs active="a">
-  <van-tab title="标签 1" name="a" :index="0">内容 1</van-tab>
-  <van-tab title="标签 2" name="b" :index="1">内容 2</van-tab>
-  <van-tab title="标签 3" name="c" :index="2">内容 3</van-tab>
+  <van-tab title="标签 1" name="a">内容 1</van-tab>
+  <van-tab title="标签 2" name="b" >内容 2</van-tab>
+  <van-tab title="标签 3" name="c">内容 3</van-tab>
 </van-tabs>
 ```
 
@@ -62,12 +58,12 @@ export default {
 
 ```html
 <van-tabs :active="active">
-  <van-tab title="标签 1" :index="0">内容 1</van-tab>
-  <van-tab title="标签 2" :index="1">内容 2</van-tab>
-  <van-tab title="标签 3" :index="2">内容 3</van-tab>
-  <van-tab title="标签 4" :index="3">内容 4</van-tab>
-  <van-tab title="标签 5" :index="4">内容 5</van-tab>
-  <van-tab title="标签 6" :index="5">内容 6</van-tab>
+  <van-tab title="标签 1">内容 1</van-tab>
+  <van-tab title="标签 2">内容 2</van-tab>
+  <van-tab title="标签 3">内容 3</van-tab>
+  <van-tab title="标签 4">内容 4</van-tab>
+  <van-tab title="标签 5">内容 5</van-tab>
+  <van-tab title="标签 6">内容 6</van-tab>
 </van-tabs>
 ```
 

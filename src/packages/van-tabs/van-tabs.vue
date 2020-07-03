@@ -291,7 +291,7 @@ export default {
       },
 
       getChildren() {
-        return getComponentByOptionsName(this, 'VanTab').sort((a, b) => a.index - b.index)
+        return getComponentByOptionsName(this, 'VanTab')
       },
 
       updateTabs() {
@@ -303,7 +303,6 @@ export default {
           disabled: child.disabled,
           titleStyle: child.titleStyle,
           name: child.name,
-          index: child.index,
           active: child.active,
           inited: child.inited,
           shouldShow: child.shouldShow,
@@ -373,12 +372,10 @@ export default {
       // correct the index of active tab
       setCurrentIndexByName(name) {
         const children = this.getChildren()
-        const matched = children.filter(
-          child => child.getComputedName() === name
-        )
+        const index = children.findIndex(child => child.getComputedName() === name)
 
-        if (matched.length) {
-          this.setCurrentIndex(matched[0].index)
+        if (index !== -1) {
+          this.setCurrentIndex(index)
         }
       },
 
