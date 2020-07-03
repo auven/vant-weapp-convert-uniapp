@@ -11,8 +11,8 @@ export const versions = [version];
 export default {
   header: {
     logo: {
-      image: 'https://img.yzcdn.cn/vant/logo.png',
-      title: 'Vant Weapp',
+      image: 'https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/docs/images/logo.png',
+      title: 'Vant + Uniapp',
       href: '#/',
     },
     nav: {

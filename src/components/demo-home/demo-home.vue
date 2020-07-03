@@ -4,12 +4,12 @@
       <image
         mode="aspectFit"
         class="demo-home__image"
-        src="https://img.yzcdn.cn/vant/logo.png"
+        src="https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/src/static/logo.png"
       />
-      <view class="demo-home__text">Vant Weapp</view>
+      <view class="demo-home__text">Vant + Uniapp</view>
     </view>
     <view class="demo-home__desc">
-      轻量、可靠的小程序 UI 组件库
+      轻量、可靠的 Uniapp 跨端 UI 组件库
     </view>
     <view v-for="(group, index) in list" :key="index">
       <demo-home-nav :group="group" />

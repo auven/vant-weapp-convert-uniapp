@@ -1,7 +1,5 @@
 # 快速上手
 
-> 如果开发 app 的，请使用 alpha 版的 uni-app 依赖库。因为正式版会出现这个问题[App v-for 渲染组件报错（alpha 版已修复）](https://github.com/dcloudio/uni-app/issues/1820)
-
 ## 安装
 
 ### 通过 npm 安装
