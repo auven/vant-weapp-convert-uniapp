@@ -1,20 +1,37 @@
 <div class="card">
   <div class="van-doc-intro">
-    <img class="van-doc-intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="//img.yzcdn.cn/public_files/2017/12/18/fd78cf6bb5d12e2a119d0576bedfd230.png">
-    <h2 style="margin: 0; font-size: 32px; line-height: 60px;">Vant Weapp</h2>
-    <p>轻量、可靠的小程序 UI 组件库</p>
+    <img class="van-doc-intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/docs/images/logo.png">
+    <h2 style="margin: 0; font-size: 32px; line-height: 60px;">Vant + Uniapp</h2>
+    <p>轻量、可靠的 Uniapp 跨端 UI 组件库</p>
   </div>
 </div>
 
 ### 介绍
 
-Vant Weapp 是移动端 Vue 组件库 [Vant](https://github.com/youzan/vant) 的小程序版本，两者基于相同的视觉规范，提供一致的 API 接口，助力开发者快速搭建小程序应用。
+将 [`vant-weapp`](https://github.com/youzan/vant-weapp) 转化成 [`uniapp`](https://uniapp.dcloud.io/) 组件，目前基于 `vant-weapp@1.3.3` 版本进行转化。**我不生产代码，我只是代码的搬运工。给同样喜欢 vant-weapp 的你，带来便捷的跨端开发体验。**
 
 ### 预览
 
-扫描下方小程序二维码，体验组件库示例：
+扫描下方各端二维码，体验组件库示例：
 
-<img src="https://img.yzcdn.cn/vant-weapp/qrcode-201808101114.jpg" style="width: 200px; height: 200px; margin-top: 15px; box-shadow: none" >
+<div>
+  <div style="display: inline-block; text-align: center">
+    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/docs/images/h5.png">
+    <p>H5</p>
+  </div>
+  <div style="display: inline-block; text-align: center">
+    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/docs/images/weixin.jpg">
+    <p>微信小程序</p>
+  </div>
+  <div style="display: inline-block; text-align: center">
+    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/docs/images/alipay.jpg">
+    <p>支付宝小程序</p>
+  </div>
+  <div style="display: inline-block; text-align: center">
+    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/docs/images/android.png">
+    <p>安卓</p>
+  </div>
+</div>
 
 ### 快速上手
 

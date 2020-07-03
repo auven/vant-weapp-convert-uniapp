@@ -14,6 +14,29 @@
 - H5
 - APP
 
+## 预览
+
+扫描下方各端二维码，体验组件库示例：
+
+<div>
+  <div style="display: inline-block; text-align: center">
+    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="./docs/images/h5.png">
+    <p>H5</p>
+  </div>
+  <div style="display: inline-block; text-align: center">
+    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="./docs/images/weixin.jpg">
+    <p>微信小程序</p>
+  </div>
+  <div style="display: inline-block; text-align: center">
+    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="./docs/images/alipay.jpg">
+    <p>支付宝小程序</p>
+  </div>
+  <div style="display: inline-block; text-align: center">
+    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="./docs/images/android.png">
+    <p>安卓</p>
+  </div>
+</div>
+
 ## 使用
 
 <img src="https://img.shields.io/npm/v/vant-weapp-convert-uniapp.svg?style=for-the-badge" alt="npm version" />
