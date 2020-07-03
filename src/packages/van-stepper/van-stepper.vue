@@ -129,7 +129,6 @@ export default VantComponent({
 
   watch: {
     value(val) {
-      console.log('值改变了', val)
       this.currentValue = this.format(val)
     }
   },

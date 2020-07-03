@@ -329,8 +329,6 @@ export default {
         }))
         this.scrollable = children.length > this.swipeThreshold || !this.ellipsis
 
-        console.log('children', children)
-
         const currentName = this.getCurrentName()
         this.setCurrentIndexByName(isDef(currentName) ? currentName : this.active)
       },

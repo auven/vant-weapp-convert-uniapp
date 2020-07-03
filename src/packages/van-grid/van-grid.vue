@@ -105,7 +105,7 @@ export default VantComponent({
           if (child.$options.name === 'VanGridItem') {
             child.updateStyle()
           } else {
-            console.log('不是 VanGridItem 组件')
+            // console.log('不是 VanGridItem 组件')
           }
         })
       })

@@ -37,7 +37,6 @@ export default {
     },
     methods: {
       onClick() {
-        console.log('点击蒙版')
         this.$emit('click-overlay')
       },
 
