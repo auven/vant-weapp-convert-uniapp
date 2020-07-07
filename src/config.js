@@ -73,7 +73,8 @@ export default [
       },
       {
         path: '/radio',
-        title: 'Radio 单选框'
+        title: 'Radio 单选框',
+        status: 'finish'
       },
       {
         path: '/rate',

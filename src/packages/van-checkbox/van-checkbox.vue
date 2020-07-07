@@ -53,9 +53,9 @@ export default {
         type: null,
         default: 20
       },
-      clickable: {
+      readonly: {
         type: Boolean,
-        default: true
+        default: false
       }
     },
 
@@ -135,7 +135,7 @@ export default {
       },
 
       onIconClick() {
-        if (!this.clickable) {
+        if (this.readonly) {
           return
         }
         this.toggle()
@@ -149,8 +149,8 @@ export default {
       },
 
       onClickLabel() {
-        const { clickable, labelDisabled, parentDisabled, disabled, currentValue } = this
-        if (clickable && !disabled && !labelDisabled && !parentDisabled) {
+        const { readonly, labelDisabled, parentDisabled, disabled, currentValue } = this
+        if (!readonly && !disabled && !labelDisabled && !parentDisabled) {
           this.emitChange(!currentValue)
         }
       },

@@ -125,7 +125,7 @@
             clickable
             @click="toggle(index)"
           >
-            <van-checkbox ref="checkboxes" :component-id="`checkboxes-${index}`" :clickable="false" :name="item" />
+            <van-checkbox slot="right-icon" ref="checkboxes" readonly :name="item" />
           </van-cell>
         </van-cell-group>
       </van-checkbox-group>
@@ -135,7 +135,6 @@
 </template>
 
 <script>
-import { getComponentById } from '@/packages/wxs/get-component'
 export default {
   data() {
     return {

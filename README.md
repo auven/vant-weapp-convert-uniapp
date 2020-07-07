@@ -119,7 +119,7 @@ export default {
 - 支付宝小程序需要”启用 component2 编译”，在 `mainfest.json` 的 `mp-alipay` 里设置 `component2` 为 `true`，不然会导致获取不到 `$ref` ，并且组件的 `_uid` 是反序的。
 - 如果开发 app 的，请使用 alpha 版的 uni-app 依赖库。因为正式版会出现这个问题[App v-for 渲染组件报错（alpha 版已修复）](https://github.com/dcloudio/uni-app/issues/1820)
 
-## 转化进度 (27/49)
+## 转化进度 (28/49)
 
 - 基础组件
   - [x] Button 按钮 `van-button`
@@ -135,7 +135,7 @@ export default {
   - [ ] DatetimePicker 时间选择 `van-datetime-picker`
   - [ ] Field 输入框 `van-field`
   - [ ] Picker 选择器 `van-picker`
-  - [ ] Radio 单选框 `van-radio` `van-radio-group`
+  - [x] Radio 单选框 `van-radio` `van-radio-group`
   - [x] Rate 评分 `van-rate`
   - [ ] Search 搜索 `van-search`
   - [x] Slider 滑块 `van-slider`

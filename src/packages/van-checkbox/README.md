@@ -169,7 +169,7 @@ export default {
         clickable
         @click="toggle(index)"
       >
-        <van-checkbox ref="checkboxes" :component-id="`checkboxes-${index}`" :clickable="false" :name="item" />
+        <van-checkbox ref="checkboxes" readonly :name="item" />
       </van-cell>
     </van-cell-group>
   </van-checkbox-group>
@@ -190,14 +190,7 @@ export default {
     }
 
     toggle(index) {
-      // #ifdef MP-ALIPAY
-      // 获取组件的辅助工具
-      const $checkboxes = getComponentById(this, `checkboxes-${index}`)[0]
-      $checkboxes.toggle()
-      // #endif
-      // #ifndef MP-ALIPAY
       this.$refs.checkboxes[index].toggle()
-      // #endif
     }
   }
 }
@@ -220,13 +213,12 @@ export default {
 | shape | 形状，可选值为 `round` `square` | _string_ | `round` | - |
 | value | 是否为选中状态 | _boolean_ | `false` | - |
 | disabled | 是否禁用单选框 | _boolean_ | `false` | - |
+| readonly | 是否为只读状态 | _boolean_ | `false` | - |
 | label-disabled | 是否禁用单选框内容点击 | _boolean_ | `false` | - |
 | label-position | 文本位置，可选值为 `left` | _string_ | `right` | - |
 | use-icon-slot | 是否使用 icon slot | _boolean_ | `false` | - |
 | checked-color | 选中状态颜色 | _string_ | `#1989fa` | - |
 | icon-size | icon 大小 | _string \| number_ | `20px` |
-| clickable | 是否可点击 | _boolean_ | `true` | - |
-| component-id | 组件唯一id | _string_ | `vant-component` | - |
 
 ### CheckboxGroup Props
 
