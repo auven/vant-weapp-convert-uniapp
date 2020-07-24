@@ -144,12 +144,15 @@ export default {
       },
 
       observeClass() {
-        const { transition, position } = this;
+        const { transition, position, duration } = this;
 
         this.currentName = transition || position
 
         if (transition === 'none') {
           this.duration = 0
+          this.originDuration = duration
+        } else if (this.originDuration != null) {
+          this.duration = this.originDuration
         }
       },
     },

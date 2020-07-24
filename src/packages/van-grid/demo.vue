@@ -2,7 +2,7 @@
   <div>
     <demo-block title="基本用法">
       <van-grid>
-        <van-grid-item icon="photo-o" text="文字" v-for="item in array4" :key="item" />
+        <van-grid-item icon="photo-o" icon-color="red" text="文字" v-for="item in array4" :key="item" />
       </van-grid>
     </demo-block>
 

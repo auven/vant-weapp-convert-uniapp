@@ -1,6 +1,6 @@
 # vant-weapp-convert-uniapp
 
-将 [`vant-weapp`](https://github.com/youzan/vant-weapp) 转化成 [`uniapp`](https://uniapp.dcloud.io/) 组件，目前基于 `vant-weapp@1.3.3` 版本进行转化。**我不生产代码，我只是代码的搬运工。给同样喜欢 vant-weapp 的你，带来便捷的跨端开发体验。**
+将 [`vant-weapp`](https://github.com/youzan/vant-weapp) 转化成 [`uniapp`](https://uniapp.dcloud.io/) 组件，目前基于 `vant-weapp@1.4.0` 版本进行转化。**我不生产代码，我只是代码的搬运工。给同样喜欢 vant-weapp 的你，带来便捷的跨端开发体验。**
 
 [在线文档](https://auven.github.io/vant-weapp-convert-uniapp)，正在逐渐完善
 
@@ -193,3 +193,4 @@ export default {
 - 小程序中不能将 vue 实例给赋值到 data 变量中
 - 头条小程序 van-tabs 的 animated 设置为 true 后样式有点问题
 - `$vnode` 在小程序端获取不到
+- 支付宝小程序中不支持 `.native` 修饰符，出现问题的代码文件参考[packages/van-popup/van-popup.vue](./src/packages/van-popup/van-popup.vue)

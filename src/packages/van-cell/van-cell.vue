@@ -17,7 +17,7 @@
 
     <view
       :style="
-        titleWidth ? 'max-width:' + titleWidth + ';min-width:' + titleWidth : ''
+        (titleWidth ? 'max-width:' + titleWidth + ';min-width:' + titleWidth + ';' : '') + titleStyle
       "
       class="van-cell__title title-class"
       :class="titleClass"
@@ -64,6 +64,9 @@ export default {
       'value-class',
       'right-icon-class',
       'hover-class',
+    ],
+    externalStyles: [
+      'title-style'
     ],
 
     mixins: [link],

@@ -64,6 +64,7 @@ const Dialog = options => {
       Object.keys(_options).map(key => {
         dialog[key] = _options[key]
       })
+      dialog.optionsShow = true
       queue.push(dialog)
     } else {
       console.warn(
@@ -74,7 +75,7 @@ const Dialog = options => {
 }
 
 Dialog.defaultOptions = {
-  show: true,
+  show: false,
   title: '',
   width: null,
   message: '',

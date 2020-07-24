@@ -6,7 +6,7 @@
       </block>
       <block v-else>
         <view :class="['van-grid-item__icon', 'icon-class', iconClass]">
-          <van-icon v-if="icon" :name="icon" :dot="dot" :info="badge || info" :size="iconSize" />
+          <van-icon v-if="icon" :name="icon" :color="iconColor" :dot="dot" :info="badge || info" :size="iconSize" />
           <slot v-else name="icon"></slot>
         </view>
         <view :class="['van-grid-item__text', 'text-class', textClass]">
@@ -35,6 +35,7 @@ export default {
     mixins: [link, ChildrenMixin('vanGrid')],
     props: {
       icon: String,
+      iconColor: String,
       dot: Boolean,
       info: null,
       badge: null,

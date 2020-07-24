@@ -2,7 +2,7 @@
   <div>
     <demo-block title="基础用法">
       <van-cell-group>
-        <van-cell title="单元格" value="内容" />
+        <van-cell title="单元格" value="内容" title-style="color: red" />
         <van-cell
           title="单元格"
           value="内容"

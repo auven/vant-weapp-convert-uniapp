@@ -2,8 +2,8 @@
   <view :class="wrapClass" :style="customStyle">
     <view v-if="type === 'spinner'" :class="loadingClass" :style="loadingStyle">
       <view
-        v-for="item in array12"
-        :key="item"
+        v-for="(item, index) in array12"
+        :key="index"
         class="van-loading__dot"
       />
     </view>
