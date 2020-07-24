@@ -4,6 +4,7 @@ node_modules/
 public/
 src/
 docs/
+unpackage/
 babel.config.js
 postcss.config.js
 vue.config.js
