@@ -173,6 +173,11 @@ export default [
         status: 'finish'
       },
       {
+        path: '/empty',
+        title: 'Empty 空状态',
+        status: 'finish'
+      },
+      {
         path: '/notice-bar',
         title: 'NoticeBar 通告栏'
       },

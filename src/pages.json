@@ -180,6 +180,12 @@
       "style": {
         "navigationBarTitleText": "Radio 单选框"
       }
+    },
+    {
+      "path": "packages/van-empty/demo",
+      "style": {
+        "navigationBarTitleText": "Empty 空状态"
+      }
     }
   ],
   "globalStyle": {

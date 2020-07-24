@@ -119,7 +119,7 @@ export default {
 - 支付宝小程序需要”启用 component2 编译”，在 `mainfest.json` 的 `mp-alipay` 里设置 `component2` 为 `true`，不然会导致获取不到 `$ref` ，并且组件的 `_uid` 是反序的。
 - 如果开发 app 的，请使用 alpha 版的 uni-app 依赖库。因为正式版会出现这个问题[App v-for 渲染组件报错（alpha 版已修复）](https://github.com/dcloudio/uni-app/issues/1820)
 
-## 转化进度 (28/49)
+## 转化进度 (29/50)
 
 - 基础组件
   - [x] Button 按钮 `van-button`
@@ -156,6 +156,7 @@ export default {
   - [ ] Collapse 折叠面板 `van-collapse` `van-collapse-item`
   - [x] CountDown 倒计时 `van-count-down`
   - [x] Divider 分割线 `van-divider`
+  - [x] Empty 空状态 `van-empty`
   - [ ] NoticeBar 通告栏 `van-notice-bar`
   - [x] Panel 面板 `van-panel`
   - [x] Progress 进度条 `van-progress`
@@ -194,3 +195,4 @@ export default {
 - 头条小程序 van-tabs 的 animated 设置为 true 后样式有点问题
 - `$vnode` 在小程序端获取不到
 - 支付宝小程序中不支持 `.native` 修饰符，出现问题的代码文件参考[packages/van-popup/van-popup.vue](./src/packages/van-popup/van-popup.vue)
+- 一些样式在 h5 端没有效果，比如 [packages/van-empty/demo.vue](./src/packages/van-empty/demo.vue)
