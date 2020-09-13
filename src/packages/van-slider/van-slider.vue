@@ -51,7 +51,7 @@ export default VantComponent({
     },
     barHeight: {
       type: [String, Number],
-      default: '2px'
+      default: 2
     }
   },
   data() {
