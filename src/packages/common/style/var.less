@@ -502,12 +502,15 @@
 @tabs-bottom-bar-color: @tabs-default-color;
 
 // Tag
-@tag-padding: 0.2em 0.5em;
-@tag-font-size: @font-size-xs;
-@tag-medium-font-size: @font-size-sm;
-@tag-large-font-size: @font-size-md;
+@tag-padding: 0 @padding-base;
 @tag-text-color: @white;
-@tag-border-radius: 0.2em;
+@tag-font-size: @font-size-sm;
+@tag-border-radius: 2px;
+@tag-line-height: 16px;
+@tag-medium-padding: 2px 6px;
+@tag-large-padding: @padding-base @padding-xs;
+@tag-large-border-radius: @border-radius-md;
+@tag-large-font-size: @font-size-md;
 @tag-round-border-radius: @border-radius-max;
 @tag-danger-color: @red;
 @tag-primary-color: @blue;
@@ -522,13 +525,13 @@
 @toast-text-color: @white;
 @toast-line-height: 20px;
 @toast-border-radius: @border-radius-lg;
-@toast-background-color: rgba(@text-color, 0.88);
-@toast-icon-size: 48px;
+@toast-background-color: fade(@black, 70%);
+@toast-icon-size: 36px;
 @toast-text-min-width: 96px;
 @toast-text-padding: @padding-xs @padding-sm;
 @toast-default-padding: @padding-md;
-@toast-default-width: 90px;
-@toast-default-min-height: 90px;
+@toast-default-width: 88px;
+@toast-default-min-height: 88px;
 
 // GridItem
 @grid-item-content-padding: @padding-md @padding-xs;

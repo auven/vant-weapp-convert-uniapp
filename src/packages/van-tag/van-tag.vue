@@ -41,7 +41,7 @@ export default {
           type,
           size,
           { mark, plain, round }
-        ])} ${plain ? 'van-hairline--surround' : ''}`
+        ])}`
       },
       wrapStyle() {
         const { color, plain, textColor } = this

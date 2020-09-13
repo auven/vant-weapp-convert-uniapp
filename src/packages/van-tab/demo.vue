@@ -120,6 +120,7 @@
           v-for="(item, index) in tabs4"
           :key="index"
           :title="'标签 ' + item"
+          :disabled="index === 1"
         >
           <view class="content">
             {{ '内容' + item }}
