@@ -20,7 +20,11 @@
 
   &--first {
     margin-left: 5px;
-
+    // #ifdef MP-WEIXIN
+    button {
+      width: calc(100% - 5px);
+    }
+    // #endif
     .theme(
       --button-border-radius,
       '@goods-action-button-border-radius 0 0 @goods-action-button-border-radius'
@@ -29,6 +33,11 @@
 
   &--last {
     margin-right: 5px;
+    // #ifdef MP-WEIXIN
+    button {
+      width: calc(100% - 5px);
+    }
+    // #endif
     .theme(
       --button-border-radius,
       '0 @goods-action-button-border-radius @goods-action-button-border-radius 0'

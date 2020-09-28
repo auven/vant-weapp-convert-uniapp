@@ -1,4 +1,4 @@
-import { isObj } from '../common/utils'
+import { isObj, requestAnimationFrame } from '../common/utils'
 
 const nextTick = () => new Promise(resolve => setTimeout(resolve, 1000 / 30))
 
@@ -70,6 +70,26 @@ export const transition = function(showDefaultValue) {
         this.status = 'enter'
         this.$emit('before-enter')
 
+        // #ifdef MP-WEIXIN
+        requestAnimationFrame(() => {
+          this.checkStatus('enter')
+          this.$emit('enter')
+
+          this.inited = true
+          this.display = true
+          this.classes = classNames.enter
+          this.currentDuration = currentDuration
+
+          requestAnimationFrame(() => {
+            this.checkStatus('enter')
+            this.transitionEnded = false
+
+            this.classes = classNames['enter-to']
+          })
+        })
+        // #endif
+
+        // #ifndef MP-WEIXIN
         Promise.resolve()
           .then(nextTick)
           .then(() => {
@@ -89,6 +109,7 @@ export const transition = function(showDefaultValue) {
             this.classes = classNames['enter-to']
           })
           .catch(() => {})
+        // #endif
       },
 
       leave() {
@@ -103,6 +124,25 @@ export const transition = function(showDefaultValue) {
         this.status = 'leave'
         this.$emit('before-leave')
 
+        // #ifdef MP-WEIXIN
+        requestAnimationFrame(() => {
+          this.checkStatus('leave')
+          this.$emit('leave')
+
+          this.classes = classNames.leave
+          this.currentDuration = currentDuration
+
+          requestAnimationFrame(() => {
+            this.checkStatus('leave')
+            this.transitionEnded = false
+            setTimeout(() => this.onTransitionEnd(), currentDuration)
+
+            this.classes = classNames['leave-to']
+          })
+        })
+        // #endif
+
+        // #ifndef MP-WEIXIN
         Promise.resolve()
           .then(nextTick)
           .then(() => {
@@ -121,6 +161,7 @@ export const transition = function(showDefaultValue) {
             this.classes = classNames['leave-to']
           })
           .catch(() => {})
+        // #endif
       },
 
       checkStatus(status) {

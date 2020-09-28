@@ -310,11 +310,11 @@ export default {
           tabsItemClass: `${this.tabClassFn(
             index === this.currentIndex,
             this.ellipsis
-          )} ${utils.bem('tab', ['' + index, {
+          )} ${utils.bem('tab', {
             active: index === this.currentIndex,
             disabled: child.disabled,
             complete: !this.ellipsis
-          }])} van-tab-${this._uid}-${index}`,
+          })} van-tab-${this._uid}-${index}`,
           tabsItemStyle: `${this.tabStyle(
             index === this.currentIndex,
             this.ellipsis,
@@ -463,7 +463,11 @@ export default {
                 )};`
               : ''
 
-          const left = rect.left + (rect.width - width) / 2
+          let left = rects
+            .slice(0, currentIndex)
+            .reduce((prev, curr) => prev + curr.width, 0);
+
+          left += (rect.width - width) / 2;
 
           const transition = skipTransition
             ? ''
