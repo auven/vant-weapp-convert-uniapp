@@ -186,6 +186,12 @@
       "style": {
         "navigationBarTitleText": "Empty 空状态"
       }
+    },
+    {
+      "path": "packages/van-goods-action/demo",
+      "style": {
+        "navigationBarTitleText": "GoodsAction 商品导航"
+      }
     }
   ],
   "globalStyle": {

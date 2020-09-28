@@ -156,12 +156,12 @@ export default {
         }
         return 'white'
       },
-      onClick() {
+      onClick(e) {
         if (this.disabled) {
           return
         }
         if (!this.loading) {
-          this.$emit('click')
+          this.$emit('click', e)
         }
       }
     }

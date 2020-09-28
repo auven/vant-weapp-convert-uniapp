@@ -4,7 +4,7 @@
     :z-index="optionsZIndex"
     :overlay="optionsOverlay"
     :transition="optionsTransition"
-    :custom-class="`van-dialog ${ optionsClassName }`"
+    :custom-class="`van-dialog ${ optionsClassName } van-dialog--${ optionsTheme }`"
     :custom-style="popupCustomStyle"
     :overlay-style="optionsOverlayStyle"
     :close-on-click-overlay="optionsCloseOnClickOverlay"
@@ -26,7 +26,49 @@
       <text class="van-dialog__message-text">{{ optionsMessage }}</text>
     </view>
 
-    <view class="van-hairline--top van-dialog__footer">
+    <van-goods-action v-if="optionsTheme === 'round-button'" custom-class="van-dialog__footer--round-button">
+      <van-goods-action-button
+        v-if="optionsShowCancelButton"
+        size="large"
+        :loading="loading.cancel"
+        class="van-dialog__button van-hairline--right"
+        custom-class="van-dialog__cancel"
+        :custom-style="`color: ${ cancelButtonColor }`"
+        @click="onCancel"
+      >
+        {{ cancelButtonText }}
+      </van-goods-action-button>
+      <van-goods-action-button
+        v-if="optionsShowConfirmButton"
+        size="large"
+        class="van-dialog__button"
+        :loading="loading.confirm"
+        custom-class="van-dialog__confirm"
+        :custom-style="`color: ${ confirmButtonColor }`"
+
+        :open-type="optionsConfirmButtonOpenType"
+        :lang="lang"
+        :business-id="businessId"
+        :session-from="sessionFrom"
+        :send-message-title="sendMessageTitle"
+        :send-message-path="sendMessagePath"
+        :send-message-img="sendMessageImg"
+        :show-message-card="showMessageCard"
+        :app-parameter="appParameter"
+
+        @click="onConfirm"
+        @getuserinfo="bindGetUserInfo"
+        @contact="bindContact"
+        @getphonenumber="bindGetPhoneNumber"
+        @error="bindError"
+        @launchapp="bindLaunchApp"
+        @opensetting="bindOpenSetting"
+      >
+        {{ confirmButtonText }}
+      </van-goods-action-button>
+    </van-goods-action>
+
+    <view v-else class="van-hairline--top van-dialog__footer">
       <van-button
         v-if="optionsShowCancelButton"
         size="large"
@@ -72,14 +114,18 @@
 import utils from '../wxs/utils'
 import VanPopup from '../van-popup/van-popup'
 import VanButton from '../van-button/van-button'
+import VanGoodsAction from '../van-goods-action/van-goods-action'
+import VanGoodsActionButton from '../van-goods-action-button/van-goods-action-button'
 import { VantComponent } from '../common/component'
 import { button } from '../mixins/button'
 import { openType } from '../mixins/open-type'
-import { GRAY, BLUE } from '../common/color'
+import { GRAY, RED } from '../common/color'
 export default {
   components: {
     VanPopup,
-    VanButton
+    VanButton,
+    VanGoodsAction,
+    VanGoodsActionButton
   },
   ...VantComponent({
     mixins: [button, openType],
@@ -90,6 +136,10 @@ export default {
       },
       title: String,
       message: String,
+      theme: {
+        type: String,
+        default: 'default'
+      },
       useSlot: Boolean,
       className: String,
       customStyle: String,
@@ -115,7 +165,7 @@ export default {
       },
       confirmButtonColor: {
         type: String,
-        default: BLUE
+        default: RED
       },
       cancelButtonColor: {
         type: String,
@@ -144,6 +194,7 @@ export default {
         optionsShow: null,
         optionsTitle: null,
         optionsWidth: null,
+        optionsTheme: null,
         optionsMessage: null,
         optionsZIndex: null,
         optionsOverlay: null,
@@ -166,10 +217,10 @@ export default {
         return `width: ${ utils.addUnit(this.optionsWidth) };${ this.optionsCustomStyle }`
       },
       headerClass() {
-        return `van-dialog__header ${ this.optionsMessage || this.useSlot ? '' : 'van-dialog--isolated' }`
+        return utils.bem('dialog__header', { isolated: !(this.optionsMessage || this.useSlot) })
       },
       messageClass() {
-        return `van-dialog__message ${ this.optionsTitle ? 'van-dialog__message--has-title' : '' } ${ this.optionsMessageAlign ? 'van-dialog__message--' + this.optionsMessageAlign : '' }`
+        return utils.bem('dialog__message', [this.optionsTheme, this.optionsMessageAlign, { hasTitle: this.optionsTitle }])
       }
     },
     watch: {
@@ -194,6 +245,12 @@ export default {
       width: {
         handler(val) {
           this.optionsWidth = val
+        },
+        immediate: true
+      },
+      theme: {
+        handler(val) {
+          this.optionsTheme = val
         },
         immediate: true
       },

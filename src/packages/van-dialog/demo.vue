@@ -9,6 +9,15 @@
       </van-button>
     </demo-block>
 
+    <demo-block title="圆角样式" padding>
+      <van-button type="primary" class="demo-margin-right" @click="onClickThemeAlert">
+        提示弹窗
+      </van-button>
+      <van-button type="primary" @click="onClickThemeAlert2">
+        提示弹窗（无标题）
+      </van-button>
+    </demo-block>
+
     <demo-block title="确认弹窗" padding>
       <van-button type="primary" @click="onClickConfirm">
         确认弹窗
@@ -63,6 +72,21 @@ export default {
     onClickAlert() {
       Dialog.alert({
         title: '标题',
+        message
+      });
+    },
+
+    onClickThemeAlert() {
+      Dialog.alert({
+        title: '标题',
+        theme: 'round-button',
+        message
+      });
+    },
+
+    onClickThemeAlert2() {
+      Dialog.alert({
+        theme: 'round-button',
         message
       });
     },

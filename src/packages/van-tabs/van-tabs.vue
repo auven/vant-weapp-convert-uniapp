@@ -127,7 +127,7 @@ export default {
       },
       swipeThreshold: {
         type: Number,
-        default: 4
+        default: 5
       },
       offsetTop: {
         type: Number,
@@ -169,7 +169,7 @@ export default {
         return utils.bem('tabs__scroll', [this.type])
       },
       tabsNavClass() {
-        return `${utils.bem('tabs__nav', [this.type])} nav-class ${this.navClass} van-tabs__nav-${this._uid}`
+        return `${utils.bem('tabs__nav', [this.type, { complete: !this.ellipsis }])} nav-class ${this.navClass} van-tabs__nav-${this._uid}`
       },
       tabCardTypeBorderStyle() {
         var isCard = this.type === 'card'
@@ -310,11 +310,11 @@ export default {
           tabsItemClass: `${this.tabClassFn(
             index === this.currentIndex,
             this.ellipsis
-          )} ${utils.bem('tab', {
+          )} ${utils.bem('tab', ['' + index, {
             active: index === this.currentIndex,
             disabled: child.disabled,
             complete: !this.ellipsis
-          })} van-tab-${this._uid}-${index}`,
+          }])} van-tab-${this._uid}-${index}`,
           tabsItemStyle: `${this.tabStyle(
             index === this.currentIndex,
             this.ellipsis,
@@ -463,11 +463,7 @@ export default {
                 )};`
               : ''
 
-          let left = rects
-            .slice(0, currentIndex)
-            .reduce((prev, curr) => prev + curr.width, 0)
-
-          left += (rect.width - width) / 2
+          const left = rect.left + (rect.width - width) / 2
 
           const transition = skipTransition
             ? ''

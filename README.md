@@ -118,7 +118,7 @@ export default {
 
 - 支付宝小程序需要”启用 component2 编译”，在 `mainfest.json` 的 `mp-alipay` 里设置 `component2` 为 `true`，不然会导致获取不到 `$ref` ，并且组件的 `_uid` 是反序的。
 
-## 转化进度 (29/50)
+## 转化进度 (30/50)
 
 - 基础组件
   - [x] Button 按钮 `van-button`
@@ -175,7 +175,7 @@ export default {
   - [ ] Area 省市区选择 `van-area`
   - [ ] Card 商品卡片 `van-card`
   - [ ] SubmitBar 提交订单栏 `van-submit-bar`
-  - [ ] GoodsAction 商品导航 `van-goods-action` `van-goods-action-icon` `van-goods-action-button`
+  - [x] GoodsAction 商品导航 `van-goods-action` `van-goods-action-icon` `van-goods-action-button`
 
 ## 一些问题
 

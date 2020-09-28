@@ -266,7 +266,8 @@ export default [
       },
       {
         path: '/goods-action',
-        title: 'GoodsAction 商品导航'
+        title: 'GoodsAction 商品导航',
+        status: 'finish'
       }
     ]
   }
