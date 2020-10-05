@@ -85,22 +85,23 @@ export default {
     classes: ['nav-class', 'tab-class', 'tab-active-class', 'line-class'],
 
     props: {
-      color: String,
       sticky: Boolean,
+      border: Boolean,
+      swipeable: Boolean,
+      titleActiveColor: String,
+      titleInactiveColor: String,
+      color: String,
       animated: {
         type: Boolean
       },
-      swipeable: Boolean,
       lineWidth: {
         type: [String, Number],
-        default: -1
+        default: 40
       },
       lineHeight: {
         type: [String, Number],
         default: -1
       },
-      titleActiveColor: String,
-      titleInactiveColor: String,
       active: {
         type: [String, Number],
         default: 0
@@ -108,10 +109,6 @@ export default {
       type: {
         type: String,
         default: 'line'
-      },
-      border: {
-        type: Boolean,
-        default: true
       },
       ellipsis: {
         type: Boolean,
@@ -455,7 +452,6 @@ export default {
           if (rect == null) {
             return
           }
-          const width = lineWidth !== -1 ? lineWidth : rect.width / 2
           const height =
             lineHeight !== -1
               ? `height: ${addUnit(lineHeight)}; border-radius: ${addUnit(
@@ -467,7 +463,7 @@ export default {
             .slice(0, currentIndex)
             .reduce((prev, curr) => prev + curr.width, 0);
 
-          left += (rect.width - width) / 2;
+          left += (rect.width - lineWidth) / 2;
 
           const transition = skipTransition
             ? ''
@@ -475,7 +471,7 @@ export default {
 
           this.lineStyle = `
             ${height}
-            width: ${addUnit(width)};
+            width: ${addUnit(lineWidth)};
             background-color: ${color};
             -webkit-transform: translateX(${left}px);
             transform: translateX(${left}px);

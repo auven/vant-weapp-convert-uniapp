@@ -1,13 +1,19 @@
 <template>
   <view class="custom-class van-empty" :class="customClass">
     <view class="van-empty__image">
+      <slot name="image"></slot>
+    </view>
+    <view class="van-empty__image">
       <image v-if="imageUrl"
         class="van-empty__image__img"
         :src="imageUrl" />
     </view>
-    <p class="van-empty__description">
+    <view class="van-empty__description">
+      <slot name="description"></slot>
+    </view>
+    <view class="van-empty__description">
       {{ description }}
-    </p>
+    </view>
     <view class="van-empty__bottom">
       <slot></slot>
     </view>
