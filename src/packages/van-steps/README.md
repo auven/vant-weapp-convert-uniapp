@@ -2,13 +2,7 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
-
-```json
-"usingComponents": {
-  "van-steps": "@vant/weapp/steps/index"
-}
-```
+推荐使用 `easycom` 的方式引入，详细介绍见[快速上手](#/quickstart#easycom-mo-shi-tui-jian)
 
 ## 代码演示
 
@@ -54,6 +48,47 @@ Page({
   active-icon="success"
   active-color="#38f"
 />
+```
+
+### 自定义图标
+
+可以通过 `inactiveIcon` 和 `activeIcon` 属性分别设置每一项的图标
+
+```html
+<van-steps steps="{{ steps }}" active="{{ active }}" />
+```
+
+```javascript
+Page({
+  data: {
+    steps: [
+      {
+        text: '步骤一',
+        desc: '描述信息',
+        inactiveIcon: 'location-o',
+        activeIcon: 'success',
+      },
+      {
+        text: '步骤二',
+        desc: '描述信息',
+        inactiveIcon: 'like-o',
+        activeIcon: 'plus',
+      },
+      {
+        text: '步骤三',
+        desc: '描述信息',
+        inactiveIcon: 'star-o',
+        activeIcon: 'cross',
+      },
+      {
+        text: '步骤四',
+        desc: '描述信息',
+        inactiveIcon: 'phone-o',
+        activeIcon: 'fail',
+      },
+    ],
+  },
+});
 ```
 
 ### 竖向步骤条

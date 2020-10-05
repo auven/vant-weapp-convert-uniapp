@@ -2,15 +2,7 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
-
-```json
-"usingComponents": {
-  "van-divider": "@vant/weapp/divider/index"
-}
-```
-
-> Vant Weapp 1.0 版本开始支持此组件，升级方式参见[快速上手](#/quickstart)
+推荐使用 `easycom` 的方式引入，详细介绍见[快速上手](#/quickstart#easycom-mo-shi-tui-jian)
 
 ## 代码演示
 

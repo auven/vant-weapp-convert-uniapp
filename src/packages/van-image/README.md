@@ -6,15 +6,7 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
-
-```json
-"usingComponents": {
-  "van-image": "@vant/weapp/image/index"
-}
-```
-
-> Vant Weapp 1.0 版本开始支持此组件，升级方式参见[快速上手](#/quickstart)
+推荐使用 `easycom` 的方式引入，详细介绍见[快速上手](#/quickstart#easycom-mo-shi-tui-jian)
 
 ## 代码演示
 

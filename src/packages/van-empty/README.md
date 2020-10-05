@@ -39,13 +39,6 @@ Empty 组件内置了多种占位图片类型，可以在不同业务场景下�
   image="https://img.yzcdn.cn/vant/custom-empty-image.png"
   description="描述文字"
 />
-
-<style>
-  .custom-image .van-empty__image {
-    width: 90px;
-    height: 90px;
-  }
-</style>
 ```
 
 ### 底部内容
@@ -60,10 +53,10 @@ Empty 组件内置了多种占位图片类型，可以在不同业务场景下�
 </van-empty>
 
 <style>
-  .bottom-button {
-    width: 160px;
-    height: 40px;
-  }
+.bottom-button {
+  width: 160px;
+  height: 40px;
+}
 </style>
 ```
 
@@ -80,6 +73,6 @@ Empty 组件内置了多种占位图片类型，可以在不同业务场景下�
 
 | 名称        | 说明           |
 | ----------- | -------------- |
-| default     | 自定义底部内容 |
+| -           | 自定义底部内容 |
 | image       | 自定义图标     |
 | description | 自定义描述文字 |

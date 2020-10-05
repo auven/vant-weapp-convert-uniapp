@@ -6,13 +6,7 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
-
-```json
-"usingComponents": {
-  "van-overlay": "@vant/weapp/overlay/index"
-}
-```
+推荐使用 `easycom` 的方式引入，详细介绍见[快速上手](#/quickstart#easycom-mo-shi-tui-jian)
 
 ## 代码演示
 

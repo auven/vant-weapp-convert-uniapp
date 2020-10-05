@@ -8,13 +8,7 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
-
-```json
-"usingComponents": {
-  "van-dialog": "@vant/weapp/dialog/index"
-}
-```
+推荐使用 `easycom` 的方式引入，详细介绍见[快速上手](#/quickstart#easycom-mo-shi-tui-jian)
 
 ## 代码演示
 
@@ -38,6 +32,33 @@ Dialog.alert({
 
 Dialog.alert({
   message: '弹窗内容',
+}).then(() => {
+  // on close
+});
+```
+
+### 圆角样式
+
+样式为圆角风格。
+
+```html
+<van-dialog id="van-dialog" />
+```
+
+```javascript
+import Dialog from 'path/to/@vant/weapp/dist/dialog/dialog';
+
+Dialog.alert({
+  title: '标题',
+  message: '弹窗内容',
+  theme: 'round-button',
+}).then(() => {
+  // on close
+});
+
+Dialog.alert({
+  message: '弹窗内容',
+  theme: 'round-button',
 }).then(() => {
   // on close
 });
@@ -137,6 +158,7 @@ Page({
 | title | 标题 | _string_ | - | - |
 | width | 弹窗宽度，默认单位为`px` | _string \| number_ | `320px` | 1.0.0 |
 | message | 文本内容，支持通过`\n`换行 | _string_ | - | 1.0.0 |
+| theme | 样式风格，可选值为`round-button` | _string_ | `default` |
 | messageAlign | 内容对齐方式，可选值为`left` `right` | _string_ | `center` | - |
 | zIndex | z-index 层级 | _number_ | `100` | - |
 | className | 自定义类名，dialog 在自定义组件内时无效 | _string_ | '' | - |
@@ -179,6 +201,7 @@ Page({
 | title | 标题 | _string_ | - |
 | width | 弹窗宽度，默认单位为`px` | _string \| number_ | `320px` | 1.0.0 |
 | message | 文本内容，支持通过`\n`换行 | _string_ | - |
+| theme | 样式风格，可选值为`round-button` | _string_ | `default` |
 | message-align | 内容对齐方式，可选值为`left` `right` | _string_ | `center` |
 | z-index | z-index 层级 | _number_ | `100` |
 | class-name | 自定义类名，dialog 在自定义组件内时无效 | _string_ | '' |
