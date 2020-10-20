@@ -23,20 +23,16 @@
     @getphonenumber="bindGetPhoneNumber"
     @launchapp="bindLaunchApp"
   >
-    <view class="van-goods-action-icon__content">
-      <van-icon
-        v-if="icon"
-        size="20px"
-        :name="icon"
-        :dot="dot"
-        :info="info"
-        class="van-goods-action-icon__icon"
-        custom-class="icon-class"
-        :class="iconClass"
-      />
-      <slot name="icon" />
-      <text class="text-class" :class="textClass">{{ text }}</text>
-    </view>
+    <van-icon
+      v-if="icon"
+      :name="icon"
+      :dot="dot"
+      :info="info"
+      class="van-goods-action-icon__icon"
+      custom-class="icon-class"
+    />
+    <slot v-else name="icon" />
+    <text class="text-class">{{ text }}</text>
   </van-button>
 </template>
 

@@ -187,10 +187,14 @@ export default {
         }
 
         return [
-          'transform: translate3d(' + -100 * this.currentIndex + '%, 0, 0)',
-          '-webkit-transition-duration: ' + this.duration + 's',
-          'transition-duration: ' + this.duration + 's'
-        ].join(';')
+          ['left', -100 * this.currentIndex + '%'],
+          ['-webkit-transition-duration', this.duration + 's'],
+          ['transition-duration: ', this.duration + 's'],
+        ]
+          .map(function (item) {
+            return item.join(':');
+          })
+          .join(';');
       }
     },
 
