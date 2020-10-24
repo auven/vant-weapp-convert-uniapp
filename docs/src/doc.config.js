@@ -11,7 +11,7 @@ export const versions = [version];
 export default {
   header: {
     logo: {
-      image: 'https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/docs/images/logo.png',
+      image: 'https://gitee.com/auven/vant-weapp-convert-uniapp/raw/master/docs/images/logo.png',
       title: 'Vant + Uniapp',
       href: '#/',
     },

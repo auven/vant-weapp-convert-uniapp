@@ -4,7 +4,7 @@
       <image
         mode="aspectFit"
         class="demo-home__image"
-        src="https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/src/static/logo.png"
+        src="https://gitee.com/auven/vant-weapp-convert-uniapp/raw/master/src/static/logo.png"
       />
       <view class="demo-home__text">Vant + Uniapp</view>
     </view>

@@ -1,6 +1,6 @@
 <div class="card">
   <div class="van-doc-intro">
-    <img class="van-doc-intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/docs/images/logo.png">
+    <img class="van-doc-intro__logo" style="width: 120px; height: 120px; box-shadow: none;" src="https://gitee.com/auven/vant-weapp-convert-uniapp/raw/master/docs/images/logo.png">
     <h2 style="margin: 0; font-size: 32px; line-height: 60px;">Vant + Uniapp</h2>
     <p>轻量、可靠的 Uniapp 跨端 UI 组件库</p>
   </div>
@@ -16,19 +16,19 @@
 
 <div>
   <div style="display: inline-block; text-align: center">
-    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/docs/images/h5.png">
+    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="https://gitee.com/auven/vant-weapp-convert-uniapp/raw/master/docs/images/h5.png">
     <p>H5</p>
   </div>
   <div style="display: inline-block; text-align: center">
-    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/docs/images/weixin.jpg">
+    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="https://gitee.com/auven/vant-weapp-convert-uniapp/raw/master/docs/images/weixin.jpg">
     <p>微信小程序</p>
   </div>
   <div style="display: inline-block; text-align: center">
-    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/docs/images/alipay.jpg">
+    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="https://gitee.com/auven/vant-weapp-convert-uniapp/raw/master/docs/images/alipay.jpg">
     <p>支付宝小程序</p>
   </div>
   <div style="display: inline-block; text-align: center">
-    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="https://raw.githubusercontent.com/auven/vant-weapp-convert-uniapp/master/docs/images/android.png">
+    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="https://gitee.com/auven/vant-weapp-convert-uniapp/raw/master/docs/images/android.png">
     <p>安卓</p>
   </div>
 </div>
