@@ -72,7 +72,7 @@ export default {
 设置`disabled`属性即可禁用标签。如果需要监听禁用标签的点击事件，可以在`van-tabs`上监听`disabled`事件
 
 ```html
-<van-tabs bind:disabled="onClickDisabled">
+<van-tabs @disabled="onClickDisabled">
   <van-tab title="标签 1">内容 1</van-tab>
   <van-tab title="标签 2" disabled>内容 2</van-tab>
   <van-tab title="标签 3">内容 3</van-tab>
@@ -80,14 +80,16 @@ export default {
 ```
 
 ```javascript
-Page({
-  onClickDisabled(event) {
-    wx.showToast({
-      title: `标签 ${event.detail.name} 已被禁用`,
-      icon: 'none',
-    });
-  },
-});
+export default {
+  methods: {
+    onClickDisabled(detail) {
+      uni.showToast({
+        title: `标签 ${detail.index + 1} 已被禁用`,
+        icon: 'none'
+      });
+    },
+  }
+}
 ```
 
 ### 样式风格
@@ -104,24 +106,26 @@ Page({
 
 ### 点击事件
 
-可以在`van-tabs`上绑定`click`事件，在回调参数的`event.detail`中可以取得被点击标签的标题和标识符
+可以在`van-tabs`上绑定`click`事件，在回调参数的`detail`中可以取得被点击标签的标题和标识符
 
 ```html
-<van-tabs bind:click="onClick">
+<van-tabs @click="onClick">
   <van-tab title="标签 1">内容 1</van-tab>
   <van-tab title="标签 2">内容 2</van-tab>
 </van-tabs>
 ```
 
 ```javascript
-Page({
-  onClick(event) {
-    wx.showToast({
-      title: `点击标签 ${event.detail.name}`,
-      icon: 'none',
-    });
-  },
-});
+export default {
+  methods: {
+    onClick(detail) {
+      uni.showToast({
+        title: `切换到标签 ${detail.index + 1}`,
+        icon: 'none'
+      })
+    }
+  }
+}
 ```
 
 ### 粘性布局
@@ -167,11 +171,11 @@ Page({
 
 如果将 van-tabs 嵌套在 van-popup 等会隐藏内容的组件或节点内，当 van-tabs 显示时下划线将不会正常显示。
 
-此时可以通过使用 `wx:if` 手动控制 van-tabs 的渲染来规避这种场景。
+此时可以通过使用 `v-if` 手动控制 van-tabs 的渲染来规避这种场景。
 
 ```html
-<van-popup show="{{ show }}">
-  <van-tabs wx:if="{{ show }}">
+<van-popup :show="show">
+  <van-tabs v-if="show">
     <van-tab title="标签 1">内容 1</van-tab>
     <van-tab title="标签 2">内容 2</van-tab>
     <van-tab title="标签 3">内容 3</van-tab>
@@ -230,10 +234,10 @@ Page({
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| bind:click | 点击标签时触发 | name：标签标识符，title：标题 |
-| bind:change | 当前激活的标签改变时触发 | name：标签标识符，title：标题 |
-| bind:disabled | 点击被禁用的标签时触发 | name：标签标识符，title：标题 |
-| bind:scroll | 滚动时触发 | { scrollTop: 距离顶部位置, isFixed: 是否吸顶 } |
+| @click | 点击标签时触发 | name：标签标识符，title：标题 |
+| @change | 当前激活的标签改变时触发 | name：标签标识符，title：标题 |
+| @disabled | 点击被禁用的标签时触发 | name：标签标识符，title：标题 |
+| @scroll | 滚动时触发 | { scrollTop: 距离顶部位置, isFixed: 是否吸顶 } |
 
 ### 外部样式类
 

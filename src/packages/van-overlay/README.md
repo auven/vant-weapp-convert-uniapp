@@ -13,24 +13,27 @@
 ### 基础用法
 
 ```html
-<van-button type="primary" bind:click="onClickShow">显示遮罩层</van-button>
-<van-overlay show="{{ show }}" bind:click="onClickHide" />
+<van-button type="primary" @click="onClickShow">显示遮罩层</van-button>
+<van-overlay :show="show" @click-overlay="onClickHide" />
 ```
 
 ```js
-Page({
-  data: {
-    show: false,
+export default {
+  data() {
+    return {
+      show: false,
+    }
   },
 
-  onClickShow() {
-    this.setData({ show: true });
-  },
-
-  onClickHide() {
-    this.setData({ show: false });
-  },
-});
+  methods: {
+    onClickShow() {
+      this.show = true
+    },
+    onClickHide() {
+      this.show = false
+    }
+  }
+}
 ```
 
 ### 嵌入内容
@@ -38,8 +41,8 @@ Page({
 通过默认插槽可以在遮罩层上嵌入任意内容
 
 ```html
-<van-button type="primary" bind:click="onClickShow">嵌入内容</van-button>
-<van-overlay show="{{ show }}" bind:click="onClickHide">
+<van-button type="primary" @click="onClickShow">嵌入内容</van-button>
+<van-overlay :show="show" @click-overlay="onClickHide">
   <view class="wrapper">
     <view class="block" catch:tap="noop" />
   </view>
@@ -47,21 +50,23 @@ Page({
 ```
 
 ```js
-Page({
-  data: {
-    show: false,
+export default {
+  data() {
+    return {
+      show: false,
+    }
   },
 
-  onClickShow() {
-    this.setData({ show: true });
-  },
-
-  onClickHide() {
-    this.setData({ show: false });
-  },
-
-  noop() {},
-});
+  methods: {
+    onClickShow() {
+      this.show = true
+    },
+    onClickHide() {
+      this.show = false
+    },
+    noop() {}
+  }
+}
 ```
 
 ```css
@@ -93,7 +98,7 @@ Page({
 
 | 事件名     | 说明       | 回调参数 |
 | ---------- | ---------- | -------- |
-| bind:click | 点击时触发 | -        |
+| @click-overlay | 点击蒙版时触发 | -        |
 
 ### Slots
 

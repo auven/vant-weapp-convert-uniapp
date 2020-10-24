@@ -9,45 +9,47 @@
 ### 基础用法
 
 ```html
-<van-switch checked="{{ checked }}" bind:change="onChange" />
+<van-switch v-model="checked" @change="onChange" />
 ```
 
 ```javascript
-Page({
-  data: {
-    checked: true,
+export default {
+  data() {
+    return {
+      checked: true
+    }
   },
-
-  onChange({ detail }) {
-    // 需要手动对 checked 状态进行更新
-    this.setData({ checked: detail });
-  },
-});
+  methods: {
+    onChange(value) {
+      console.log('值改变了', this.checked, value)
+    }
+  }
+}
 ```
 
 ### 禁用状态
 
 ```html
-<van-switch checked="{{ checked }}" disabled />
+<van-switch v-model="checked" disabled />
 ```
 
 ### 加载状态
 
 ```html
-<van-switch checked="{{ checked }}" loading />
+<van-switch v-model="checked" loading />
 ```
 
 ### 自定义大小
 
 ```html
-<van-switch checked="{{ checked }}" size="24px" />
+<van-switch v-model="checked" size="24px" />
 ```
 
 ### 自定义颜色
 
 ```html
 <van-switch
-  checked="{{ checked }}"
+  v-model="checked"
   active-color="#07c160"
   inactive-color="#ee0a24"
 />
@@ -56,27 +58,31 @@ Page({
 ### 异步控制
 
 ```html
-<van-switch checked="{{ checked }}" bind:change="onChange" />
+<van-switch :value="checked" @input="onInput" />
 ```
 
 ```js
-Page({
-  data: {
-    checked: true,
+export default {
+  data() {
+    return {
+      checked: true,
+    }
   },
 
-  onChange({ detail }) {
-    wx.showModal({
-      title: '提示',
-      content: '是否切换开关？',
-      success: (res) => {
-        if (res.confirm) {
-          this.setData({ checked2: detail });
-        }
-      },
-    });
-  },
-});
+  methods: {
+    onInput(value) {
+      wx.showModal({
+        title: '提示',
+        content: '是否切换开关？',
+        success: (res) => {
+          if (res.confirm) {
+            this.checked = value
+          }
+        },
+      });
+    },
+  }
+}
 ```
 
 ## API
@@ -86,7 +92,7 @@ Page({
 | 参数           | 说明                   | 类型      | 默认值    | 版本 |
 | -------------- | ---------------------- | --------- | --------- | ---- |
 | name           | 在表单内提交时的标识符 | _string_  | -         | -    |
-| checked        | 开关选中状态           | _any_     | `false`   | -    |
+| value/v-model        | 开关选中状态           | _any_     | `false`   | -    |
 | loading        | 是否为加载状态         | _boolean_ | `false`   | -    |
 | disabled       | 是否为禁用状态         | _boolean_ | `false`   | -    |
 | size           | 开关尺寸               | _string_  | `30px`    | -    |
@@ -99,7 +105,8 @@ Page({
 
 | 事件名      | 说明             | 参数                       |
 | ----------- | ---------------- | -------------------------- |
-| bind:change | 开关状态切换回调 | event.detail: 是否选中开关 |
+| @input | 开关状态切换回调 | value: 是否选中开关 |
+| @change | 开关状态切换回调 | value: 是否选中开关 |
 
 ### 外部样式类
 

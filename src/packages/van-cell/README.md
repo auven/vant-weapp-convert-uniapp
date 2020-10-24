@@ -13,7 +13,7 @@
 ```html
 <van-cell-group>
   <van-cell title="单元格" value="内容" />
-  <van-cell title="单元格" value="内容" label="描述信息" border="{{ false }}" />
+  <van-cell title="单元格" value="内容" label="描述信息" :border="false" />
 </van-cell-group>
 ```
 
@@ -134,7 +134,7 @@
 
 | 事件名     | 说明             | 参数 |
 | ---------- | ---------------- | ---- |
-| bind:click | 点击单元格时触发 | -    |
+| @click | 点击单元格时触发 | -    |
 
 ### Cell Slot
 

@@ -12,18 +12,25 @@
 
 ### 基础用法
 
-通过`value`设置输入值，可以通过`change`事件监听到输入值的变化
+通过`value/v-model`设置输入值，可以通过`change`事件监听到输入值的变化
 
 ```html
-<van-stepper value="{{ 1 }}" bind:change="onChange" />
+<van-stepper v-model="value" @change="onChange" />
 ```
 
 ```js
-Page({
-  onChange(event) {
-    console.log(event.detail);
+export default {
+  data() {
+    return {
+      value: 1
+    }
   },
-});
+  methods: {
+    onChange() {
+      console.log('值变化了', this.value)
+    }
+  }
+}
 ```
 
 ### 步长设置
@@ -31,7 +38,7 @@ Page({
 通过`step`属性设置每次点击增加或减少按钮时变化的值，默认为`1`
 
 ```html
-<van-stepper value="{{ 1 }}" step="2" />
+<van-stepper :value="1" step="2" />
 ```
 
 ### 限制输入范围
@@ -39,7 +46,7 @@ Page({
 通过`min`和`max`属性限制输入值的范围
 
 ```html
-<van-stepper value="{{ 5 }}" min="5" max="8" />
+<van-stepper :value="5" min="5" max="8" />
 ```
 
 ### 限制输入整数
@@ -47,7 +54,7 @@ Page({
 设置`integer`属性后，输入框将限制只能输入整数
 
 ```html
-<van-stepper value="{{ 1 }}" integer />
+<van-stepper :value="1" integer />
 ```
 
 ### 禁用状态
@@ -55,7 +62,7 @@ Page({
 通过设置`disabled`属性来禁用步进器，禁用状态下无法点击按钮或修改输入框
 
 ```html
-<van-stepper value="{{ 1 }}" disabled />
+<van-stepper :value="1" disabled />
 ```
 
 ### 关闭长按
@@ -63,7 +70,7 @@ Page({
 通过设置`long-press`属性决定步进器是否开启长按手势
 
 ```html
-<van-stepper value="{{ 1 }}" long-press="{{ false }}" />
+<van-stepper :value="1" :long-press="false" />
 ```
 
 ### 固定小数位数
@@ -71,7 +78,7 @@ Page({
 通过设置`decimal-length`属性可以保留固定的小数位数
 
 ```html
-<van-stepper value="{{ 1 }}" step="0.2" decimal-length="{{ 1 }}" />
+<van-stepper :value="1" step="0.2" :decimal-length="1" />
 ```
 
 ### 异步变更
@@ -79,24 +86,32 @@ Page({
 如果需要异步地修改输入框的值，可以设置`async-change`属性，并在`change`事件中手动修改`value`
 
 ```html
-<van-stepper value="{{ value }}" async-change bind:change="onChange" />
+<van-stepper :value="value" async-change @change="onChange" />
 ```
 
 ```js
-Page({
-  data: {
-    value: 1,
+export default {
+  data() {
+    return {
+      value: 1
+    }
   },
+  methods: {
+    onChange(value) {
+      uni.showLoading({
+        title: '',
+        mask: true
+      })
 
-  onChange(value) {
-    Toast.loading({ forbidClick: true });
+      console.log(value)
 
-    setTimeout(() => {
-      Toast.clear();
-      this.setData({ value });
-    }, 500);
-  },
-});
+      setTimeout(() => {
+        uni.hideLoading()
+        this.value = value
+      }, 500)
+    }
+  }
+}
 ```
 
 ### 自定义大小
@@ -104,7 +119,7 @@ Page({
 通过`input-width`属性设置输入框宽度，通过`button-size`属性设置按钮大小和输入框高度
 
 ```html
-<van-stepper value="{{ 1 }}" input-width="40px" button-size="32px" />
+<van-stepper :value="1" input-width="40px" button-size="32px" />
 ```
 
 ## API
@@ -135,12 +150,12 @@ Page({
 
 | 事件名         | 说明                     | 回调参数                   |
 | -------------- | ------------------------ | -------------------------- |
-| bind:change    | 当绑定值变化时触发的事件 | event.detail: 当前输入的值 |
-| bind:overlimit | 点击不可用的按钮时触发   | -                          |
-| bind:plus      | 点击增加按钮时触发       | -                          |
-| bind:minus     | 点击减少按钮时触发       | -                          |
-| bind:focus     | 输入框聚焦时触发         | -                          |
-| bind:blur      | 输入框失焦时触发         | -                          |
+| @change    | 当绑定值变化时触发的事件 | event.detail: 当前输入的值 |
+| @overlimit | 点击不可用的按钮时触发   | -                          |
+| @plus      | 点击增加按钮时触发       | -                          |
+| @minus     | 点击减少按钮时触发       | -                          |
+| @focus     | 输入框聚焦时触发         | -                          |
+| @blur      | 输入框失焦时触发         | -                          |
 
 ### 外部样式类
 

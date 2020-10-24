@@ -9,31 +9,33 @@
 ### 基础用法
 
 ```html
-<van-rate value="{{ value }}" bind:change="onChange" />
+<van-rate v-model="value" @change="onChange" />
 ```
 
 ```javascript
-Page({
-  data: {
-    value: 3,
+export default {
+  data() {
+    return {
+      value: 3,
+    }
   },
 
-  onChange(event) {
-    this.setData({
-      value: event.detail,
-    });
-  },
-});
+  methods: {
+    onChange(score) {
+      console.log(score)
+    }
+  }
+}
 ```
 
 ### 自定义图标
 
 ```html
 <van-rate
-  value="{{ value }}"
+  v-model="value"
   icon="like"
   void-icon="like-o"
-  bind:change="onChange"
+  @change="onChange"
 />
 ```
 
@@ -41,12 +43,12 @@ Page({
 
 ```html
 <van-rate
-  value="{{ value }}"
-  size="{{ 25 }}"
+  v-model="value"
+  :size="25"
   color="#ee0a24"
   void-color="#eee"
   void-icon="star"
-  bind:change="onChange"
+  @change="onChange"
 />
 ```
 
@@ -54,32 +56,32 @@ Page({
 
 ```html
 <van-rate
-  value="{{ value }}"
-  size="{{ 25 }}"
+  v-model="value"
+  :size="25"
   allow-half
   color="#ee0a24"
   void-color="#eee"
   void-icon="star"
-  bind:change="onChange"
+  @change="onChange"
 />
 ```
 
 ### 自定义数量
 
 ```html
-<van-rate value="{{ value }}" count="{{ 6 }}" bind:change="onChange" />
+<van-rate v-model="value" :count="6" @change="onChange" />
 ```
 
 ### 禁用状态
 
 ```html
-<van-rate disabled value="{{ value }}" bind:change="onChange" />
+<van-rate disabled v-model="value" @change="onChange" />
 ```
 
 ### 只读状态
 
 ```html
-<van-rate readonly value="{{ value }}" bind:change="onChange" />
+<van-rate readonly v-model="value" @change="onChange" />
 ```
 
 ## API

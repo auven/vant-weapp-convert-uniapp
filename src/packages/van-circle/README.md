@@ -8,10 +8,10 @@
 
 ### 基础用法
 
-`value`属性表示进度条的目标进度。
+`value/v-model`属性表示进度条的目标进度。
 
 ```html
-<van-circle value="{{ 30 }}" text="text" />
+<van-circle v-model="30" text="text" />
 ```
 
 ### 宽度定制
@@ -19,7 +19,7 @@
 通过`stroke-width`属性来控制进度条宽度
 
 ```html
-<van-circle value="{{ value }}" stroke-width="6" text="宽度定制" />
+<van-circle v-model="value" stroke-width="6" text="宽度定制" />
 ```
 
 ### 颜色定制
@@ -28,7 +28,7 @@
 
 ```html
 <van-circle
-  value="{{ value }}"
+  v-model="value"
   layer-color="#eeeeee"
   color="#ee0a24"
   text="颜色定制"
@@ -40,19 +40,21 @@
 `color`属性支持传入对象格式来定义渐变色
 
 ```html
-<van-circle value="{{ value }}" color="{{ gradientColor }}" text="渐变色" />
+<van-circle v-model="value" :color="gradientColor" text="渐变色" />
 ```
 
 ```javascript
-Page({
-  data: {
-    value: 25,
-    gradientColor: {
-      '0%': '#ffd01e',
-      '100%': '#ee0a24',
-    },
+export default {
+  data() {
+    return {
+      value: 25,
+      gradientColor: {
+        '0%': '#ffd01e',
+        '100%': '#ee0a24',
+      },
+    }
   },
-});
+}
 ```
 
 ### 逆时针方向
@@ -61,9 +63,9 @@ Page({
 
 ```html
 <van-circle
-  value="{{ value }}"
+  v-model="value"
   color="#07c160"
-  clockwise="{{ false }}"
+  :clockwise="false"
   text="逆时针"
 />
 ```
@@ -73,7 +75,7 @@ Page({
 通过`size`属性设置圆环直径
 
 ```html
-<van-circle value="{{ value }}" size="120" text="大小定制" />
+<van-circle v-model="value" size="120" text="大小定制" />
 ```
 
 ## API
@@ -82,7 +84,8 @@ Page({
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
-| value | 目标进度 | _number_ | `0` | - |
+| circle-id | canvas 唯一 id | _string_ | `van-circle` | --- |
+| value/v-model | 目标进度 | _number_ | `0` | - |
 | type | 指定 canvas 类型，可选值为 `2d` | _string_ | - | - |
 | size | 圆环直径，默认单位为 `px` | _number_ | `100` | - |
 | color | 进度条颜色，传入对象格式可以定义渐变色 | _string \| object_ | `#1989fa` | - |
@@ -92,6 +95,8 @@ Page({
 | text | 文字 | _string_ | - | - |
 | stroke-width | 进度条宽度 | _number_ | `4` | - |
 | clockwise | 是否顺时针增加 | _boolean_ | `true` | - |
+
+> 注意：当同一个页面中存在多个 `van-circle` 时，必须指定不同的 `circle-id` ，不然数据会串线。
 
 ### Slots
 

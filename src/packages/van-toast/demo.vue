@@ -21,6 +21,8 @@
 
     <van-toast ref="van-toast" id="van-toast" />
 
+    <van-toast ref="custom-selector" id="custom-selector" />
+
   </div>
 </template>
 
@@ -61,7 +63,8 @@ export default {
       const toast = Toast.loading({
         duration: 0,
         forbidClick: true,
-        message: text(3)
+        message: text(3),
+        selector: 'custom-selector'
       });
 
       let second = 3;

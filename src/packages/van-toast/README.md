@@ -14,8 +14,10 @@ import Toast from 'path/to/@vant/weapp/dist/toast/toast';
 Toast('我是提示文案，建议不超过十五字~');
 ```
 
+必须在页面中存在元素 `van-toast` ，并指定 `ref` 和 `id` 。
+
 ```html
-<van-toast id="van-toast" />
+<van-toast ref="van-toast" id="van-toast" />
 ```
 
 ### 加载提示
@@ -46,20 +48,19 @@ Toast.fail('失败文案');
 ### 动态更新提示
 
 ```javascript
+const text = second => `倒计时 ${second} 秒`;
 const toast = Toast.loading({
-  duration: 0, // 持续展示 toast
+  duration: 0,
   forbidClick: true,
-  message: '倒计时 3 秒',
-  selector: '#custom-selector',
+  message: text(3),
+  selector: 'custom-selector'
 });
 
 let second = 3;
 const timer = setInterval(() => {
   second--;
   if (second) {
-    toast.setData({
-      message: `倒计时 ${second} 秒`,
-    });
+    toast.optionsMessage = text(second)
   } else {
     clearInterval(timer);
     Toast.clear();
@@ -68,7 +69,7 @@ const timer = setInterval(() => {
 ```
 
 ```html
-<van-toast id="custom-selector" />
+<van-toast ref="custom-selector" id="custom-selector" />
 ```
 
 ### OnClose 回调函数

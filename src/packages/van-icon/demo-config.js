@@ -1,14 +1,15 @@
-export default {
+module.exports = {
   name: 'vant-icon',
   basic: [
-    'success',
-    'plus',
-    'cross',
-    'fail',
     'arrow',
     'arrow-left',
     'arrow-up',
-    'arrow-down'
+    'arrow-down',
+    'success',
+    'cross',
+    'plus',
+    'minus',
+    'fail',
   ],
   outline: [
     // has corresponding filled icon
@@ -54,6 +55,7 @@ export default {
     'video-o',
     'shop-o',
     'shop-collect-o',
+    'share-o',
     'chat-o',
     'smile-comment-o',
     'vip-card-o',
@@ -97,13 +99,13 @@ export default {
     'newspaper-o',
     'warn-o',
     'notes-o',
-    'calender-o',
+    'calendar-o',
     'bulb-o',
     'user-circle-o',
     'desktop-o',
     'apps-o',
     'home-o',
-    'share',
+    'back-top',
     'search',
     'points',
     'edit',
@@ -142,7 +144,7 @@ export default {
     'discount',
     'idcard',
     'replay',
-    'shrink'
+    'shrink',
   ],
   filled: [
     // has corresponding outline icon
@@ -188,6 +190,7 @@ export default {
     'video',
     'shop',
     'shop-collect',
+    'share',
     'chat',
     'smile-comment',
     'vip-card',
@@ -235,6 +238,8 @@ export default {
     'ascending',
     'descending',
     'bars',
-    'wap-nav'
-  ]
+    'wap-nav',
+    'enlarge',
+    'photo-fail',
+  ],
 };

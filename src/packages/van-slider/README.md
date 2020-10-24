@@ -9,18 +9,20 @@
 ### 基本用法
 
 ```html
-<van-slider value="50" bind:change="onChange" />
+<van-slider value="50" @change="onChange" />
 ```
 
 ```js
-Page({
-  onChange(event) {
-    wx.showToast({
-      icon: 'none',
-      title: `当前值：${event.detail}`,
-    });
-  },
-});
+export default {
+  methods: {
+    onChange(value) {
+      uni.showToast({
+        icon: 'none',
+        title: `当前值：${value}`
+      });
+    }
+  }
+}
 ```
 
 ### 指定选择范围
@@ -50,7 +52,7 @@ Page({
 ### 自定义按钮
 
 ```html
-<van-slider value="{{ currentValue }}" use-button-slot bind:drag="onDrag">
+<van-slider v-model="currentValue" use-button-slot @drag="onDrag">
   <view class="custom-button" slot="button">
     {{ currentValue }}/100
   </view>
@@ -58,17 +60,20 @@ Page({
 ```
 
 ```js
-Page({
-  data: {
-    currentValue: 50,
+export default {
+  data() {
+    return {
+      currentValue: 50
+    }
   },
+  methods: {
+    onDrag(detail) {
+      console.log(this.currentValue)
 
-  onDrag(event) {
-    this.setData({
-      currentValue: event.detail.value,
-    });
-  },
-});
+      console.log(detail)
+    }
+  }
+}
 ```
 
 ## API
@@ -90,10 +95,10 @@ Page({
 
 | 事件名          | 说明             | 参数                         |
 | --------------- | ---------------- | ---------------------------- |
-| bind:drag       | 拖动进度条时触发 | event.detail.value: 当前进度 |
-| bind:change     | 进度值改变后触发 | event.detail: 当前进度       |
-| bind:drag-start | 开始拖动时触发   | -                            |
-| bind:drag-end   | 结束拖动时触发   | -                            |
+| @drag       | 拖动进度条时触发 | event.detail.value: 当前进度 |
+| @change     | 进度值改变后触发 | event.detail: 当前进度       |
+| @drag-start | 开始拖动时触发   | -                            |
+| @drag-end   | 结束拖动时触发   | -                            |
 
 ### 外部样式类
 

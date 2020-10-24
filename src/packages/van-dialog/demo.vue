@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import Dialog from '@/packages/van-dialog/dialog'
+import Dialog from './dialog'
 const message = '代码是写出来给人看的，附带能在机器上运行'
 export default {
   components: {

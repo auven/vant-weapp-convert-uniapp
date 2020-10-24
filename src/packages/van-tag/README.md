@@ -73,41 +73,43 @@
 
 ```html
 <van-tag
-  wx:if="{{ show.primary }}"
+  v-if="show.primary"
   closeable
   size="medium"
   type="primary"
   id="primary"
-  bind:close="onClose"
+  @close="onClose('primary')"
 >
   标签
 </van-tag>
 <van-tag
-  wx:if="{{ show.success }}"
+  v-if="show.success"
   closeable
   size="medium"
   type="success"
   id="success"
-  bind:close="onClose"
+  @close="onClose('success')"
 >
   标签
 </van-tag>
 ```
 
 ```js
-Page({
-  data: {
-    show: {
-      primary: true,
-      success: true,
-    },
+export default {
+  data() {
+    return {
+      show: {
+        primary: true,
+        success: true,
+      },
+    }
   },
-  onClose(event) {
-    this.setData({
-      [`show.${event.target.id}`]: false,
-    });
-  },
-});
+  methods: {
+    onClose(id) {
+      this.show[id] = false
+    }
+  }
+}
 ```
 
 ## API

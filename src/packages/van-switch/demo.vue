@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     onChange(value) {
-      this.checked = value
+      console.log('值改变了', this.checked, value)
     },
 
     onInput(value) {

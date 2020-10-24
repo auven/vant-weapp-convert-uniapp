@@ -10,27 +10,29 @@
 
 ```html
 <van-goods-action>
-  <van-goods-action-icon icon="chat-o" text="客服" bind:click="onClickIcon" />
-  <van-goods-action-icon icon="cart-o" text="购物车" bind:click="onClickIcon" />
+  <van-goods-action-icon icon="chat-o" text="客服" @click="onClickIcon" />
+  <van-goods-action-icon icon="cart-o" text="购物车" @click="onClickIcon" />
   <van-goods-action-button
     text="加入购物车"
     type="warning"
-    bind:click="onClickButton"
+    @click="onClickButton"
   />
-  <van-goods-action-button text="立即购买" bind:click="onClickButton" />
+  <van-goods-action-button text="立即购买" @click="onClickButton" />
 </van-goods-action>
 ```
 
 ```javascript
-Page({
-  onClickIcon() {
-    Toast('点击图标');
-  },
+export default {
+  methods: {
+    onClickIcon() {
+      Toast('点击图标')
+    },
 
-  onClickButton() {
-    Toast('点击按钮');
-  },
-});
+    onClickButton() {
+      Toast('点击按钮')
+    }
+  }
+}
 ```
 
 ### 提示信息

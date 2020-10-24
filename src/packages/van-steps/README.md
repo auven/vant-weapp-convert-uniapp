@@ -9,32 +9,34 @@
 ### 基础用法
 
 ```html
-<van-steps steps="{{ steps }}" active="{{ active }}" />
+<van-steps :steps="steps" :active="active" />
 ```
 
 ```javascript
-Page({
-  data: {
-    steps: [
-      {
-        text: '步骤一',
-        desc: '描述信息',
-      },
-      {
-        text: '步骤二',
-        desc: '描述信息',
-      },
-      {
-        text: '步骤三',
-        desc: '描述信息',
-      },
-      {
-        text: '步骤四',
-        desc: '描述信息',
-      },
-    ],
+export default {
+  data() {
+    return {
+      steps: [
+        {
+          text: '步骤一',
+          desc: '描述信息',
+        },
+        {
+          text: '步骤二',
+          desc: '描述信息',
+        },
+        {
+          text: '步骤三',
+          desc: '描述信息',
+        },
+        {
+          text: '步骤四',
+          desc: '描述信息',
+        },
+      ],
+    }
   },
-});
+}
 ```
 
 ### 自定义样式
@@ -43,8 +45,8 @@ Page({
 
 ```html
 <van-steps
-  steps="{{ steps }}"
-  active="{{ active }}"
+  :steps="steps"
+  :active="active"
   active-icon="success"
   active-color="#38f"
 />
@@ -55,40 +57,42 @@ Page({
 可以通过 `inactiveIcon` 和 `activeIcon` 属性分别设置每一项的图标
 
 ```html
-<van-steps steps="{{ steps }}" active="{{ active }}" />
+<van-steps :steps="steps" :active="active" />
 ```
 
 ```javascript
-Page({
-  data: {
-    steps: [
-      {
-        text: '步骤一',
-        desc: '描述信息',
-        inactiveIcon: 'location-o',
-        activeIcon: 'success',
-      },
-      {
-        text: '步骤二',
-        desc: '描述信息',
-        inactiveIcon: 'like-o',
-        activeIcon: 'plus',
-      },
-      {
-        text: '步骤三',
-        desc: '描述信息',
-        inactiveIcon: 'star-o',
-        activeIcon: 'cross',
-      },
-      {
-        text: '步骤四',
-        desc: '描述信息',
-        inactiveIcon: 'phone-o',
-        activeIcon: 'fail',
-      },
-    ],
+export default {
+  data() {
+    return {
+      steps: [
+        {
+          text: '步骤一',
+          desc: '描述信息',
+          inactiveIcon: 'location-o',
+          activeIcon: 'success',
+        },
+        {
+          text: '步骤二',
+          desc: '描述信息',
+          inactiveIcon: 'like-o',
+          activeIcon: 'plus',
+        },
+        {
+          text: '步骤三',
+          desc: '描述信息',
+          inactiveIcon: 'star-o',
+          activeIcon: 'cross',
+        },
+        {
+          text: '步骤四',
+          desc: '描述信息',
+          inactiveIcon: 'phone-o',
+          activeIcon: 'fail',
+        },
+      ],
+    }
   },
-});
+}
 ```
 
 ### 竖向步骤条
@@ -97,8 +101,8 @@ Page({
 
 ```html
 <van-steps
-  steps="{{ steps }}"
-  active="{{ active }}"
+  :steps="steps"
+  :active="active"
   direction="vertical"
   active-color="#ee0a24"
 />
@@ -121,7 +125,7 @@ Page({
 
 | 事件名称        | 说明                 | 回调参数                    |
 | --------------- | -------------------- | --------------------------- |
-| bind:click-step | 点击步骤时触发的事件 | event.detail:当前步骤的索引 |
+| @click-step | 点击步骤时触发的事件 | index:当前步骤的索引 |
 
 ### 外部样式类
 

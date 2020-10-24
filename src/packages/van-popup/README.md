@@ -15,25 +15,29 @@
 通过`show`属性控制弹出层是否展示
 
 ```html
-<van-cell title="展示弹出层" is-link bind:click="showPopup" />
+<van-cell title="展示弹出层" is-link @click="showPopup" />
 
-<van-popup show="{{ show }}" bind:close="onClose">内容</van-popup>
+<van-popup :show="show" @close="onClose">内容</van-popup>
 ```
 
 ```javascript
-Page({
-  data: {
-    show: false,
+export default {
+  data() {
+    return {
+      show: false,
+    }
   },
 
-  showPopup() {
-    this.setData({ show: true });
-  },
+  methods: {
+    showPopup() {
+      this.show = true;
+    },
 
-  onClose() {
-    this.setData({ show: false });
-  },
-});
+    onClose() {
+      this.show = false;
+    },
+  }
+}
 ```
 
 ### 弹出位置
@@ -42,10 +46,10 @@ Page({
 
 ```html
 <van-popup
-  show="{{ show }}"
+  :show="show"
   position="top"
   custom-style="height: 20%;"
-  bind:close="onClose"
+  @close="onClose"
 />
 ```
 
@@ -55,31 +59,31 @@ Page({
 
 ```html
 <van-popup
-  show="{{ show }}"
+  :show="show"
   closeable
   position="bottom"
   custom-style="height: 20%"
-  bind:close="onClose"
+  @close="onClose"
 />
 
 <!-- 自定义图标 -->
 <van-popup
-  show="{{ show }}"
+  :show="show"
   closeable
   close-icon="close"
   position="bottom"
   custom-style="height: 20%"
-  bind:close="onClose"
+  @close="onClose"
 />
 
 <!-- 图标位置 -->
 <van-popup
-  show="{{ show }}"
+  :show="show"
   closeable
   close-icon-position="top-left"
   position="bottom"
   custom-style="height: 20%"
-  bind:close="onClose"
+  @close="onClose"
 />
 ```
 
@@ -89,11 +93,11 @@ Page({
 
 ```html
 <van-popup
-  show="{{ show }}"
+  :show="show"
   round
   position="bottom"
   custom-style="height: 20%"
-  bind:close="onClose"
+  @close="onClose"
 />
 ```
 
@@ -137,14 +141,14 @@ Page({
 
 | 事件名             | 说明             | 参数 |
 | ------------------ | ---------------- | ---- |
-| bind:close         | 关闭弹出层时触发 | -    |
-| bind:click-overlay | 点击遮罩层时触发 | -    |
-| bind:before-enter  | 进入前触发       | -    |
-| bind:enter         | 进入中触发       | -    |
-| bind:after-enter   | 进入后触发       | -    |
-| bind:before-leave  | 离开前触发       | -    |
-| bind:leave         | 离开中触发       | -    |
-| bind:after-leave   | 离开后触发       | -    |
+| @close         | 关闭弹出层时触发 | -    |
+| @click-overlay | 点击遮罩层时触发 | -    |
+| @before-enter  | 进入前触发       | -    |
+| @enter         | 进入中触发       | -    |
+| @after-enter   | 进入后触发       | -    |
+| @before-leave  | 离开前触发       | -    |
+| @leave         | 离开中触发       | -    |
+| @after-leave   | 离开后触发       | -    |
 
 ### 外部样式类
 

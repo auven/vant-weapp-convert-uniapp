@@ -14,10 +14,10 @@
 
 ### 消息提示
 
-用于提示一些消息，只包含一个确认按钮
+用于提示一些消息，只包含一个确认按钮。需要在页面中配置 `van-dialog` 元素，并指定 `ref` 和 `id` 。
 
 ```html
-<van-dialog id="van-dialog" />
+<van-dialog ref="van-dialog" id="van-dialog" />
 ```
 
 ```javascript
@@ -42,7 +42,7 @@ Dialog.alert({
 样式为圆角风格。
 
 ```html
-<van-dialog id="van-dialog" />
+<van-dialog ref="van-dialog" id="van-dialog" />
 ```
 
 ```javascript
@@ -109,30 +109,34 @@ Dialog.confirm({
 <van-dialog
   use-slot
   title="标题"
-  show="{{ show }}"
+  :show.sync="show"
   show-cancel-button
   confirm-button-open-type="getUserInfo"
-  bind:close="onClose"
-  bind:getuserinfo="getUserInfo"
+  @close="onClose"
+  @getuserinfo="getUserInfo"
 >
   <image src="https://img.yzcdn.cn/1.jpg" />
 </van-dialog>
 ```
 
 ```js
-Page({
-  data: {
-    show: true,
+export default {
+  data() {
+    return {
+      show: true,
+    }
   },
 
-  getUserInfo(event) {
-    console.log(event.detail);
-  },
+  methods: {
+    getUserInfo(event) {
+      console.log(event.detail)
+    },
 
-  onClose() {
-    this.setData({ close: false });
-  },
-});
+    onClose() {
+      this.show = false
+    },
+  }
+}
 ```
 
 ## API
@@ -240,14 +244,14 @@ Page({
 
 | 事件 | 说明 | 回调参数 |
 | --- | --- | --- |
-| bind:close | 弹窗关闭时触发 | event.detail: 触发关闭事件的来源，<br>枚举为`confirm`,`cancel`,`overlay` |
-| bind:confirm | 点击确认按钮时触发 | - |
-| bind:cancel | 点击取消按钮时触发 | - |
-| bind:getuserinfo | 点击确认按钮时，会返回获取到的用户信息，<br>从返回参数的 detail 中获取到的值同 wx.getUserInfo | - |
-| bind:contact | 客服消息回调 | - |
-| bind:getphonenumber | 获取用户手机号回调 | - |
-| bind:error | 当使用开放能力时，发生错误的回调 | - |
-| bind:opensetting | 在打开授权设置页后回调 | - |
+| @close | 弹窗关闭时触发 | event.detail: 触发关闭事件的来源，<br>枚举为`confirm`,`cancel`,`overlay` |
+| @confirm | 点击确认按钮时触发 | - |
+| @cancel | 点击取消按钮时触发 | - |
+| @getuserinfo | 点击确认按钮时，会返回获取到的用户信息，<br>从返回参数的 detail 中获取到的值同 wx.getUserInfo | - |
+| @contact | 客服消息回调 | - |
+| @getphonenumber | 获取用户手机号回调 | - |
+| @error | 当使用开放能力时，发生错误的回调 | - |
+| @opensetting | 在打开授权设置页后回调 | - |
 
 ### Slot
 

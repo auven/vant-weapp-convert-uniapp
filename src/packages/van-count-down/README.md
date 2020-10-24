@@ -11,15 +11,17 @@
 `time`属性表示倒计时总时长，单位为毫秒
 
 ```html
-<van-count-down time="{{ time }}" />
+<van-count-down :time="time" />
 ```
 
 ```js
-Page({
-  data: {
-    time: 30 * 60 * 60 * 1000,
+export default {
+  data() {
+    return {
+      time: 30 * 60 * 60 * 1000,
+    }
   },
-});
+}
 ```
 
 ### 自定义格式
@@ -27,7 +29,7 @@ Page({
 通过`format`属性设置倒计时文本的内容
 
 ```html
-<van-count-down time="{{ time }}" format="DD 天 HH 时 mm 分 ss 秒" />
+<van-count-down :time="time" format="DD 天 HH 时 mm 分 ss 秒" />
 ```
 
 ### 毫秒级渲染
@@ -35,15 +37,15 @@ Page({
 倒计时默认每秒渲染一次，设置`millisecond`属性可以开启毫秒级渲染
 
 ```html
-<van-count-down millisecond time="{{ time }}" format="HH:mm:ss:SSS" />
+<van-count-down millisecond :time="time" format="HH:mm:ss:SSS" />
 ```
 
 ### 自定义样式
 
-设置`use-slot`属性后可以自定义倒计时样式，需要通过`bind:change`事件获取`timeData`对象并自行渲染，格式见下方表格
+设置`use-slot`属性后可以自定义倒计时样式，需要通过`@change`事件获取`timeData`对象并自行渲染，格式见下方表格
 
 ```html
-<van-count-down use-slot time="{{ time }}" bind:change="onChange">
+<van-count-down use-slot :time="time" @change="onChange">
   <text class="item">{{ timeData.hours }}</text>
   <text class="item">{{ timeData.minutes }}</text>
   <text class="item">{{ timeData.seconds }}</text>
@@ -51,18 +53,20 @@ Page({
 ```
 
 ```js
-Page({
-  data: {
-    time: 30 * 60 * 60 * 1000,
-    timeData: {},
+export default {
+  data() {
+    return {
+      time: 30 * 60 * 60 * 1000,
+      timeData: {},
+    }
   },
 
-  onChange(e) {
-    this.setData({
-      timeData: e.detail,
-    });
-  },
-});
+  methods: {
+    onChange(timeData) {
+      this.timeData = timeData
+    },
+  }
+}
 ```
 
 ```css
@@ -80,46 +84,73 @@ Page({
 
 ### 手动控制
 
-通过 `selectComponent` 选择器获取到组件实例后，可以调用`start`、`pause`、`reset`方法
+通过设置 `ref="countDown"` 获取到组件实例后，可以调用`start`、`pause`、`reset`方法
 
 ```html
 <van-count-down
   class="control-count-down"
+  ref="countDown"
   millisecond
-  time="{{ 3000 }}"
-  auto-start="{{ false }}"
+  :time="3000"
+  :auto-start="false"
   format="ss:SSS"
-  bind:finish="finished"
+  @finish="finished"
 />
 
 <van-grid clickable column-num="3">
-  <van-grid-item text="开始" icon="play-circle-o" bindclick="start" />
-  <van-grid-item text="暂停" icon="pause-circle-o" bindclick="pause" />
-  <van-grid-item text="重置" icon="replay" bindclick="reset" />
+  <van-grid-item text="开始" icon="play-circle-o" @click="start" />
+  <van-grid-item text="暂停" icon="pause-circle-o" @click="pause" />
+  <van-grid-item text="重置" icon="replay" @click="reset" />
 </van-grid>
 ```
 
 ```js
-Page({
-  start() {
-    const countDown = this.selectComponent('.control-count-down');
-    countDown.start();
-  },
+export default {
+  methods: {
+    start() {
+      let countDown
+      // #ifndef MP-ALIPAY
+      countDown = this.$refs.countDown
+      // #endif
+      // #ifdef MP-ALIPAY
+      // 支付宝小程序中
+      countDown = this.$children[0].$refs.countDown
+      // #endif
+      countDown.start()
+    },
 
-  pause() {
-    const countDown = this.selectComponent('.control-count-down');
-    countDown.pause();
-  },
+    pause() {
+      let countDown
+      // #ifndef MP-ALIPAY
+      countDown = this.$refs.countDown
+      // #endif
+      // #ifdef MP-ALIPAY
+      // 支付宝小程序中
+      countDown = this.$children[0].$refs.countDown
+      // #endif
+      countDown.pause()
+    },
 
-  reset() {
-    const countDown = this.selectComponent('.control-count-down');
-    countDown.reset();
-  },
+    reset() {
+      let countDown
+      // #ifndef MP-ALIPAY
+      countDown = this.$refs.countDown
+      // #endif
+      // #ifdef MP-ALIPAY
+      // 支付宝小程序中
+      countDown = this.$children[0].$refs.countDown
+      // #endif
+      countDown.reset()
+    },
 
-  finished() {
-    Toast('倒计时结束');
-  },
-});
+    finished() {
+      uni.showToast({
+        title: '倒计时结束',
+        duration: 2000
+      })
+    }
+  }
+}
 ```
 
 ## API

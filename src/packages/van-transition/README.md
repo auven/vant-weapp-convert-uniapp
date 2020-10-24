@@ -11,7 +11,7 @@
 将元素包裹在 transition 组件内，在元素展示/隐藏时，会有相应的过渡动画
 
 ```html
-<van-transition show="{{ show }}" custom-class="block">
+<van-transition :show="show" custom-class="block">
   内容
 </van-transition>
 ```
@@ -30,9 +30,9 @@ transition 组件内置了多种动画，可以通过`name`字段指定动画类
 
 ```html
 <van-transition
-  show="{{ show }}"
+  :show="show"
   name=""
-  duration="{{ { enter: 300, leave: 1000 } }}"
+  :duration="{ enter: 300, leave: 1000 }"
   enter-class="van-enter-class"
   enter-active-class="van-enter-active-class"
   leave-active-class="van-leave-active-class"
@@ -68,12 +68,12 @@ transition 组件内置了多种动画，可以通过`name`字段指定动画类
 
 | 事件名            | 说明       | 参数 |
 | ----------------- | ---------- | ---- |
-| bind:before-enter | 进入前触发 | -    |
-| bind:enter        | 进入中触发 | -    |
-| bind:after-enter  | 进入后触发 | -    |
-| bind:before-leave | 离开前触发 | -    |
-| bind:leave        | 离开中触发 | -    |
-| bind:after-leave  | 离开后触发 | -    |
+| @before-enter | 进入前触发 | -    |
+| @enter        | 进入中触发 | -    |
+| @after-enter  | 进入后触发 | -    |
+| @before-leave | 离开前触发 | -    |
+| @leave        | 离开中触发 | -    |
+| @after-leave  | 离开后触发 | -    |
 
 ### 外部样式类
 

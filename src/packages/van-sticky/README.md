@@ -25,7 +25,7 @@ Sticky 组件与 CSS 中`position: sticky`属性实现的效果一致，当组�
 通过`offset-top`属性可以设置组件在吸顶时与顶部的距离
 
 ```html
-<van-sticky offset-top="{{ 50 }}">
+<van-sticky :offset-top="50">
   <van-button type="info">吸顶距离</van-button>
 </van-sticky>
 ```
@@ -36,7 +36,7 @@ Sticky 组件与 CSS 中`position: sticky`属性实现的效果一致，当组�
 
 ```html
 <view id="container" style="height: 150px;">
-  <van-sticky container="{{ container }}">
+  <van-sticky :container="container">
     <van-button type="warning">
       指定容器
     </van-button>
@@ -45,17 +45,27 @@ Sticky 组件与 CSS 中`position: sticky`属性实现的效果一致，当组�
 ```
 
 ```js
-Page({
-  data: {
-    container: null,
+export default {
+  data() {
+    return {
+      container: null
+    }
   },
-
-  onReady() {
-    this.setData({
-      container: () => wx.createSelectorQuery().select('#container'),
-    });
+  onPageScroll(e) {
+    this.setContainer()
   },
-});
+  methods: {
+    setContainer() {
+      uni
+        .createSelectorQuery()
+        .select('#container')
+        .boundingClientRect(res => {
+          this.container = res
+        })
+        .exec()
+    }
+  }
+}
 ```
 
 ### 嵌套在 scroll-view 内使用
@@ -64,13 +74,13 @@ Page({
 
 ```html
 <scroll-view
-  bind:scroll="onScroll"
+  @scroll="onScroll"
   scroll-y
   id="scroller"
   style="height: 200px;"
 >
   <view style="height: 400px; padding-top: 50px;">
-    <van-sticky scroll-top="{{ scrollTop }}" offset-top="{{ offsetTop }}">
+    <van-sticky :scroll-top="scrollTop" :offset-top="offsetTop">
       <van-button type="warning">
         嵌套在 scroll-view 内
       </van-button>
@@ -80,24 +90,30 @@ Page({
 ```
 
 ```js
-Page({
-  data: {
-    scrollTop: 0,
-    offsetTop: 0,
+export default {
+  data() {
+    return {
+      scrollTop: 0,
+      offsetTop: 0,
+      pageScrollTop: 0
+    }
   },
-
-  onScroll(event) {
-    wx.createSelectorQuery()
-      .select('#scroller')
-      .boundingClientRect((res) => {
-        this.setData({
-          scrollTop: event.detail.scrollTop,
-          offsetTop: res.top,
-        });
-      })
-      .exec();
+  onPageScroll(e) {
+    this.pageScrollTop = e.scrollTop
   },
-});
+  methods: {
+    onScroll(event) {
+      uni
+        .createSelectorQuery()
+        .select('#scroller')
+        .boundingClientRect(res => {
+          this.scrollTop = event.detail.scrollTop
+          this.offsetTop = res.top
+        })
+        .exec()
+    }
+  }
+}
 ```
 
 ## API
