@@ -25,7 +25,7 @@
         :name="closeIcon"
         :class="currentCloseIconClass"
         :custom-class="currentCloseIconClass"
-        @click.native="onClickCloseIcon"
+        @click="onClickCloseIcon"
       />
     </view>
   <!-- #ifdef H5 || APP-PLUS -->

@@ -190,7 +190,6 @@ export default {
 - 小程序 props 没办法传递 function
 - 支付宝里会出现这个问题，[父子组件使用props传值，支付宝小程序中出现错误](https://github.com/dcloudio/uni-app/issues/1378)，出现问题的代码文件参考[packages/van-sticky/demo.vue](./src/packages/van-sticky/demo.vue)
 - 小程序中不能将 vue 实例给赋值到 data 变量中
-- 头条小程序 van-tabs 的 animated 设置为 true 后样式有点问题
 - `$vnode` 在小程序端获取不到
 - 支付宝小程序中不支持 `.native` 修饰符，出现问题的代码文件参考[packages/van-popup/van-popup.vue](./src/packages/van-popup/van-popup.vue)
 - 一些样式在 h5 端没有效果，比如 [packages/van-empty/demo.vue](./src/packages/van-empty/demo.vue)

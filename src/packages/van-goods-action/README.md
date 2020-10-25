@@ -129,6 +129,8 @@ export default {
 | send-message-img | sendMessageImg | _string_ | 截图 | - |
 | show-message-card | 显示会话内消息卡片 | _string_ | `false` | - |
 
+> 注意：头条小程序下，需要给组件加上 `class="van-goods-action-button-host"` 。
+
 ### Events
 
 | 事件名 | 说明             | 参数 |

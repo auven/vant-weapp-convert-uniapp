@@ -206,6 +206,8 @@ export default {
 | lazy-render | 是否开启标签页内容延迟渲染 | _boolean_ | `true` | - |
 | offset-top | 粘性定位布局下与顶部的最小距离，单位`px` | _number_ | - | - |
 
+> 注意：头条小程序下，当 `animated` 为 `true` 时，需要给 `van-tab` 组件加上 `class="van-tab-host"` 。
+
 ### Tab Props
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |

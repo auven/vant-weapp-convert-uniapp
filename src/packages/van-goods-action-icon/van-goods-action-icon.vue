@@ -29,10 +29,10 @@
       :dot="dot"
       :info="info"
       class="van-goods-action-icon__icon"
-      custom-class="icon-class"
+      :custom-class="`van-goods-action-icon__icon ${iconClass}`"
     />
     <slot v-else name="icon" />
-    <text class="text-class">{{ text }}</text>
+    <text class="text-class" :class="textClass">{{ text }}</text>
   </van-button>
 </template>
 

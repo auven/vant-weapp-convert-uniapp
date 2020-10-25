@@ -9,7 +9,7 @@
     :disabled="disabled"
     :open-type="openType"
     :class="mainClass"
-    custom-class="van-goods-action-button__inner"
+    :custom-class="`van-goods-action-button__inner ${mainClass}`"
     :business-id="businessId"
     :session-from="sessionFrom"
     :app-parameter="appParameter"
@@ -39,6 +39,7 @@ import { button } from '../mixins/button'
 import { openType } from '../mixins/open-type'
 const utils = require('../wxs/utils')
 export default {
+  name: 'VanGoodsActionButton',
   components: {
     VanButton
   },
@@ -67,7 +68,12 @@ export default {
       },
     },
     mounted() {
+      // #ifndef MP-TOUTIAO
       this.updateStyle()
+      // #endif
+      // #ifdef MP-TOUTIAO
+      this.vanGoodsAction.updateChildren()
+      // #endif
     },
     methods: {
       onClick(event) {
@@ -81,12 +87,14 @@ export default {
           return
         }
 
-        const length = this.parentChildren.length
+        let length
         let index
         // #ifndef MP-TOUTIAO
+        length = this.parentChildren.length
         index = this.index
         // #endif
         // #ifdef MP-TOUTIAO
+        length = this._getParentChildren().length
         index = this._getIndex()
         // #endif
         this.isFirst = index === 0

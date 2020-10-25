@@ -67,6 +67,13 @@ export function ChildrenMixin(parent, options = {}) {
         }
 
         return null
+      },
+      _getParentChildren() {
+        if (!this[parent]) {
+          return []
+        }
+        const children = JSON.parse(this[parent].children)
+        return children
       }
     }
   }

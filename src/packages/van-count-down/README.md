@@ -108,39 +108,15 @@ export default {
 export default {
   methods: {
     start() {
-      let countDown
-      // #ifndef MP-ALIPAY
-      countDown = this.$refs.countDown
-      // #endif
-      // #ifdef MP-ALIPAY
-      // 支付宝小程序中
-      countDown = this.$children[0].$refs.countDown
-      // #endif
-      countDown.start()
+      this.$refs.countDown.start()
     },
 
     pause() {
-      let countDown
-      // #ifndef MP-ALIPAY
-      countDown = this.$refs.countDown
-      // #endif
-      // #ifdef MP-ALIPAY
-      // 支付宝小程序中
-      countDown = this.$children[0].$refs.countDown
-      // #endif
-      countDown.pause()
+      this.$refs.countDown.pause()
     },
 
     reset() {
-      let countDown
-      // #ifndef MP-ALIPAY
-      countDown = this.$refs.countDown
-      // #endif
-      // #ifdef MP-ALIPAY
-      // 支付宝小程序中
-      countDown = this.$children[0].$refs.countDown
-      // #endif
-      countDown.reset()
+      this.$refs.countDown.reset()
     },
 
     finished() {

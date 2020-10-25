@@ -102,10 +102,12 @@
 
     <demo-block title="切换动画">
       <van-tabs animated>
+        <!-- 头条小程序需要给组件设置 style="width: 100%; flex-shrink: 0" -->
         <van-tab
           v-for="(item, index) in tabs4"
           :key="index"
           :title="'标签 ' + item"
+          class="van-tab-host"
         >
           <view class="content">
             {{ '内容' + item }}

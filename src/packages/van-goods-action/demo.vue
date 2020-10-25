@@ -15,8 +15,9 @@
           text="加入购物车"
           type="warning"
           @click="onClickButton"
+          class="van-goods-action-button-host"
         />
-        <van-goods-action-button text="立即购买" @click="onClickButton" />
+        <van-goods-action-button text="立即购买" @click="onClickButton" class="van-goods-action-button-host" />
       </van-goods-action>
     </demo-block>
 
@@ -28,8 +29,8 @@
         <van-goods-action-icon icon="chat-o" text="客服" dot />
         <van-goods-action-icon icon="cart-o" text="购物车" info="5" />
         <van-goods-action-icon icon="shop-o" text="店铺" />
-        <van-goods-action-button text="加入购物车" type="warning" />
-        <van-goods-action-button text="立即购买" />
+        <van-goods-action-button text="加入购物车" type="warning" class="van-goods-action-button-host" />
+        <van-goods-action-button text="立即购买" class="van-goods-action-button-host" />
       </van-goods-action>
     </demo-block>
 
@@ -44,8 +45,9 @@
           color="#be99ff"
           type="warning"
           text="加入购物车"
+          class="van-goods-action-button-host"
         />
-        <van-goods-action-button color="#7232dd" text="立即购买" />
+        <van-goods-action-button color="#7232dd" text="立即购买" class="van-goods-action-button-host" />
       </van-goods-action>
     </demo-block>
 
@@ -60,8 +62,9 @@
           color="#7232dd"
           text="加入购物车"
           type="warning"
+          class="van-goods-action-button-host"
         />
-        <van-goods-action-button plain color="#7232dd" text="立即购买" />
+        <van-goods-action-button plain color="#7232dd" text="立即购买" class="van-goods-action-button-host" />
       </van-goods-action>
     </demo-block>
 
