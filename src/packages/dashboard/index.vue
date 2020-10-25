@@ -19,6 +19,13 @@ export default {
     return {
       list: finishList
     }
+  },
+  onLoad() {
+    // #ifdef MP-QQ
+    qq.showShareMenu({
+      showShareItems: ['qq', 'qzone', 'wechatFriends', 'wechatMoment']
+    })
+    // #endif
   }
 }
 </script>
