@@ -2,7 +2,7 @@
 
 将 [`vant-weapp`](https://github.com/youzan/vant-weapp) 转化成 [`uniapp`](https://uniapp.dcloud.io/) 组件，目前基于 `vant-weapp@1.5.2` 版本进行转化。**我不生产代码，我只是代码的搬运工。给同样喜欢 vant-weapp 的你，带来便捷的跨端开发体验。**
 
-[在线文档](http://auven.gitee.io/vant-weapp-convert-uniapp)，正在逐渐完善
+[在线文档](http://auven.gitee.io/vant-weapp-convert-uniapp)
 
 ## 平台支持
 
@@ -13,29 +13,6 @@
 - 百度小程序
 - H5
 - APP
-
-## 预览
-
-扫描下方各端二维码，体验组件库示例：
-
-<div>
-  <div style="display: inline-block; text-align: center">
-    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="./docs/images/h5.png">
-    <p>H5</p>
-  </div>
-  <div style="display: inline-block; text-align: center">
-    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="./docs/images/weixin.jpg">
-    <p>微信小程序</p>
-  </div>
-  <div style="display: inline-block; text-align: center">
-    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="./docs/images/alipay.jpg">
-    <p>支付宝小程序</p>
-  </div>
-  <div style="display: inline-block; text-align: center">
-    <img style="width: 200px; height: 200px; box-shadow: none; object-fit: contain;" src="./docs/images/android.png">
-    <p>安卓</p>
-  </div>
-</div>
 
 ## 使用
 
